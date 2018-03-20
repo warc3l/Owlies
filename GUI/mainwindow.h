@@ -5,7 +5,6 @@
 #include <QDebug>
 #include <iostream>
 #include <memory>
-#include <QtMultimedia/QCamera>
 
 namespace Ui {
 class MainWindow;
