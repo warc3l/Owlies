@@ -1,12 +1,15 @@
-#include "GUI/mainwindow.h"
-#include <QApplication>
+#include "toolbox.hpp"
+#include "ui_toolbox.h"
 
-int main(int argc, char *argv[])
+Toolbox::Toolbox(QWidget* parent) : QWidget(parent), ui(new Ui::Toolbox)
 {
-    QApplication a(argc, argv);
-    MainWindow w;
+	ui->setupUi(this);
 
-    w.show();
-
-    return a.exec();
+	/* Create all the necessary connections */
 }
+
+Toolbox::~Toolbox()
+{
+	delete ui;
+}
+
