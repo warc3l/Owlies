@@ -1,17 +1,14 @@
 #ifndef TOOLBOX_HPP
 
 #include <QWidget>
-
-namespace Ui {
-	class Toolbox;
-}
+#include "../gui/ui_toolbox.h"
 
 class Toolbox : public QWidget
 {
- private:
+ public:
  		explicit Toolbox(QWidget * parent = 0);
  		~Toolbox();
- public:
+ private:
  		Ui::Toolbox* ui;
 };
 
