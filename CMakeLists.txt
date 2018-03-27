@@ -9,7 +9,8 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(SOURCE_FILES    model/image.hpp model/image.cc
                     main.cpp gui/ui_main_window.h gui/ui_toolbox.h
                     controllers/main_window.hpp controllers/main_window.cc
-                    controllers/toolbox.hpp controllers/toolbox.cc)
+                    controllers/toolbox.hpp controllers/toolbox.cc
+                    gui/subclasses/image_label.hpp gui/subclasses/image_label.cc)
 
 # Boost
 set(Boost_INCLUDE_DIR /home/marcel/devs/boost-build/include)

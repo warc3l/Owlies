@@ -2,5 +2,26 @@
     <qresource prefix="/">
         <file>style/owlies_style.css</file>
         <file>icons/ic_done_black_24px.svg</file>
+        <file>icons/ic_blur_circular_black_24px.svg</file>
+        <file>icons/ic_colorize_black_24px.svg</file>
+        <file>icons/ic_filter_black_24px.svg</file>
+        <file>icons/ic_fingerprint_black_24px.svg</file>
+        <file>icons/ic_gavel_black_24px.svg</file>
+        <file>icons/ic_lens_black_24px.svg</file>
+        <file>icons/ic_mode_edit_black_24px.svg</file>
+        <file>icons/ic_select_all_black_24px.svg</file>
+        <file>icons/ic_tag_faces_black_24px.svg</file>
+        <file>icons/ic_blur_on_black_24px.svg</file>
+        <file>icons/ic_brush_black_24px.svg</file>
+        <file>icons/ic_color_lens_black_24px.svg</file>
+        <file>icons/ic_linear_scale_black_24px.svg</file>
+        <file>icons/ic_photo_size_select_large_black_24px.svg</file>
+        <file>icons/ic_record_voice_over_black_24px.svg</file>
+        <file>icons/ic_whatshot_black_24px.svg</file>
+        <file>icons/ic_zoom_in_black_24px.svg</file>
+        <file>icons/ic_zoom_out_black_24px.svg</file>
+        <file>icons/ic_compare_black_24px.svg</file>
+        <file>icons/ic_crop_black_24px.svg</file>
+        <file>icons/ic_invert_colors_black_24px.svg</file>
     </qresource>
 </RCC>

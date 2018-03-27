@@ -28,23 +28,36 @@ class Ui_Toolbox
 {
 public:
     QVBoxLayout *verticalLayout;
-    QGroupBox *groupBox;
+    QGroupBox *group_basic;
     QGridLayout *gridLayout;
-    QToolButton *toolButton;
-    QToolButton *toolButton_2;
-    QToolButton *toolButton_3;
-    QToolButton *toolButton_4;
-    QToolButton *toolButton_5;
-    QToolButton *toolButton_6;
+    QToolButton *btn_zoom_in;
+    QToolButton *btn_zoom_out;
+    QToolButton *btn_crop;
     QFrame *line;
-    QGroupBox *groupBox_2;
+    QGroupBox *group_manipulation;
     QGridLayout *gridLayout_2;
-    QToolButton *toolButton_9;
-    QToolButton *toolButton_7;
-    QToolButton *toolButton_8;
-    QToolButton *toolButton_10;
-    QToolButton *toolButton_11;
-    QToolButton *toolButton_12;
+    QToolButton *btn_scale;
+    QToolButton *btn_invert_image;
+    QToolButton *btn_draw;
+    QFrame *line_2;
+    QGroupBox *group_colors;
+    QGridLayout *gridLayout_4;
+    QToolButton *btn_sature;
+    QToolButton *btn_invert_colors;
+    QToolButton *btn_pick;
+    QFrame *line_3;
+    QGroupBox *group_filters;
+    QGridLayout *gridLayout_3;
+    QToolButton *btn_filter_1;
+    QToolButton *btn_filter_2;
+    QToolButton *btn_filter_3;
+    QFrame *line_4;
+    QGroupBox *group_recognition;
+    QGridLayout *gridLayout_5;
+    QToolButton *btn_points;
+    QToolButton *btn_recognize;
+    QToolButton *btn_faces;
+    QFrame *line_5;
     QSpacerItem *verticalSpacer;
 
     void setupUi(QWidget *Toolbox)
@@ -52,7 +65,7 @@ public:
         if (Toolbox->objectName().isEmpty())
             Toolbox->setObjectName(QStringLiteral("Toolbox"));
         Toolbox->setWindowModality(Qt::NonModal);
-        Toolbox->resize(159, 445);
+        Toolbox->resize(159, 414);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -61,48 +74,39 @@ public:
         verticalLayout = new QVBoxLayout(Toolbox);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setSizeConstraint(QLayout::SetFixedSize);
-        groupBox = new QGroupBox(Toolbox);
-        groupBox->setObjectName(QStringLiteral("groupBox"));
-        gridLayout = new QGridLayout(groupBox);
+        group_basic = new QGroupBox(Toolbox);
+        group_basic->setObjectName(QStringLiteral("group_basic"));
+        gridLayout = new QGridLayout(group_basic);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        toolButton = new QToolButton(groupBox);
-        toolButton->setObjectName(QStringLiteral("toolButton"));
-        toolButton->setFocusPolicy(Qt::NoFocus);
+        btn_zoom_in = new QToolButton(group_basic);
+        btn_zoom_in->setObjectName(QStringLiteral("btn_zoom_in"));
+        btn_zoom_in->setFocusPolicy(Qt::NoFocus);
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/icons/ic_zoom_in_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_zoom_in->setIcon(icon);
 
-        gridLayout->addWidget(toolButton, 0, 0, 1, 1);
+        gridLayout->addWidget(btn_zoom_in, 0, 1, 1, 1);
 
-        toolButton_2 = new QToolButton(groupBox);
-        toolButton_2->setObjectName(QStringLiteral("toolButton_2"));
-        toolButton_2->setFocusPolicy(Qt::NoFocus);
+        btn_zoom_out = new QToolButton(group_basic);
+        btn_zoom_out->setObjectName(QStringLiteral("btn_zoom_out"));
+        btn_zoom_out->setFocusPolicy(Qt::NoFocus);
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/icons/ic_zoom_out_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_zoom_out->setIcon(icon1);
 
-        gridLayout->addWidget(toolButton_2, 0, 1, 1, 1);
+        gridLayout->addWidget(btn_zoom_out, 0, 2, 1, 1);
 
-        toolButton_3 = new QToolButton(groupBox);
-        toolButton_3->setObjectName(QStringLiteral("toolButton_3"));
-        toolButton_3->setFocusPolicy(Qt::NoFocus);
+        btn_crop = new QToolButton(group_basic);
+        btn_crop->setObjectName(QStringLiteral("btn_crop"));
+        btn_crop->setFocusPolicy(Qt::NoFocus);
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/icons/ic_crop_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_crop->setIcon(icon2);
 
-        gridLayout->addWidget(toolButton_3, 0, 2, 1, 1);
-
-        toolButton_4 = new QToolButton(groupBox);
-        toolButton_4->setObjectName(QStringLiteral("toolButton_4"));
-        toolButton_4->setFocusPolicy(Qt::NoFocus);
-
-        gridLayout->addWidget(toolButton_4, 1, 0, 1, 1);
-
-        toolButton_5 = new QToolButton(groupBox);
-        toolButton_5->setObjectName(QStringLiteral("toolButton_5"));
-        toolButton_5->setFocusPolicy(Qt::NoFocus);
-
-        gridLayout->addWidget(toolButton_5, 1, 1, 1, 1);
-
-        toolButton_6 = new QToolButton(groupBox);
-        toolButton_6->setObjectName(QStringLiteral("toolButton_6"));
-        toolButton_6->setFocusPolicy(Qt::NoFocus);
-
-        gridLayout->addWidget(toolButton_6, 1, 2, 1, 1);
+        gridLayout->addWidget(btn_crop, 0, 0, 1, 1);
 
 
-        verticalLayout->addWidget(groupBox);
+        verticalLayout->addWidget(group_basic);
 
         line = new QFrame(Toolbox);
         line->setObjectName(QStringLiteral("line"));
@@ -111,48 +115,169 @@ public:
 
         verticalLayout->addWidget(line);
 
-        groupBox_2 = new QGroupBox(Toolbox);
-        groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        gridLayout_2 = new QGridLayout(groupBox_2);
+        group_manipulation = new QGroupBox(Toolbox);
+        group_manipulation->setObjectName(QStringLiteral("group_manipulation"));
+        gridLayout_2 = new QGridLayout(group_manipulation);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
-        toolButton_9 = new QToolButton(groupBox_2);
-        toolButton_9->setObjectName(QStringLiteral("toolButton_9"));
-        toolButton_9->setFocusPolicy(Qt::NoFocus);
+        btn_scale = new QToolButton(group_manipulation);
+        btn_scale->setObjectName(QStringLiteral("btn_scale"));
+        btn_scale->setFocusPolicy(Qt::NoFocus);
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/icons/ic_photo_size_select_large_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_scale->setIcon(icon3);
 
-        gridLayout_2->addWidget(toolButton_9, 0, 2, 1, 1);
+        gridLayout_2->addWidget(btn_scale, 0, 2, 1, 1);
 
-        toolButton_7 = new QToolButton(groupBox_2);
-        toolButton_7->setObjectName(QStringLiteral("toolButton_7"));
-        toolButton_7->setFocusPolicy(Qt::NoFocus);
+        btn_invert_image = new QToolButton(group_manipulation);
+        btn_invert_image->setObjectName(QStringLiteral("btn_invert_image"));
+        btn_invert_image->setFocusPolicy(Qt::NoFocus);
+        QIcon icon4;
+        icon4.addFile(QStringLiteral(":/icons/ic_compare_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_invert_image->setIcon(icon4);
 
-        gridLayout_2->addWidget(toolButton_7, 0, 0, 1, 1);
+        gridLayout_2->addWidget(btn_invert_image, 0, 3, 1, 1);
 
-        toolButton_8 = new QToolButton(groupBox_2);
-        toolButton_8->setObjectName(QStringLiteral("toolButton_8"));
-        toolButton_8->setFocusPolicy(Qt::NoFocus);
+        btn_draw = new QToolButton(group_manipulation);
+        btn_draw->setObjectName(QStringLiteral("btn_draw"));
+        btn_draw->setFocusPolicy(Qt::NoFocus);
+        QIcon icon5;
+        icon5.addFile(QStringLiteral(":/icons/ic_brush_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_draw->setIcon(icon5);
 
-        gridLayout_2->addWidget(toolButton_8, 0, 1, 1, 1);
-
-        toolButton_10 = new QToolButton(groupBox_2);
-        toolButton_10->setObjectName(QStringLiteral("toolButton_10"));
-        toolButton_10->setFocusPolicy(Qt::NoFocus);
-
-        gridLayout_2->addWidget(toolButton_10, 1, 0, 1, 1);
-
-        toolButton_11 = new QToolButton(groupBox_2);
-        toolButton_11->setObjectName(QStringLiteral("toolButton_11"));
-        toolButton_11->setFocusPolicy(Qt::NoFocus);
-
-        gridLayout_2->addWidget(toolButton_11, 1, 1, 1, 1);
-
-        toolButton_12 = new QToolButton(groupBox_2);
-        toolButton_12->setObjectName(QStringLiteral("toolButton_12"));
-        toolButton_12->setFocusPolicy(Qt::NoFocus);
-
-        gridLayout_2->addWidget(toolButton_12, 1, 2, 1, 1);
+        gridLayout_2->addWidget(btn_draw, 0, 1, 1, 1);
 
 
-        verticalLayout->addWidget(groupBox_2);
+        verticalLayout->addWidget(group_manipulation);
+
+        line_2 = new QFrame(Toolbox);
+        line_2->setObjectName(QStringLiteral("line_2"));
+        line_2->setFrameShape(QFrame::HLine);
+        line_2->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout->addWidget(line_2);
+
+        group_colors = new QGroupBox(Toolbox);
+        group_colors->setObjectName(QStringLiteral("group_colors"));
+        gridLayout_4 = new QGridLayout(group_colors);
+        gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
+        btn_sature = new QToolButton(group_colors);
+        btn_sature->setObjectName(QStringLiteral("btn_sature"));
+        btn_sature->setFocusPolicy(Qt::NoFocus);
+        QIcon icon6;
+        icon6.addFile(QStringLiteral(":/icons/ic_whatshot_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_sature->setIcon(icon6);
+
+        gridLayout_4->addWidget(btn_sature, 0, 2, 1, 1);
+
+        btn_invert_colors = new QToolButton(group_colors);
+        btn_invert_colors->setObjectName(QStringLiteral("btn_invert_colors"));
+        btn_invert_colors->setFocusPolicy(Qt::NoFocus);
+        QIcon icon7;
+        icon7.addFile(QStringLiteral(":/icons/ic_invert_colors_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_invert_colors->setIcon(icon7);
+
+        gridLayout_4->addWidget(btn_invert_colors, 0, 1, 1, 1);
+
+        btn_pick = new QToolButton(group_colors);
+        btn_pick->setObjectName(QStringLiteral("btn_pick"));
+        btn_pick->setFocusPolicy(Qt::NoFocus);
+        QIcon icon8;
+        icon8.addFile(QStringLiteral(":/icons/ic_colorize_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_pick->setIcon(icon8);
+
+        gridLayout_4->addWidget(btn_pick, 0, 0, 1, 1);
+
+
+        verticalLayout->addWidget(group_colors);
+
+        line_3 = new QFrame(Toolbox);
+        line_3->setObjectName(QStringLiteral("line_3"));
+        line_3->setFrameShape(QFrame::HLine);
+        line_3->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout->addWidget(line_3);
+
+        group_filters = new QGroupBox(Toolbox);
+        group_filters->setObjectName(QStringLiteral("group_filters"));
+        gridLayout_3 = new QGridLayout(group_filters);
+        gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
+        btn_filter_1 = new QToolButton(group_filters);
+        btn_filter_1->setObjectName(QStringLiteral("btn_filter_1"));
+        btn_filter_1->setFocusPolicy(Qt::NoFocus);
+        QIcon icon9;
+        icon9.addFile(QStringLiteral(":/icons/ic_blur_on_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_filter_1->setIcon(icon9);
+
+        gridLayout_3->addWidget(btn_filter_1, 0, 0, 1, 1);
+
+        btn_filter_2 = new QToolButton(group_filters);
+        btn_filter_2->setObjectName(QStringLiteral("btn_filter_2"));
+        btn_filter_2->setFocusPolicy(Qt::NoFocus);
+        QIcon icon10;
+        icon10.addFile(QStringLiteral(":/icons/ic_done_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_filter_2->setIcon(icon10);
+
+        gridLayout_3->addWidget(btn_filter_2, 0, 1, 1, 1);
+
+        btn_filter_3 = new QToolButton(group_filters);
+        btn_filter_3->setObjectName(QStringLiteral("btn_filter_3"));
+        btn_filter_3->setFocusPolicy(Qt::NoFocus);
+        QIcon icon11;
+        icon11.addFile(QStringLiteral(":/icons/ic_filter_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_filter_3->setIcon(icon11);
+
+        gridLayout_3->addWidget(btn_filter_3, 0, 2, 1, 1);
+
+
+        verticalLayout->addWidget(group_filters);
+
+        line_4 = new QFrame(Toolbox);
+        line_4->setObjectName(QStringLiteral("line_4"));
+        line_4->setFrameShape(QFrame::HLine);
+        line_4->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout->addWidget(line_4);
+
+        group_recognition = new QGroupBox(Toolbox);
+        group_recognition->setObjectName(QStringLiteral("group_recognition"));
+        gridLayout_5 = new QGridLayout(group_recognition);
+        gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
+        btn_points = new QToolButton(group_recognition);
+        btn_points->setObjectName(QStringLiteral("btn_points"));
+        btn_points->setFocusPolicy(Qt::NoFocus);
+        QIcon icon12;
+        icon12.addFile(QStringLiteral(":/icons/ic_fingerprint_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_points->setIcon(icon12);
+
+        gridLayout_5->addWidget(btn_points, 0, 1, 1, 1);
+
+        btn_recognize = new QToolButton(group_recognition);
+        btn_recognize->setObjectName(QStringLiteral("btn_recognize"));
+        btn_recognize->setFocusPolicy(Qt::NoFocus);
+        QIcon icon13;
+        icon13.addFile(QStringLiteral(":/icons/ic_record_voice_over_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_recognize->setIcon(icon13);
+
+        gridLayout_5->addWidget(btn_recognize, 0, 2, 1, 1);
+
+        btn_faces = new QToolButton(group_recognition);
+        btn_faces->setObjectName(QStringLiteral("btn_faces"));
+        btn_faces->setFocusPolicy(Qt::NoFocus);
+        QIcon icon14;
+        icon14.addFile(QStringLiteral(":/icons/ic_tag_faces_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_faces->setIcon(icon14);
+
+        gridLayout_5->addWidget(btn_faces, 0, 0, 1, 1);
+
+
+        verticalLayout->addWidget(group_recognition);
+
+        line_5 = new QFrame(Toolbox);
+        line_5->setObjectName(QStringLiteral("line_5"));
+        line_5->setFrameShape(QFrame::HLine);
+        line_5->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout->addWidget(line_5);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -166,21 +291,27 @@ public:
 
     void retranslateUi(QWidget *Toolbox)
     {
-        Toolbox->setWindowTitle(QApplication::translate("Toolbox", "Form", 0));
-        groupBox->setTitle(QApplication::translate("Toolbox", " Basic Operations", 0));
-        toolButton->setText(QApplication::translate("Toolbox", "...", 0));
-        toolButton_2->setText(QApplication::translate("Toolbox", "...", 0));
-        toolButton_3->setText(QApplication::translate("Toolbox", "...", 0));
-        toolButton_4->setText(QApplication::translate("Toolbox", "...", 0));
-        toolButton_5->setText(QApplication::translate("Toolbox", "...", 0));
-        toolButton_6->setText(QApplication::translate("Toolbox", "...", 0));
-        groupBox_2->setTitle(QApplication::translate("Toolbox", "GroupBox", 0));
-        toolButton_9->setText(QApplication::translate("Toolbox", "...", 0));
-        toolButton_7->setText(QApplication::translate("Toolbox", "...", 0));
-        toolButton_8->setText(QApplication::translate("Toolbox", "...", 0));
-        toolButton_10->setText(QApplication::translate("Toolbox", "...", 0));
-        toolButton_11->setText(QApplication::translate("Toolbox", "...", 0));
-        toolButton_12->setText(QApplication::translate("Toolbox", "...", 0));
+        Toolbox->setWindowTitle(QApplication::translate("Toolbox", "Toolbox", 0));
+        group_basic->setTitle(QApplication::translate("Toolbox", " Basic", 0));
+        btn_zoom_in->setText(QApplication::translate("Toolbox", "...", 0));
+        btn_zoom_out->setText(QApplication::translate("Toolbox", "...", 0));
+        btn_crop->setText(QString());
+        group_manipulation->setTitle(QApplication::translate("Toolbox", "Manipulation", 0));
+        btn_scale->setText(QApplication::translate("Toolbox", "...", 0));
+        btn_invert_image->setText(QApplication::translate("Toolbox", "...", 0));
+        btn_draw->setText(QApplication::translate("Toolbox", "...", 0));
+        group_colors->setTitle(QApplication::translate("Toolbox", "Colors", 0));
+        btn_sature->setText(QApplication::translate("Toolbox", "...", 0));
+        btn_invert_colors->setText(QApplication::translate("Toolbox", "...", 0));
+        btn_pick->setText(QApplication::translate("Toolbox", "...", 0));
+        group_filters->setTitle(QApplication::translate("Toolbox", "FIlters", 0));
+        btn_filter_1->setText(QApplication::translate("Toolbox", "...", 0));
+        btn_filter_2->setText(QApplication::translate("Toolbox", "...", 0));
+        btn_filter_3->setText(QApplication::translate("Toolbox", "...", 0));
+        group_recognition->setTitle(QApplication::translate("Toolbox", "Recognition", 0));
+        btn_points->setText(QApplication::translate("Toolbox", "...", 0));
+        btn_recognize->setText(QApplication::translate("Toolbox", "...", 0));
+        btn_faces->setText(QApplication::translate("Toolbox", "...", 0));
     } // retranslateUi
 
 };

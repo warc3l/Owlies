@@ -14,13 +14,13 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+#include "subclasses/image_label.hpp"
 
 QT_BEGIN_NAMESPACE
 
@@ -33,7 +33,7 @@ public:
     QAction *actionUndo_action;
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout;
-    QLabel *main_window_image;
+    ImageLabel *main_window_image;
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuEdit;
@@ -62,7 +62,7 @@ public:
         verticalLayout = new QVBoxLayout(centralwidget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setSizeConstraint(QLayout::SetFixedSize);
-        main_window_image = new QLabel(centralwidget);
+        main_window_image = new ImageLabel(centralwidget);
         main_window_image->setObjectName(QStringLiteral("main_window_image"));
         sizePolicy.setHeightForWidth(main_window_image->sizePolicy().hasHeightForWidth());
         main_window_image->setSizePolicy(sizePolicy);
@@ -98,7 +98,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Owlies", 0));
         actionOpen_image->setText(QApplication::translate("MainWindow", "Open image...", 0));
         actionSave_image->setText(QApplication::translate("MainWindow", "Save image...", 0));
         actionQuit->setText(QApplication::translate("MainWindow", "Quit", 0));

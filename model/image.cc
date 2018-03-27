@@ -10,17 +10,37 @@ Image* Image::instance(std::string path)
     {
         _instance->set_modified_path_image(path);
         _instance->set_original_path_image(path);
+        _instance->set_actual_action(NONE);
     }
 
     return _instance;
 }
 
+void Image::crop(int x, int y, int width, int height)
+{
+    if (x < 0)
+    {
+        width = width + x;
+        x = 0;
+    }
+
+    if (y < 0)
+    {
+        height = height + y;
+        y = 0;
+    }
+
+    width = (width + x < _modified.cols)? width : abs(_modified.cols - x);
+    height = (height + y < _modified.rows)? height: abs(_modified.rows - y);
+
+    cv::Rect crop_rect(x, y, width, height);
+    _modified = _modified(crop_rect);
+}
+
 QPixmap Image::get_modified_pixmap()
 {
-    cv::GaussianBlur(_original, _modified, cv::Size(7,7), 0, 0);
     QImage qimg = Mat2QImage(_modified);
     return QPixmap::fromImage(qimg);
-    // return QPixmap(_path_modified_image.c_str());
 }
 
 QImage Image::Mat2QImage(cv::Mat const& src)
@@ -29,7 +49,6 @@ QImage Image::Mat2QImage(cv::Mat const& src)
     cv::cvtColor(src, temp, CV_BGR2RGB); // cvtColor Makes a copt, that what i need
     QImage dest((const uchar *) temp.data, temp.cols, temp.rows, temp.step, QImage::Format_RGB888);
     dest.bits(); // enforce deep copy, see documentation 
-    // of QImage::QImage ( const uchar * data, int width, int height, Format format )
     return dest;
 }
 

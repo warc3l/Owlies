@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 	/* Create all the necessary connections */
 	connect(ui->actionOpen_image, &QAction::triggered, this, &MainWindow::open_image);
+	connect(ui->actionSave_image, &QAction::triggered, this, &MainWindow::save_image);
 }
 
 void MainWindow::open_image(int a)
@@ -29,8 +30,6 @@ void MainWindow::open_image(int a)
 	{
 		std::cout << "The file entered is not an image" << std::endl;
 	}
-
-
 }
 
 void MainWindow::save_image(void)

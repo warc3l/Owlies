@@ -1,4 +1,10 @@
+#ifndef IMAGE_HPP
+#define IMAGE_HPP
+
 #include <string>
+#include <vector>
+#include <iostream>
+
 #include <QPixmap>
 #include <QImage>
 
@@ -6,6 +12,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 
+enum ACTION { NONE, CROP, ZOOM_IN, ZOOM_OUT, DRAW, SCALE };
 
 class Image
 {
@@ -20,6 +27,8 @@ class Image
     cv::Mat _original;
     cv::Mat _modified;
 
+    ACTION _actual_action; 
+
  public:
     QImage Mat2QImage(cv::Mat const& src);
     cv::Mat QImage2Mat(QImage const& src);
@@ -27,8 +36,7 @@ class Image
     static Image* instance(std::string path = "");
 
     // Basic manipulation of the image. OpenCV.
-    void reescale(void);
-    void change_color(void);
+    void crop(int,int,int,int);
 
     // Representation of that image.
     QPixmap get_modified_pixmap(void);  
@@ -39,5 +47,9 @@ class Image
     std::string get_original_path_image(void) { return _path_original_image; }
     std::string get_modified_path_image(void) { return _path_modified_image; }
 
+    void set_actual_action(ACTION par) { _actual_action = par; }
+    ACTION get_actual_action(void) { return _actual_action; } 
+
 };
 
+#endif
