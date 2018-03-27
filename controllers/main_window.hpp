@@ -6,6 +6,7 @@
 #include <iostream>
 #include <QFileDialog>
 #include <QPixmap>
+#include <QLayout>
 #include <string>
 
 

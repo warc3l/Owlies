@@ -2,6 +2,8 @@
 
 #include <QWidget>
 #include "../gui/ui_toolbox.h"
+#include <iostream>
+#include <QIcon>
 
 class Toolbox : public QWidget
 {

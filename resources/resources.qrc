@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>style/owlies_style.css</file>
+        <file>icons/ic_done_black_24px.svg</file>
+    </qresource>
+</RCC>
