@@ -1,10 +1,12 @@
 #include "toolbox.hpp"
 
 
-Toolbox::Toolbox(QWidget* parent) : QWidget(parent), ui(new Ui::Toolbox)
+Toolbox::Toolbox(QWidget* parent, MainWindow* w) : QWidget(parent), ui(new Ui::Toolbox)
 {
 	ui->setupUi(this);
 	setWindowFlags(Qt::Tool);
+
+	main_window = w;
 
 	// Basic
 	connect(ui->btn_crop, &QToolButton::clicked, this, &Toolbox::crop);
@@ -66,7 +68,9 @@ void Toolbox::scale(void)
 
 void Toolbox::invert_image(void)
 {
-
+	Image* img = Image::instance();
+	img->invert_image();
+	main_window->refresh_image();
 }
 
 void Toolbox::pick(void)
@@ -76,7 +80,9 @@ void Toolbox::pick(void)
 
 void Toolbox::invert_colors(void)
 {
-
+	Image* img = Image::instance();
+	img->invert_colors();
+	main_window->refresh_image();
 }
 
 void Toolbox::sature(void)

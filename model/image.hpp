@@ -37,9 +37,12 @@ class Image
 
     // Basic manipulation of the image. OpenCV.
     void crop(int,int,int,int);
+    void invert_colors(void);
+    void invert_image(void);
 
     // Representation of that image.
     QPixmap get_modified_pixmap(void);  
+    QPixmap get_original_pixmap(void);
 
     void set_original_path_image(std::string path) { _original = cv::imread(path.c_str(), cv::IMREAD_COLOR); _path_original_image = path; }
     void set_modified_path_image(std::string path) { _modified = cv::imread(path.c_str(), cv::IMREAD_COLOR); _path_modified_image = path; }

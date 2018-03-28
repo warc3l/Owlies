@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
     MainWindow w;
-    Toolbox t;
+    Toolbox t(0, &w);
 
     QFile style_file(":/style/owlies_style.css");
     style_file.open(QFile::ReadOnly);

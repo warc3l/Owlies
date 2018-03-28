@@ -2,6 +2,7 @@
 
 #include "../gui/ui_toolbox.h"
 #include "../model/image.hpp"
+#include "../controllers/main_window.hpp"
 
 #include <QWidget>
 #include <iostream>
@@ -11,7 +12,7 @@
 class Toolbox : public QWidget
 {
  public:
- 		explicit Toolbox(QWidget * parent = 0);
+ 		explicit Toolbox(QWidget * parent = 0, MainWindow* mw = 0 );
  		~Toolbox();
 
 		// Basic
@@ -41,6 +42,7 @@ class Toolbox : public QWidget
 
  private:
  		Ui::Toolbox* ui;
+		MainWindow* main_window;
 };
 
 

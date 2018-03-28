@@ -1,4 +1,5 @@
 #ifndef MAIN_WINDOW_HPP
+#define MAIN_WINDOW_HPP
 
 #include <QMainWindow>
 #include <QAction>
@@ -20,6 +21,7 @@ class MainWindow : public QMainWindow
 
 		void open_image(int);
 		void save_image(void);
+		void refresh_image(void);
 
  private:
  		Ui::MainWindow* ui;

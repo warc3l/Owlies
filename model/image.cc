@@ -37,9 +37,25 @@ void Image::crop(int x, int y, int width, int height)
     _modified = _modified(crop_rect);
 }
 
+void Image::invert_image(void)
+{
+    cv::flip(_modified, _modified, 1);
+}
+
+void Image::invert_colors(void)
+{
+    cv::bitwise_not(_modified, _modified);
+}
+
 QPixmap Image::get_modified_pixmap()
 {
     QImage qimg = Mat2QImage(_modified);
+    return QPixmap::fromImage(qimg);
+}
+
+QPixmap Image::get_original_pixmap()
+{
+    QImage qimg = Mat2QImage(_original);
     return QPixmap::fromImage(qimg);
 }
 
