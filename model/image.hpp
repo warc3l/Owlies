@@ -12,7 +12,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 
-enum ACTION { NONE, CROP, ZOOM_IN, ZOOM_OUT, DRAW, SCALE };
+enum ACTION { NONE, CROP, ZOOM_IN, ZOOM_OUT, DRAW, SCALE, PICK };
 
 class Image
 {
@@ -39,6 +39,8 @@ class Image
     void crop(int,int,int,int);
     void invert_colors(void);
     void invert_image(void);
+    void pick(int,int);
+    void scale(int, int, int, int);
 
     // Representation of that image.
     QPixmap get_modified_pixmap(void);  

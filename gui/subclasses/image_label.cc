@@ -22,6 +22,9 @@ void ImageLabel::mousePressEvent(QMouseEvent* event)
                 _rubberBand->setGeometry(QRect(_origin, QSize()));
                 _rubberBand->show();
                 break;
+            case PICK:
+                img->pick(_origin.x(), _origin.y());
+                break;
         }
     }
 }

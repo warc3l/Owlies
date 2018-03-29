@@ -16,6 +16,11 @@ Image* Image::instance(std::string path)
     return _instance;
 }
 
+void Image::scale(int origin_x, int origin_y, int final_x, int final_y)
+{
+
+}
+
 void Image::crop(int x, int y, int width, int height)
 {
     if (x < 0)
@@ -45,6 +50,12 @@ void Image::invert_image(void)
 void Image::invert_colors(void)
 {
     cv::bitwise_not(_modified, _modified);
+}
+
+void Image::pick(int x, int y)
+{
+    cv::Point3_<uchar>* point = _modified.ptr<cv::Point3_<uchar> >(y, x);     
+    std::cout << "(" << int(point->z) << "," << int(point->y) << "," << int(point->x) << ")" << std::endl;
 }
 
 QPixmap Image::get_modified_pixmap()

@@ -75,7 +75,8 @@ void Toolbox::invert_image(void)
 
 void Toolbox::pick(void)
 {
-
+	Image* img = Image::instance();
+	img->set_actual_action(PICK);
 }
 
 void Toolbox::invert_colors(void)
