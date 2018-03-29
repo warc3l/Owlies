@@ -15,6 +15,9 @@ class Toolbox : public QWidget
  		explicit Toolbox(QWidget * parent = 0, MainWindow* mw = 0 );
  		~Toolbox();
 
+		// Uncheck all toolbox
+		void uncheck_all(QToolButton* btn_non_uncheck = nullptr);
+
 		// Basic
 		void crop(void);
 		void zoom_in(void);

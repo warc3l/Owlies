@@ -56,7 +56,5 @@ void ImageLabel::mouseReleaseEvent(QMouseEvent* event)
                 setPixmap(img->get_modified_pixmap());
                 break;
         }
-        if (img->get_actual_action() != NONE)
-            img->set_actual_action(NONE);
     }
 }
