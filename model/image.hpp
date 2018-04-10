@@ -41,6 +41,8 @@ class Image
     void invert_image(void);
     void pick(int,int);
     void scale(int, int, int, int);
+    void faces();
+    void draw(int, int);
 
     // Representation of that image.
     QPixmap get_modified_pixmap(void);  

@@ -16,7 +16,19 @@ Image* Image::instance(std::string path)
     return _instance;
 }
 
+void Image::draw(int x, int y)
+{
+    cv::Point2i center(x, y);
+
+    cv::circle(_modified, center, 10, cv::Scalar(0, 0, 0), CV_FILLED);
+}
+
 void Image::scale(int origin_x, int origin_y, int final_x, int final_y)
+{
+
+}
+
+void Image::faces(void)
 {
 
 }

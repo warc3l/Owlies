@@ -101,7 +101,12 @@ void Toolbox::zoom_out(void)
 void Toolbox::draw(void)
 {
 	uncheck_all(ui->btn_draw);
+	Image* img = Image::instance();
 
+	if ( ui->btn_draw->isChecked() )
+		img->set_actual_action(DRAW);
+	else
+		img->set_actual_action(NONE);
 }
 
 void Toolbox::scale(void)
@@ -167,6 +172,9 @@ void Toolbox::faces(void)
 {
 	uncheck_all();
 
+	Image* img = Image::instance();
+	img->faces();
+	main_window->refresh_image();
 }
 
 void Toolbox::points(void)

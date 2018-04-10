@@ -25,6 +25,11 @@ void ImageLabel::mousePressEvent(QMouseEvent* event)
             case PICK:
                 img->pick(_origin.x(), _origin.y());
                 break;
+            case DRAW:
+                std::cout << "Hello, world, i'm drawing" << std::endl;
+                img->draw(_origin.x(), _origin.y());
+                setPixmap(img->get_modified_pixmap());
+                break;
         }
     }
 }
@@ -33,6 +38,13 @@ void ImageLabel::mouseMoveEvent(QMouseEvent* event)
 {
     if (_rubberBand)
         _rubberBand->setGeometry(QRect(_origin, event->pos()).normalized());
+    
+    Image* img = Image::instance();
+    if (img->get_actual_action() == DRAW)
+    {
+        img->draw(event->pos().x(), event->pos().y());
+        setPixmap(img->get_modified_pixmap());
+    }
 }
 
 void ImageLabel::mouseReleaseEvent(QMouseEvent* event)
