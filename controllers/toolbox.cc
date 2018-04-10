@@ -112,7 +112,12 @@ void Toolbox::draw(void)
 void Toolbox::scale(void)
 {
 	uncheck_all(ui->btn_scale);
+	Image* img = Image::instance();
 
+	if ( ui->btn_scale->isChecked() )
+		img->set_actual_action(SCALE);
+	else
+		img->set_actual_action(NONE);
 }
 
 void Toolbox::invert_image(void)

@@ -40,7 +40,7 @@ class Image
     void invert_colors(void);
     void invert_image(void);
     void pick(int,int);
-    void scale(int, int, int, int);
+    void scale(int, int);
     void faces();
     void draw(int, int);
 

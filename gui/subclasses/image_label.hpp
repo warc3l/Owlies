@@ -4,6 +4,7 @@
 #include <QGraphicsView>
 #include <QRubberBand>
 #include <QPoint>
+#include <memory>
 
 #include "../../model/image.hpp"
 
@@ -17,7 +18,9 @@ class ImageLabel : public QLabel
     virtual void mouseReleaseEvent(QMouseEvent* event);
     virtual void mouseMoveEvent(QMouseEvent* event);
  private:
-    QRubberBand* _rubberBand;
+    std::unique_ptr<QRubberBand> _rubberBandScale;
+    std::unique_ptr<QRubberBand> _rubberBandCrop;
+
     QPoint _origin;
 };
 
