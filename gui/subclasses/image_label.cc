@@ -6,6 +6,30 @@ ImageLabel::ImageLabel(QWidget* parent)
     _rubberBandScale = nullptr;
 }
 
+void ImageLabel::setPixmap(const QPixmap& pixmap)
+{
+    _pixmap = pixmap;
+    QLabel::setPixmap(pixmap);
+}
+
+
+void ImageLabel::paintEvent(QPaintEvent* paint)
+{
+    Image* img = Image::instance();
+    if (img->get_actual_action() == ZOOM_IN)
+    {
+
+    }
+    else if (img->get_actual_action() == ZOOM_OUT)
+    {
+
+    }
+    else
+    {
+        QLabel::paintEvent(paint);
+    }
+}
+
 void ImageLabel::mousePressEvent(QMouseEvent* event)
 {
     if (event->buttons() == Qt::LeftButton)
@@ -73,6 +97,7 @@ void ImageLabel::mouseReleaseEvent(QMouseEvent* event)
                 _rubberBandScale->hide();
                 width = _rubberBandScale->geometry().width();
                 height = _rubberBandScale->geometry().height();
+                
                 img->scale(width, height);
                 setPixmap(img->get_modified_pixmap());
                 break;
