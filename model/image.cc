@@ -30,7 +30,27 @@ void Image::scale(int width, int height)
 
 void Image::faces(void)
 {
+    cv::CascadeClassifier cascade("resources/data/haarcascade_frontalface_alt.xml");
+    std::vector<cv::Rect> faces;
+    cv::Mat gray;
 
+    cv::cvtColor( _modified, gray, cv::COLOR_BGR2GRAY ); // Convert to Gray Scale
+ 
+    // Resize the Grayscale Image  -> why you need to resize it?
+ //   cv::resize( gray, smallImg, cv::Size(), fx, fx, cv::INTER_LINEAR ); 
+ //   cv::equalizeHist( smallImg, smallImg );
+ 
+    // Detect faces of different sizes using cascade classifier  -> it was changed from smallImg -> gray
+    cascade.detectMultiScale( gray, faces, 1.1, 2, 0|cv::CASCADE_SCALE_IMAGE, cv::Size(30, 30) );
+    for (auto face: faces)
+    {
+        cv::rectangle(_modified, 
+            cvPoint(cvRound(face.x), 
+            cvRound(face.y)), 
+            cvPoint(cvRound((face.x + face.width-1)), 
+            cvRound((face.y + face.height-1))), 
+            cv::Scalar(255, 0, 0), 3, 8, 0);
+    }
 }
 
 void Image::crop(int x, int y, int width, int height)
