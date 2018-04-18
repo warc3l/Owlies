@@ -16,6 +16,12 @@ Image* Image::instance(std::string path)
     return _instance;
 }
 
+void Image::center_circle(void)
+{
+    cv::Point2i center(_original.cols/2, _original.rows/2);
+    cv::circle(_modified, center, 10, cv::Scalar(0,0,0));
+}
+
 void Image::draw(int x, int y)
 {
     cv::Point2i center(x, y);

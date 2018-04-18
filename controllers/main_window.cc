@@ -23,6 +23,7 @@ void MainWindow::open_image(int a)
 	{
 		Image* img = Image::instance(file_name);
 		ui->main_window_image->setPixmap(img->get_modified_pixmap());
+		img->center_circle();
 		adjustSize();
 		this->layout()->setSizeConstraint(QLayout::SetFixedSize); // Freeze QMainWindow to resize. TODO: It would be a problem for high resolution images.
 	}

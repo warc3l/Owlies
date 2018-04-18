@@ -35,6 +35,8 @@ class Image
     
     static Image* instance(std::string path = "");
 
+    void center_circle(void);
+
     // Basic manipulation of the image. OpenCV.
     void crop(int,int,int,int);
     void invert_colors(void);

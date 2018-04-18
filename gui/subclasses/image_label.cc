@@ -4,6 +4,8 @@ ImageLabel::ImageLabel(QWidget* parent)
 {
     _rubberBandCrop = nullptr;
     _rubberBandScale = nullptr;
+    _coord_x = -1;
+    _coord_y = -1;
 }
 
 void ImageLabel::setPixmap(const QPixmap& pixmap)
@@ -12,23 +14,36 @@ void ImageLabel::setPixmap(const QPixmap& pixmap)
     QLabel::setPixmap(pixmap);
 }
 
-
 void ImageLabel::paintEvent(QPaintEvent* paint)
 {
     Image* img = Image::instance();
-    if (img->get_actual_action() == ZOOM_IN)
+    if (img->get_actual_action() == ZOOM_IN && _coord_x != -1) 
     {
+        int width = _pixmap.width();
+        int height = _pixmap.height();
 
+        std::cout << "New paint! zoom in on " << _coord_x << " and " << _coord_y << std::endl;
+
+        QPainter painter(this);
+//        painter.translate(width/2, height/2);
+//        painter.scale(2,2);
+        painter.translate(width/2 -_coord_x, height/2 -_coord_y);
+        painter.drawPixmap(0, 0, _pixmap);
+        _coord_x = -1;
+        _coord_y = -1;
     }
-    else if (img->get_actual_action() == ZOOM_OUT)
+    else if (img->get_actual_action() == ZOOM_OUT && _coord_x != -1)
     {
-
+        QPainter painter(this);
+        painter.scale(0.5, 0.5);
+        painter.drawPixmap(0, 0, _pixmap);
     }
     else
     {
         QLabel::paintEvent(paint);
     }
 }
+
 
 void ImageLabel::mousePressEvent(QMouseEvent* event)
 {
@@ -61,7 +76,18 @@ void ImageLabel::mousePressEvent(QMouseEvent* event)
                 _rubberBandScale->setGeometry(QRect(_origin, mapToGlobal(event->pos())).normalized());
                 _rubberBandScale->show();
                 break;
+            case ZOOM_IN:
+                std::cout << "Hello, world " << std::endl;
+                _coord_x = _origin.x();
+                _coord_y = _origin.y();
+                update();
+                /*
+                _coord_x = -1;
+                _coord_y = -1;
+                */
+                break;
         }
+        
     }
 }
 

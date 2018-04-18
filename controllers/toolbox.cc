@@ -89,13 +89,25 @@ void Toolbox::crop(void)
 void Toolbox::zoom_in(void)
 {
 	uncheck_all(ui->btn_zoom_in);
+	Image* img = Image::instance();
+	if ( ui->btn_zoom_in->isChecked() )
+		img->set_actual_action(ZOOM_IN);
+	else
+		img->set_actual_action(NONE);
 
+	main_window->adjustSize();
 }
 
 void Toolbox::zoom_out(void)
 {
 	uncheck_all(ui->btn_zoom_out);
+	Image* img = Image::instance();
+	if ( ui->btn_zoom_out->isChecked() )
+		img->set_actual_action(ZOOM_OUT);
+	else
+		img->set_actual_action(NONE);
 
+	main_window->adjustSize();
 }
 
 void Toolbox::draw(void)

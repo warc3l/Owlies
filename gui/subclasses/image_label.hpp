@@ -26,5 +26,7 @@ class ImageLabel : public QLabel
     QPixmap _pixmap;
 
     QPoint _origin;
+    int _coord_x;
+    int _coord_y;
 };
 
