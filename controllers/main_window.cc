@@ -49,6 +49,15 @@ void MainWindow::open_image(int a)
 void MainWindow::save_image(void)
 {
 	std::cout << "Save, world" << std::endl;
+	Image* img = Image::instance();
+
+	if (img)
+	{
+		QString save_filename = QFileDialog::getSaveFileName(this, "Save modified image", "", "PNG image(*.png)");
+		QFile file(save_filename);
+		file.open(QIODevice::WriteOnly);
+		img->get_modified_pixmap().save(&file, "PNG");
+	}
 }
 
 void MainWindow::refresh_image(void)

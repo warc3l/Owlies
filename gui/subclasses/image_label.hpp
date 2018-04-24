@@ -22,6 +22,8 @@ class ImageLabel : public QLabel
     virtual void paintEvent(QPaintEvent* event);
 
  private:
+    bool _mouseMoving;
+
     std::unique_ptr<QRubberBand> _rubberBandScale;
     std::unique_ptr<QRubberBand> _rubberBandCrop;
     QPixmap _pixmap;

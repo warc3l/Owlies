@@ -4,6 +4,7 @@ ImageLabel::ImageLabel(QWidget* parent)
 {
     _rubberBandCrop = nullptr;
     _rubberBandScale = nullptr;
+    _mouseMoving = false;
     _parent = parent;
 
     setMouseTracking(true);
@@ -39,6 +40,8 @@ void ImageLabel::mousePressEvent(QMouseEvent* event)
     {
         Image* img = Image::instance();
         _origin = event->pos();
+
+        _mouseMoving = true;
 
         switch(img->get_actual_action())
         {
@@ -84,7 +87,7 @@ void ImageLabel::mouseMoveEvent(QMouseEvent* event)
         statusbar->findChild<QLabel*>("lbl_image_size")->setText(QString::fromStdString(new_size));        
     }
 
-    if (img->get_actual_action() == DRAW)
+    if ( _mouseMoving && img->get_actual_action() == DRAW)
     {
         img->draw(event->pos().x(), event->pos().y());
         setPixmap(img->get_modified_pixmap());
@@ -100,6 +103,8 @@ void ImageLabel::mouseReleaseEvent(QMouseEvent* event)
     {
         Image* img = Image::instance();
         int width, height;
+        
+        _mouseMoving = false;
 
         switch (img->get_actual_action())
         {
