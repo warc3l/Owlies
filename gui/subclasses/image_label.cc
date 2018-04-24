@@ -4,6 +4,9 @@ ImageLabel::ImageLabel(QWidget* parent)
 {
     _rubberBandCrop = nullptr;
     _rubberBandScale = nullptr;
+    _parent = parent;
+
+    setMouseTracking(true);
 }
 
 void ImageLabel::setPixmap(const QPixmap& pixmap)
@@ -72,14 +75,23 @@ void ImageLabel::mouseMoveEvent(QMouseEvent* event)
     if (_rubberBandCrop && img->get_actual_action() == CROP )
         _rubberBandCrop->setGeometry(QRect(_origin, event->pos()).normalized());
 
-    if ( _rubberBandScale && img->get_actual_action() == SCALE)
+    QStatusBar* statusbar = _parent->parentWidget()->findChild<QStatusBar*>("statusbar");
+
+    if ( _rubberBandScale && _rubberBandScale->isVisible() && img->get_actual_action() == SCALE)
+    {
         _rubberBandScale->setGeometry(QRect(_origin, mapToGlobal(event->pos())).normalized());
+        std::string new_size = "(" + std::to_string(_rubberBandScale->geometry().width()) + ", " + std::to_string(_rubberBandScale->geometry().height()) + ")";
+        statusbar->findChild<QLabel*>("lbl_image_size")->setText(QString::fromStdString(new_size));        
+    }
 
     if (img->get_actual_action() == DRAW)
     {
         img->draw(event->pos().x(), event->pos().y());
         setPixmap(img->get_modified_pixmap());
     }
+
+    std::string cursor_position = "(" + std::to_string(event->pos().x()) + ", " + std::to_string(event->pos().y()) + ")"; 
+    statusbar->findChild<QLabel*>("lbl_image_pointer")->setText(QString::fromStdString(cursor_position));
 }
 
 void ImageLabel::mouseReleaseEvent(QMouseEvent* event)
@@ -95,6 +107,7 @@ void ImageLabel::mouseReleaseEvent(QMouseEvent* event)
                 break;
             case SCALE:
                 _rubberBandScale->hide();
+
                 width = _rubberBandScale->geometry().width();
                 height = _rubberBandScale->geometry().height();
                 
@@ -103,13 +116,19 @@ void ImageLabel::mouseReleaseEvent(QMouseEvent* event)
                 break;
             case CROP:
                 _rubberBandCrop->hide();
+
                 int pos_x = _rubberBandCrop->geometry().x();
                 int pos_y = _rubberBandCrop->geometry().y();
+
                 width = _rubberBandCrop->geometry().width();
                 height = _rubberBandCrop->geometry().height();
 
                 img->crop(pos_x, pos_y, width, height);
                 setPixmap(img->get_modified_pixmap());
+
+                QStatusBar* statusbar = _parent->parentWidget()->findChild<QStatusBar*>("statusbar");
+                std::string new_size = "(" + std::to_string(width) + ", " + std::to_string(height) + ")";
+                statusbar->findChild<QLabel*>("lbl_image_size")->setText(QString::fromStdString(new_size));        
                 break;
         }
     }

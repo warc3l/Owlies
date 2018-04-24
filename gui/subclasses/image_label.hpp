@@ -4,6 +4,7 @@
 #include <QGraphicsView>
 #include <QRubberBand>
 #include <QPoint>
+#include <QStatusBar>
 #include <memory>
 
 #include "../../model/image.hpp"
@@ -24,7 +25,8 @@ class ImageLabel : public QLabel
     std::unique_ptr<QRubberBand> _rubberBandScale;
     std::unique_ptr<QRubberBand> _rubberBandCrop;
     QPixmap _pixmap;
-
     QPoint _origin;
+
+    QWidget* _parent;
 };
 

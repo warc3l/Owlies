@@ -8,6 +8,9 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
 	/* Create all the necessary connections */
 	connect(ui->actionOpen_image, &QAction::triggered, this, &MainWindow::open_image);
 	connect(ui->actionSave_image, &QAction::triggered, this, &MainWindow::save_image);
+
+	QLabel* lbl_image_name = new QLabel("");	
+	ui->statusbar->addWidget(lbl_image_name, 1);
 }
 
 void MainWindow::open_image(int a)
@@ -25,6 +28,17 @@ void MainWindow::open_image(int a)
 		ui->main_window_image->setPixmap(img->get_modified_pixmap());
 		adjustSize();
 		this->layout()->setSizeConstraint(QLayout::SetFixedSize); // Freeze QMainWindow to resize. TODO: It would be a problem for high resolution images.
+		
+		QString width = QString::fromStdString(std::to_string(img->get_modified_pixmap().width()));
+		QString height = QString::fromStdString(std::to_string(img->get_modified_pixmap().height()));
+
+		QLabel* lbl_image_pointer = new QLabel("(0,0)");
+		lbl_image_pointer->setObjectName("lbl_image_pointer");
+		ui->statusbar->addWidget(lbl_image_pointer);
+
+		QLabel* lbl_image_size = new QLabel("(" + width + ", " + height + ")");
+		lbl_image_size->setObjectName("lbl_image_size");
+		ui->statusbar->addWidget(lbl_image_size);
 	}
 	catch(...)
 	{
