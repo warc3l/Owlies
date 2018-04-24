@@ -10,11 +10,6 @@ addons:
       - g++-6
       - cmake
       
-before_install:
-  - wget ___
-  - make
-  - jefieo
-
 install:
   - curl -sL https://github.com/opencv/opencv/archive/3.4.1.zip > opencv.zip
   - unzip opencv.zip
