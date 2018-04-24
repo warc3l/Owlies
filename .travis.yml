@@ -11,6 +11,7 @@ addons:
       - cmake
 
 script:
+  - cmake .
   - make all
 notifications:
   email: false
