@@ -1,7 +1,14 @@
 language: cpp
-compiler: gcc
+compiler: 
+  - gcc
+  
+os: 
+  - linux
 
 script:
   - qmake
   - make
   - ./travis_qmake_gcc_cpp11
+
+notifications:
+  email: false
