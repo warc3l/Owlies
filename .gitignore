@@ -1,0 +1,5 @@
+CMakeCache.txt
+CMakeFiles/*
+Makefile
+Owlies_autogen/*
+cmake_install.cmake
