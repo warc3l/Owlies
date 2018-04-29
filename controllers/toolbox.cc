@@ -188,7 +188,20 @@ void Toolbox::filter_3(void)
 void Toolbox::filter_menu(void)
 {
 	QMenu menu(this);
-	menu.addAction("Hello");
+	menu.addAction("Blur");
+	menu.addAction("Bilateral");
+	menu.addAction("Gaussian Blur");
+	menu.addAction("Scarr");
+	menu.addAction("Adaptive Threshold");
+	menu.addAction("Box Filter");
+	menu.addAction("Median blur");
+	menu.addAction("Sobel");
+	menu.addSeparator();
+	menu.addAction("Erode");
+	menu.addAction("Dilate");
+	menu.addAction("Opening");
+	menu.addAction("Closing");
+
 	// ... list of all actual filters
 	menu.exec(QCursor::pos());
 }
