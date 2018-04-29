@@ -94,7 +94,9 @@ void ImageLabel::mouseMoveEvent(QMouseEvent* event)
     }
 
     std::string cursor_position = "(" + std::to_string(event->pos().x()) + ", " + std::to_string(event->pos().y()) + ")"; 
-    statusbar->findChild<QLabel*>("lbl_image_pointer")->setText(QString::fromStdString(cursor_position));
+    QLabel* lbl_image_pointer = statusbar->findChild<QLabel*>("lbl_image_pointer");
+    if (lbl_image_pointer != 0)
+        lbl_image_pointer->setText(QString::fromStdString(cursor_position));
 }
 
 void ImageLabel::mouseReleaseEvent(QMouseEvent* event)
