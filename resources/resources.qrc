@@ -23,5 +23,6 @@
         <file>icons/ic_compare_black_24px.svg</file>
         <file>icons/ic_crop_black_24px.svg</file>
         <file>icons/ic_invert_colors_black_24px.svg</file>
+        <file>icons/ic_list_black_24px.svg</file>
     </qresource>
 </RCC>
