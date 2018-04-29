@@ -45,6 +45,11 @@ class Image
     void faces();
     void draw(int, int);
 
+    // Filters
+    void blur_filter(void);
+    void bilateral_filter(void);
+    void laplacian_filter(void);
+    
     // Representation of that image.
     QPixmap get_modified_pixmap(void);  
     QPixmap get_original_pixmap(void);

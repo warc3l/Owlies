@@ -37,6 +37,7 @@ class Toolbox : public QWidget
 		void filter_1(void);
 		void filter_2(void);
 		void filter_3(void);
+		void filter_menu(void);
 
 		// Recognition
 		void faces(void);

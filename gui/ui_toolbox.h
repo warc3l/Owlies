@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'toolbox.ui'
 **
-** Created by: Qt User Interface Compiler version 5.5.1
+** Created by: Qt User Interface Compiler version 5.10.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -48,9 +48,10 @@ public:
     QFrame *line_3;
     QGroupBox *group_filters;
     QGridLayout *gridLayout_3;
-    QToolButton *btn_filter_1;
     QToolButton *btn_filter_2;
     QToolButton *btn_filter_3;
+    QToolButton *btn_filter_1;
+    QToolButton *btn_filter_menu;
     QFrame *line_4;
     QGroupBox *group_recognition;
     QGridLayout *gridLayout_5;
@@ -65,7 +66,7 @@ public:
         if (Toolbox->objectName().isEmpty())
             Toolbox->setObjectName(QStringLiteral("Toolbox"));
         Toolbox->setWindowModality(Qt::NonModal);
-        Toolbox->resize(159, 414);
+        Toolbox->resize(159, 433);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -201,32 +202,41 @@ public:
         group_filters->setObjectName(QStringLiteral("group_filters"));
         gridLayout_3 = new QGridLayout(group_filters);
         gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
-        btn_filter_1 = new QToolButton(group_filters);
-        btn_filter_1->setObjectName(QStringLiteral("btn_filter_1"));
-        btn_filter_1->setFocusPolicy(Qt::NoFocus);
-        QIcon icon9;
-        icon9.addFile(QStringLiteral(":/icons/ic_blur_on_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_filter_1->setIcon(icon9);
-
-        gridLayout_3->addWidget(btn_filter_1, 0, 0, 1, 1);
-
         btn_filter_2 = new QToolButton(group_filters);
         btn_filter_2->setObjectName(QStringLiteral("btn_filter_2"));
         btn_filter_2->setFocusPolicy(Qt::NoFocus);
-        QIcon icon10;
-        icon10.addFile(QStringLiteral(":/icons/ic_done_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_filter_2->setIcon(icon10);
+        QIcon icon9;
+        icon9.addFile(QStringLiteral(":/icons/ic_done_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_filter_2->setIcon(icon9);
 
         gridLayout_3->addWidget(btn_filter_2, 0, 1, 1, 1);
 
         btn_filter_3 = new QToolButton(group_filters);
         btn_filter_3->setObjectName(QStringLiteral("btn_filter_3"));
         btn_filter_3->setFocusPolicy(Qt::NoFocus);
-        QIcon icon11;
-        icon11.addFile(QStringLiteral(":/icons/ic_filter_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_filter_3->setIcon(icon11);
+        QIcon icon10;
+        icon10.addFile(QStringLiteral(":/icons/ic_filter_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_filter_3->setIcon(icon10);
 
         gridLayout_3->addWidget(btn_filter_3, 0, 2, 1, 1);
+
+        btn_filter_1 = new QToolButton(group_filters);
+        btn_filter_1->setObjectName(QStringLiteral("btn_filter_1"));
+        btn_filter_1->setFocusPolicy(Qt::NoFocus);
+        QIcon icon11;
+        icon11.addFile(QStringLiteral(":/icons/ic_blur_on_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_filter_1->setIcon(icon11);
+
+        gridLayout_3->addWidget(btn_filter_1, 0, 0, 1, 1);
+
+        btn_filter_menu = new QToolButton(group_filters);
+        btn_filter_menu->setObjectName(QStringLiteral("btn_filter_menu"));
+        btn_filter_menu->setFocusPolicy(Qt::NoFocus);
+        QIcon icon12;
+        icon12.addFile(QStringLiteral(":/icons/ic_list_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_filter_menu->setIcon(icon12);
+
+        gridLayout_3->addWidget(btn_filter_menu, 0, 3, 1, 1);
 
 
         verticalLayout->addWidget(group_filters);
@@ -245,27 +255,27 @@ public:
         btn_points = new QToolButton(group_recognition);
         btn_points->setObjectName(QStringLiteral("btn_points"));
         btn_points->setFocusPolicy(Qt::NoFocus);
-        QIcon icon12;
-        icon12.addFile(QStringLiteral(":/icons/ic_fingerprint_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_points->setIcon(icon12);
+        QIcon icon13;
+        icon13.addFile(QStringLiteral(":/icons/ic_fingerprint_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_points->setIcon(icon13);
 
         gridLayout_5->addWidget(btn_points, 0, 1, 1, 1);
 
         btn_recognize = new QToolButton(group_recognition);
         btn_recognize->setObjectName(QStringLiteral("btn_recognize"));
         btn_recognize->setFocusPolicy(Qt::NoFocus);
-        QIcon icon13;
-        icon13.addFile(QStringLiteral(":/icons/ic_record_voice_over_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_recognize->setIcon(icon13);
+        QIcon icon14;
+        icon14.addFile(QStringLiteral(":/icons/ic_record_voice_over_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_recognize->setIcon(icon14);
 
         gridLayout_5->addWidget(btn_recognize, 0, 2, 1, 1);
 
         btn_faces = new QToolButton(group_recognition);
         btn_faces->setObjectName(QStringLiteral("btn_faces"));
         btn_faces->setFocusPolicy(Qt::NoFocus);
-        QIcon icon14;
-        icon14.addFile(QStringLiteral(":/icons/ic_tag_faces_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_faces->setIcon(icon14);
+        QIcon icon15;
+        icon15.addFile(QStringLiteral(":/icons/ic_tag_faces_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_faces->setIcon(icon15);
 
         gridLayout_5->addWidget(btn_faces, 0, 0, 1, 1);
 
@@ -291,27 +301,28 @@ public:
 
     void retranslateUi(QWidget *Toolbox)
     {
-        Toolbox->setWindowTitle(QApplication::translate("Toolbox", "Toolbox", 0));
-        group_basic->setTitle(QApplication::translate("Toolbox", " Basic", 0));
-        btn_zoom_in->setText(QApplication::translate("Toolbox", "...", 0));
-        btn_zoom_out->setText(QApplication::translate("Toolbox", "...", 0));
+        Toolbox->setWindowTitle(QApplication::translate("Toolbox", "Toolbox", nullptr));
+        group_basic->setTitle(QApplication::translate("Toolbox", " Basic", nullptr));
+        btn_zoom_in->setText(QApplication::translate("Toolbox", "...", nullptr));
+        btn_zoom_out->setText(QApplication::translate("Toolbox", "...", nullptr));
         btn_crop->setText(QString());
-        group_manipulation->setTitle(QApplication::translate("Toolbox", "Manipulation", 0));
-        btn_scale->setText(QApplication::translate("Toolbox", "...", 0));
-        btn_invert_image->setText(QApplication::translate("Toolbox", "...", 0));
-        btn_draw->setText(QApplication::translate("Toolbox", "...", 0));
-        group_colors->setTitle(QApplication::translate("Toolbox", "Colors", 0));
-        btn_sature->setText(QApplication::translate("Toolbox", "...", 0));
-        btn_invert_colors->setText(QApplication::translate("Toolbox", "...", 0));
-        btn_pick->setText(QApplication::translate("Toolbox", "...", 0));
-        group_filters->setTitle(QApplication::translate("Toolbox", "FIlters", 0));
-        btn_filter_1->setText(QApplication::translate("Toolbox", "...", 0));
-        btn_filter_2->setText(QApplication::translate("Toolbox", "...", 0));
-        btn_filter_3->setText(QApplication::translate("Toolbox", "...", 0));
-        group_recognition->setTitle(QApplication::translate("Toolbox", "Recognition", 0));
-        btn_points->setText(QApplication::translate("Toolbox", "...", 0));
-        btn_recognize->setText(QApplication::translate("Toolbox", "...", 0));
-        btn_faces->setText(QApplication::translate("Toolbox", "...", 0));
+        group_manipulation->setTitle(QApplication::translate("Toolbox", "Manipulation", nullptr));
+        btn_scale->setText(QApplication::translate("Toolbox", "...", nullptr));
+        btn_invert_image->setText(QApplication::translate("Toolbox", "...", nullptr));
+        btn_draw->setText(QApplication::translate("Toolbox", "...", nullptr));
+        group_colors->setTitle(QApplication::translate("Toolbox", "Colors", nullptr));
+        btn_sature->setText(QApplication::translate("Toolbox", "...", nullptr));
+        btn_invert_colors->setText(QApplication::translate("Toolbox", "...", nullptr));
+        btn_pick->setText(QApplication::translate("Toolbox", "...", nullptr));
+        group_filters->setTitle(QApplication::translate("Toolbox", "FIlters", nullptr));
+        btn_filter_2->setText(QApplication::translate("Toolbox", "...", nullptr));
+        btn_filter_3->setText(QApplication::translate("Toolbox", "...", nullptr));
+        btn_filter_1->setText(QApplication::translate("Toolbox", "...", nullptr));
+        btn_filter_menu->setText(QApplication::translate("Toolbox", "...", nullptr));
+        group_recognition->setTitle(QApplication::translate("Toolbox", "Recognition", nullptr));
+        btn_points->setText(QApplication::translate("Toolbox", "...", nullptr));
+        btn_recognize->setText(QApplication::translate("Toolbox", "...", nullptr));
+        btn_faces->setText(QApplication::translate("Toolbox", "...", nullptr));
     } // retranslateUi
 
 };

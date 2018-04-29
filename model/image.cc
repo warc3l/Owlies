@@ -53,6 +53,24 @@ void Image::faces(void)
     }
 }
 
+void Image::blur_filter(void)
+{
+    cv::blur(_modified, _modified, cv::Size(5, 5));
+}
+
+void Image::bilateral_filter(void)
+{
+    cv::Mat dst;
+    cv::bilateralFilter(_modified, dst, 15, 80, 80);
+    _modified = dst;
+}
+
+void Image::laplacian_filter(void)
+{
+    cv::Laplacian(_modified, _modified, CV_8U);
+}
+
+
 void Image::crop(int x, int y, int width, int height)
 {
     if (x < 0)

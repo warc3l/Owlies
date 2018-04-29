@@ -36,6 +36,7 @@ Toolbox::Toolbox(QWidget* parent, MainWindow* w) : QWidget(parent), ui(new Ui::T
 	connect(ui->btn_filter_1, &QToolButton::clicked, this, &Toolbox::filter_1);
 	connect(ui->btn_filter_2, &QToolButton::clicked, this, &Toolbox::filter_2);
 	connect(ui->btn_filter_3, &QToolButton::clicked, this, &Toolbox::filter_3);
+	connect(ui->btn_filter_menu, &QToolButton::clicked, this, &Toolbox::filter_menu);
 
 	// Recognition
 	connect(ui->btn_faces, &QToolButton::clicked, this, &Toolbox::faces);
@@ -160,17 +161,36 @@ void Toolbox::sature(void)
 void Toolbox::filter_1(void)
 {
 	uncheck_all();
+	Image* img = Image::instance();
 
+	img->blur_filter(); // Needs to be changed by dynamically lambda
+	main_window->refresh_image();
 }
 
 void Toolbox::filter_2(void)
 {
 	uncheck_all();
+	Image* img = Image::instance();
+
+	img->bilateral_filter(); // Needs to be changed by dynamically lambda
+	main_window->refresh_image();
 }
 
 void Toolbox::filter_3(void)
 {
 	uncheck_all();
+	Image* img = Image::instance();
+
+	img->laplacian_filter(); // Needs to be changed by dynamically lambda
+	main_window->refresh_image();
+}
+
+void Toolbox::filter_menu(void)
+{
+	QMenu menu(this);
+	menu.addAction("Hello");
+	// ... list of all actual filters
+	menu.exec(QCursor::pos());
 }
 
 void Toolbox::faces(void)
