@@ -31,7 +31,8 @@
         <file>icons/ic_polymer_black_24px.svg</file>
         <file>icons/ic_lock_black_24px.svg</file>
         <file>icons/ic_lock_open_black_24px.svg</file>
-        <file>icons/ic_rounded_corner_black_24px.svg</file>
         <file>icons/ic_access_time_black_24px.svg</file>
+        <file>icons/ic_surround_sound_black_24px.svg</file>
+        <file>icons/ic_dashboard_black_24px.svg</file>
     </qresource>
 </RCC>

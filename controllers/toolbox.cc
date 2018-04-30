@@ -56,8 +56,8 @@ Toolbox::Toolbox(QWidget* parent, MainWindow* w) : QWidget(parent), ui(new Ui::T
 	filters["median"] = std::make_pair(QString(":/icons/ic_select_all_black_24px.svg"), [=]() { img->median_filter(); });
 	filters["sobel"] = std::make_pair(QString(":/icons/ic_access_time_black_24px.svg"), [=]() { img->sobel_filter(); });
 
-	filters["erode"] = std::make_pair(QString(":/icons/ic_gavel_black_24px.svg"), [=]() { img->erode(); });
-	filters["dilate"] = std::make_pair(QString(":/icons/ic_rounded_corner_black_24px.svg"), [=]() { img->dilate(); });
+	filters["erode"] = std::make_pair(QString(":/icons/ic_dashboard_black_24px.svg"), [=]() { img->erode(); });
+	filters["dilate"] = std::make_pair(QString(":/icons/ic_surround_sound_black_24px.svg"), [=]() { img->dilate(); });
 	filters["opening"] = std::make_pair(QString(":/icons/ic_lock_open_black_24px.svg"), [=]() { img->opening(); });
 	filters["closing"] = std::make_pair(QString(":/icons/ic_lock_black_24px.svg"), [=]() { img->closing(); });
 
