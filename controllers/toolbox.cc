@@ -46,20 +46,20 @@ Toolbox::Toolbox(QWidget* parent, MainWindow* w) : QWidget(parent), ui(new Ui::T
 	// Filters
 	Image* img = Image::instance();
 
-	filters["blur"] = std::make_pair(std::string(), [=]() { img->blur_filter(); });
-	filters["bilateral"] = std::make_pair(std::string(), [=]() { img->bilateral_filter(); });
-	filters["laplacian"] = std::make_pair(std::string(), [=]() { img->laplacian_filter(); });
-	filters["gaussian"] = std::make_pair(std::string(), [=]() { img->gaussian_filter(); });
-	filters["scarr"] = std::make_pair(std::string(), [=]() { img->scarr_filter(); });
-	filters["adaptative"] = std::make_pair(std::string(), [=]() { img->adaptative_filter(); });
-	filters["box"] = std::make_pair(std::string(), [=]() { img->box_filter(); });
-	filters["median"] = std::make_pair(std::string(), [=]() { img->median_filter(); });
-	filters["sobel"] = std::make_pair(std::string(), [=]() { img->sobel_filter(); });
+	filters["blur"] = std::make_pair(QString(":/icons/ic_blur_on_black_24px.svg"), [=]() { img->blur_filter(); });
+	filters["bilateral"] = std::make_pair(QString(":/icons/ic_call_split_black_24px.svg"), [=]() { img->bilateral_filter(); });
+	filters["laplacian"] = std::make_pair(QString(":/icons/ic_swap_calls_black_24px"), [=]() { img->laplacian_filter(); });
+	filters["gaussian"] = std::make_pair(QString(":/icons/ic_blur_on_black_24px.svg"), [=]() { img->gaussian_filter(); });
+	filters["scarr"] = std::make_pair(QString(":/icons/ic_blur_on_black_24px.svg"), [=]() { img->scarr_filter(); });
+	filters["adaptative"] = std::make_pair(QString(":/icons/ic_call_merge_black_24px"), [=]() { img->adaptative_filter(); });
+	filters["box"] = std::make_pair(QString(":/icons/ic_inbox_icon_24px.svg"), [=]() { img->box_filter(); });
+	filters["median"] = std::make_pair(QString(":/icons/ic_blur_on_black_24px.svg"), [=]() { img->median_filter(); });
+	filters["sobel"] = std::make_pair(QString(":/icons/ic_filter_black_24px.svg"), [=]() { img->sobel_filter(); });
 
-	filters["erode"] = std::make_pair(std::string(), [=]() { img->erode(); });
-	filters["dilate"] = std::make_pair(std::string(), [=]() { img->dilate(); });
-	filters["opening"] = std::make_pair(std::string(), [=]() { img->opening(); });
-	filters["closing"] = std::make_pair(std::string(), [=]() { img->closing(); });
+	filters["erode"] = std::make_pair(QString(":/icons/ic_gavel_black_24px.svg"), [=]() { img->erode(); });
+	filters["dilate"] = std::make_pair(QString(":/icons/ic_blur_on_black_24px.svg"), [=]() { img->dilate(); });
+	filters["opening"] = std::make_pair(QString(":/icons/ic_blur_on_black_24px.svg"), [=]() { img->opening(); });
+	filters["closing"] = std::make_pair(QString(":/icons/ic_blur_on_black_24px.svg"), [=]() { img->closing(); });
 
 	common_filters.push_back("blur");
 	common_filters.push_back("bilateral");
@@ -207,8 +207,7 @@ void Toolbox::filter_menu(void)
 {
 	QMenu menu(this);
 
-	// Iterate by keys from map data structure, except common filters.
-	for (auto imap: filters)
+	for (const auto imap: filters)
 	{
 		std::string identifier = imap.first;
 		if ( !std::any_of(common_filters.begin(), common_filters.end(), [=](std::string x) { return identifier == x; } ))
@@ -224,9 +223,19 @@ void Toolbox::filter_menu(void)
 		std::string data = action->text().toUtf8().constData();
 		std::transform(data.begin(), data.end(), data.begin(), ::tolower);
 
-		// Call the filter
+		// Call that filter
 		filters[data].second();
 		main_window->refresh_image();
+
+		// Reorder common filters
+		common_filters[2] = common_filters[1];
+		common_filters[1] = common_filters[0];
+		common_filters[0] = data;
+
+		// Change the icons
+		ui->btn_filter_1->setIcon(QIcon(filters[common_filters[0]].first));
+		ui->btn_filter_2->setIcon(QIcon(filters[common_filters[1]].first));
+		ui->btn_filter_3->setIcon(QIcon(filters[common_filters[2]].first));
 	}
 }
 

@@ -52,7 +52,7 @@ class Toolbox : public QWidget
 		// Implemented filters.
 		// @ key: identificator
 		// @ pair<path_icon, lambda_function_image>
-		std::map<std::string, std::pair<std::string, std::function<void()>>> filters;
+		std::map<std::string, std::pair<QString, std::function<void()>>> filters;
 		std::vector<std::string> common_filters;
 
  private:
