@@ -43,6 +43,27 @@ Toolbox::Toolbox(QWidget* parent, MainWindow* w) : QWidget(parent), ui(new Ui::T
 	connect(ui->btn_points, &QToolButton::clicked, this, &Toolbox::points);
 	connect(ui->btn_recognize, &QToolButton::clicked, this, &Toolbox::recognize);
 
+	// Filters
+	Image* img = Image::instance();
+
+	filters["blur"] = std::make_pair(std::string(), [=]() { img->blur_filter(); });
+	filters["bilateral"] = std::make_pair(std::string(), [=]() { img->bilateral_filter(); });
+	filters["laplacian"] = std::make_pair(std::string(), [=]() { img->laplacian_filter(); });
+	filters["gaussian"] = std::make_pair(std::string(), [=]() { img->gaussian_filter(); });
+	filters["scarr"] = std::make_pair(std::string(), [=]() { img->scarr_filter(); });
+	filters["adaptative"] = std::make_pair(std::string(), [=]() { img->adaptative_filter(); });
+	filters["box"] = std::make_pair(std::string(), [=]() { img->box_filter(); });
+	filters["median"] = std::make_pair(std::string(), [=]() { img->median_filter(); });
+	filters["sobel"] = std::make_pair(std::string(), [=]() { img->sobel_filter(); });
+
+	filters["erode"] = std::make_pair(std::string(), [=]() { img->erode(); });
+	filters["dilate"] = std::make_pair(std::string(), [=]() { img->dilate(); });
+	filters["opening"] = std::make_pair(std::string(), [=]() { img->opening(); });
+	filters["closing"] = std::make_pair(std::string(), [=]() { img->closing(); });
+
+	common_filters.push_back("blur");
+	common_filters.push_back("bilateral");
+	common_filters.push_back("laplacian");
 }
 
 Toolbox::~Toolbox()
@@ -161,49 +182,52 @@ void Toolbox::sature(void)
 void Toolbox::filter_1(void)
 {
 	uncheck_all();
-	Image* img = Image::instance();
 
-	img->blur_filter(); // Needs to be changed by dynamically lambda
+	filters[common_filters[0]].second();
 	main_window->refresh_image();
 }
 
 void Toolbox::filter_2(void)
 {
 	uncheck_all();
-	Image* img = Image::instance();
 
-	img->bilateral_filter(); // Needs to be changed by dynamically lambda
+	filters[common_filters[1]].second();
 	main_window->refresh_image();
 }
 
 void Toolbox::filter_3(void)
 {
 	uncheck_all();
-	Image* img = Image::instance();
 
-	img->laplacian_filter(); // Needs to be changed by dynamically lambda
+	filters[common_filters[2]].second();
 	main_window->refresh_image();
 }
 
 void Toolbox::filter_menu(void)
 {
 	QMenu menu(this);
-	menu.addAction("Blur");
-	menu.addAction("Bilateral");
-	menu.addAction("Gaussian Blur");
-	menu.addAction("Scarr");
-	menu.addAction("Adaptive Threshold");
-	menu.addAction("Box Filter");
-	menu.addAction("Median blur");
-	menu.addAction("Sobel");
-	menu.addSeparator();
-	menu.addAction("Erode");
-	menu.addAction("Dilate");
-	menu.addAction("Opening");
-	menu.addAction("Closing");
 
-	// ... list of all actual filters
-	menu.exec(QCursor::pos());
+	// Iterate by keys from map data structure, except common filters.
+	for (auto imap: filters)
+	{
+		std::string identifier = imap.first;
+		if ( !std::any_of(common_filters.begin(), common_filters.end(), [=](std::string x) { return identifier == x; } ))
+		{
+			identifier[0] = ::toupper(identifier[0]);
+			menu.addAction(QString::fromStdString(identifier));
+		}
+	}
+
+	QAction* action = menu.exec(QCursor::pos());
+	if (action != 0)
+	{
+		std::string data = action->text().toUtf8().constData();
+		std::transform(data.begin(), data.end(), data.begin(), ::tolower);
+
+		// Call the filter
+		filters[data].second();
+		main_window->refresh_image();
+	}
 }
 
 void Toolbox::faces(void)

@@ -49,7 +49,19 @@ class Image
     void blur_filter(void);
     void bilateral_filter(void);
     void laplacian_filter(void);
-    
+    void gaussian_filter(void);
+    void scarr_filter(void);
+    void adaptative_filter(void);
+    void box_filter(void);
+    void median_filter(void);
+    void sobel_filter(void);
+
+    // Morphological transformations
+    void erode(void);
+    void dilate(void);
+    void opening(void);
+    void closing(void);
+
     // Representation of that image.
     QPixmap get_modified_pixmap(void);  
     QPixmap get_original_pixmap(void);

@@ -53,13 +53,20 @@ void Image::faces(void)
     }
 }
 
+void Image::adaptative_filter(void)
+{
+    std::cout << "Adaptative filter" << std::endl;   
+}
+
 void Image::blur_filter(void)
 {
+    std::cout << "Blur filter" << std::endl;
     cv::blur(_modified, _modified, cv::Size(5, 5));
 }
 
 void Image::bilateral_filter(void)
 {
+    std::cout << "Bilateral filter" << std::endl;
     cv::Mat dst;
     cv::bilateralFilter(_modified, dst, 15, 80, 80);
     _modified = dst;
@@ -67,9 +74,54 @@ void Image::bilateral_filter(void)
 
 void Image::laplacian_filter(void)
 {
+    std::cout << "Laplacian filter" << std::endl;
     cv::Laplacian(_modified, _modified, CV_8U);
 }
 
+void Image::box_filter(void)
+{
+    std::cout << "Box filter!" << std::endl;
+}
+
+void Image::gaussian_filter(void)
+{
+    std::cout << "Gaussian filter!" << std::endl;
+}
+
+void Image::scarr_filter(void)
+{
+    std::cout << "Scarr filter!" << std::endl;
+}
+
+void Image::median_filter(void)
+{
+    std::cout << "Median filter!" << std::endl;
+}
+
+void Image::sobel_filter(void)
+{
+    std::cout << "Sobel filter!!" << std::endl;
+}
+
+void Image::erode(void)
+{
+    std::cout << "Erode filter!" << std::endl;
+}
+
+void Image::dilate(void)
+{
+    std::cout << "Dilate filter!" << std::endl;
+}
+
+void Image::opening(void)
+{
+    std::cout << "Opening filter!" << std::endl;
+}
+
+void Image::closing(void)
+{
+    std::cout << "Closing filter!" << std::endl;
+}
 
 void Image::crop(int x, int y, int width, int height)
 {

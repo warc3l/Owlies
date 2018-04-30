@@ -6,6 +6,11 @@
 
 #include <QWidget>
 #include <iostream>
+#include <map>
+#include <utility>
+#include <functional>
+#include <vector>
+#include <algorithm>
 #include <QIcon>
 
 
@@ -43,6 +48,12 @@ class Toolbox : public QWidget
 		void faces(void);
 		void points(void);
 		void recognize(void);
+
+		// Implemented filters.
+		// @ key: identificator
+		// @ pair<path_icon, lambda_function_image>
+		std::map<std::string, std::pair<std::string, std::function<void()>>> filters;
+		std::vector<std::string> common_filters;
 
  private:
  		Ui::Toolbox* ui;
