@@ -24,5 +24,14 @@
         <file>icons/ic_crop_black_24px.svg</file>
         <file>icons/ic_invert_colors_black_24px.svg</file>
         <file>icons/ic_list_black_24px.svg</file>
+        <file>icons/ic_call_merge_black_24px.svg</file>
+        <file>icons/ic_call_split_black_24px.svg</file>
+        <file>icons/ic_inbox_icon_24px.svg</file>
+        <file>icons/ic_swap_calls_black_24px.svg</file>
+        <file>icons/ic_polymer_black_24px.svg</file>
+        <file>icons/ic_lock_black_24px.svg</file>
+        <file>icons/ic_lock_open_black_24px.svg</file>
+        <file>icons/ic_rounded_corner_black_24px.svg</file>
+        <file>icons/ic_access_time_black_24px.svg</file>
     </qresource>
 </RCC>

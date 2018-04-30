@@ -49,17 +49,17 @@ Toolbox::Toolbox(QWidget* parent, MainWindow* w) : QWidget(parent), ui(new Ui::T
 	filters["blur"] = std::make_pair(QString(":/icons/ic_blur_on_black_24px.svg"), [=]() { img->blur_filter(); });
 	filters["bilateral"] = std::make_pair(QString(":/icons/ic_call_split_black_24px.svg"), [=]() { img->bilateral_filter(); });
 	filters["laplacian"] = std::make_pair(QString(":/icons/ic_swap_calls_black_24px"), [=]() { img->laplacian_filter(); });
-	filters["gaussian"] = std::make_pair(QString(":/icons/ic_blur_on_black_24px.svg"), [=]() { img->gaussian_filter(); });
-	filters["scarr"] = std::make_pair(QString(":/icons/ic_blur_on_black_24px.svg"), [=]() { img->scarr_filter(); });
+	filters["gaussian"] = std::make_pair(QString(":/icons/ic_blur_circular_black_24px.svg"), [=]() { img->gaussian_filter(); });
+	filters["scarr"] = std::make_pair(QString(":/icons/ic_polymer_black_24px.svg"), [=]() { img->scarr_filter(); });
 	filters["adaptative"] = std::make_pair(QString(":/icons/ic_call_merge_black_24px"), [=]() { img->adaptative_filter(); });
 	filters["box"] = std::make_pair(QString(":/icons/ic_inbox_icon_24px.svg"), [=]() { img->box_filter(); });
-	filters["median"] = std::make_pair(QString(":/icons/ic_blur_on_black_24px.svg"), [=]() { img->median_filter(); });
-	filters["sobel"] = std::make_pair(QString(":/icons/ic_filter_black_24px.svg"), [=]() { img->sobel_filter(); });
+	filters["median"] = std::make_pair(QString(":/icons/ic_select_all_black_24px.svg"), [=]() { img->median_filter(); });
+	filters["sobel"] = std::make_pair(QString(":/icons/ic_access_time_black_24px.svg"), [=]() { img->sobel_filter(); });
 
 	filters["erode"] = std::make_pair(QString(":/icons/ic_gavel_black_24px.svg"), [=]() { img->erode(); });
-	filters["dilate"] = std::make_pair(QString(":/icons/ic_blur_on_black_24px.svg"), [=]() { img->dilate(); });
-	filters["opening"] = std::make_pair(QString(":/icons/ic_blur_on_black_24px.svg"), [=]() { img->opening(); });
-	filters["closing"] = std::make_pair(QString(":/icons/ic_blur_on_black_24px.svg"), [=]() { img->closing(); });
+	filters["dilate"] = std::make_pair(QString(":/icons/ic_rounded_corner_black_24px.svg"), [=]() { img->dilate(); });
+	filters["opening"] = std::make_pair(QString(":/icons/ic_lock_open_black_24px.svg"), [=]() { img->opening(); });
+	filters["closing"] = std::make_pair(QString(":/icons/ic_lock_black_24px.svg"), [=]() { img->closing(); });
 
 	common_filters.push_back("blur");
 	common_filters.push_back("bilateral");
