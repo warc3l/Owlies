@@ -64,6 +64,10 @@ Toolbox::Toolbox(QWidget* parent, MainWindow* w) : QWidget(parent), ui(new Ui::T
 	common_filters.push_back("blur");
 	common_filters.push_back("bilateral");
 	common_filters.push_back("laplacian");
+
+	ui->btn_filter_1->setToolTip("Blur");
+	ui->btn_filter_2->setToolTip("Bilateral");
+	ui->btn_filter_3->setToolTip("Laplacian");
 }
 
 Toolbox::~Toolbox()
@@ -207,6 +211,7 @@ void Toolbox::filter_menu(void)
 {
 	QMenu menu(this);
 
+	// Fill menu with filters
 	for (const auto imap: filters)
 	{
 		std::string identifier = imap.first;
@@ -236,6 +241,14 @@ void Toolbox::filter_menu(void)
 		ui->btn_filter_1->setIcon(QIcon(filters[common_filters[0]].first));
 		ui->btn_filter_2->setIcon(QIcon(filters[common_filters[1]].first));
 		ui->btn_filter_3->setIcon(QIcon(filters[common_filters[2]].first));
+
+		// Set new Tooltips
+		std::string first = common_filters[0], second = common_filters[1], third = common_filters[2];
+		first[0] = ::toupper(first[0]); second[0] = ::toupper(second[0]); third[0] = ::toupper(third[0]);
+
+		ui->btn_filter_1->setToolTip(QString::fromStdString(first));
+		ui->btn_filter_2->setToolTip(QString::fromStdString(second));
+		ui->btn_filter_3->setToolTip(QString::fromStdString(third));
 	}
 }
 

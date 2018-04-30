@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>159</width>
+    <width>164</width>
     <height>433</height>
    </rect>
   </property>
@@ -216,7 +216,7 @@
         </property>
         <property name="icon">
          <iconset resource="../resources/resources.qrc">
-          <normaloff>:/icons/ic_done_black_24px.svg</normaloff>:/icons/ic_done_black_24px.svg</iconset>
+          <normaloff>:/icons/ic_call_split_black_24px.svg</normaloff>:/icons/ic_call_split_black_24px.svg</iconset>
         </property>
        </widget>
       </item>
@@ -230,7 +230,7 @@
         </property>
         <property name="icon">
          <iconset resource="../resources/resources.qrc">
-          <normaloff>:/icons/ic_filter_black_24px.svg</normaloff>:/icons/ic_filter_black_24px.svg</iconset>
+          <normaloff>:/icons/ic_swap_calls_black_24px.svg</normaloff>:/icons/ic_swap_calls_black_24px.svg</iconset>
         </property>
        </widget>
       </item>

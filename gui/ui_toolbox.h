@@ -66,7 +66,7 @@ public:
         if (Toolbox->objectName().isEmpty())
             Toolbox->setObjectName(QStringLiteral("Toolbox"));
         Toolbox->setWindowModality(Qt::NonModal);
-        Toolbox->resize(159, 433);
+        Toolbox->resize(164, 433);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -206,7 +206,7 @@ public:
         btn_filter_2->setObjectName(QStringLiteral("btn_filter_2"));
         btn_filter_2->setFocusPolicy(Qt::NoFocus);
         QIcon icon9;
-        icon9.addFile(QStringLiteral(":/icons/ic_done_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        icon9.addFile(QStringLiteral(":/icons/ic_call_split_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
         btn_filter_2->setIcon(icon9);
 
         gridLayout_3->addWidget(btn_filter_2, 0, 1, 1, 1);
@@ -215,7 +215,7 @@ public:
         btn_filter_3->setObjectName(QStringLiteral("btn_filter_3"));
         btn_filter_3->setFocusPolicy(Qt::NoFocus);
         QIcon icon10;
-        icon10.addFile(QStringLiteral(":/icons/ic_filter_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
+        icon10.addFile(QStringLiteral(":/icons/ic_swap_calls_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
         btn_filter_3->setIcon(icon10);
 
         gridLayout_3->addWidget(btn_filter_3, 0, 2, 1, 1);
