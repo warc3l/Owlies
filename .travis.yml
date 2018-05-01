@@ -42,7 +42,7 @@ install:
   - mkdir boost-build
   - ./bootstrap.sh --prefix=./boost-build
   - ./b2 install
-  - cd ../..
+  - cd ..
   
 script:
   - cd Owlies
