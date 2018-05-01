@@ -50,8 +50,7 @@ class Image
     void bilateral_filter(void);
     void laplacian_filter(void);
     void gaussian_filter(void);
-    void scarr_filter(void);
-    void adaptative_filter(void);
+    void scharr_filter(void);
     void box_filter(void);
     void median_filter(void);
     void sobel_filter(void);
