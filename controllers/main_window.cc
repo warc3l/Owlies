@@ -32,13 +32,26 @@ void MainWindow::open_image(int a)
 		QString width = QString::fromStdString(std::to_string(img->get_modified_pixmap().width()));
 		QString height = QString::fromStdString(std::to_string(img->get_modified_pixmap().height()));
 
-		QLabel* lbl_image_pointer = new QLabel("(0,0)");
-		lbl_image_pointer->setObjectName("lbl_image_pointer");
-		ui->statusbar->addWidget(lbl_image_pointer);
 
-		QLabel* lbl_image_size = new QLabel("(" + width + ", " + height + ")");
-		lbl_image_size->setObjectName("lbl_image_size");
-		ui->statusbar->addWidget(lbl_image_size);
+	    QLabel* lbl_image_pointer = ui->statusbar->findChild<QLabel*>("lbl_image_pointer");
+    	if (lbl_image_pointer == nullptr)
+		{
+			lbl_image_pointer = new QLabel("(0,0)");
+			lbl_image_pointer->setObjectName("lbl_image_pointer");
+			ui->statusbar->addWidget(lbl_image_pointer);
+		}
+
+		QLabel* lbl_image_size = ui->statusbar->findChild<QLabel*>("lbl_image_size");
+		if (lbl_image_size == nullptr)
+		{
+			lbl_image_size = new QLabel("(" + width + ", " + height + ")");
+			lbl_image_size->setObjectName("lbl_image_size");
+			ui->statusbar->addWidget(lbl_image_size);
+		}
+		else
+		{
+			lbl_image_size->setText("(" + width + ", " + height + ")");
+		}
 	}
 	catch(...)
 	{
