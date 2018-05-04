@@ -179,7 +179,10 @@ void Toolbox::invert_colors(void)
 void Toolbox::sature(void)
 {
 	uncheck_all();
-
+	Image* img = Image::instance();
+	img->set_actual_action(NONE);
+	img->sature();
+	main_window->refresh_image();
 }
 
 void Toolbox::filter_1(void)

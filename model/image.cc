@@ -53,6 +53,15 @@ void Image::faces(void)
     }
 }
 
+void Image::sature(void)
+{
+    cv::Mat dst;
+    cv::inRange(_modified, cv::Scalar(0, 80, 100), cv::Scalar(255, 255, 255), dst); // Return 1-channel
+    
+    cv::cvtColor(dst, dst, CV_GRAY2BGR, 3); // Transform it to 3-channel
+    cv::bitwise_and(_modified, dst, _modified);
+}
+
 void Image::blur_filter(void)
 {
     cv::blur(_modified, _modified, cv::Size(5, 5));

@@ -44,6 +44,7 @@ class Image
     void scale(int, int);
     void faces();
     void draw(int, int);
+    void sature(void);
 
     // Filters
     void blur_filter(void);
