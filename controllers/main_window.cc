@@ -34,7 +34,7 @@ void MainWindow::open_image(int a)
 
 
 	    QLabel* lbl_image_pointer = ui->statusbar->findChild<QLabel*>("lbl_image_pointer");
-    	if (lbl_image_pointer == nullptr)
+		if (lbl_image_pointer == nullptr)
 		{
 			lbl_image_pointer = new QLabel("(0,0)");
 			lbl_image_pointer->setObjectName("lbl_image_pointer");
