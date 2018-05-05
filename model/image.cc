@@ -76,30 +76,24 @@ void Image::points(void)
 {
     save_state();
 
-    cv::threshold(_modified, _modified, 47, 255, cv::THRESH_BINARY); 
     cv::Mat skel(_modified.size(), CV_8UC1, cv::Scalar(0));
-    cv::Mat temp;
-    cv::Mat eroded;
+    cv::Mat element = cv::getStructuringElement(cv::MORPH_CROSS, cv::Size(5, 5));
+    cv::Mat dilated, eroded, substracted;
+
+    cv::threshold(_modified, _modified, 10, 1, cv::THRESH_BINARY); 
+    cv::cvtColor(_modified, _modified, cv::COLOR_BGR2GRAY); // 1-channel
     
-    cv::Mat element = cv::getStructuringElement(cv::MORPH_CROSS, cv::Size(3, 3));
-
-    cv::Mat gray;
-    cv::cvtColor(_modified, gray, cv::COLOR_BGR2GRAY);
-
-    bool done;		
     do
     {
-        cv::erode(gray, eroded, element);
-        cv::dilate(eroded, temp, element); // temp = open(img)
-        cv::subtract(gray, temp, temp);
-        cv::bitwise_or(skel, temp, skel);
-        eroded.copyTo(gray);
-        
-        done = (cv::countNonZero(gray) == 0);
-    } while (!done);
+        cv::erode(_modified, eroded, element);
+        cv::dilate(eroded, dilated, element);
+        cv::subtract(_modified, dilated, substracted);
+        cv::bitwise_or(skel, substracted, skel);
+        _modified = eroded.clone();
+    } while (cv::countNonZero(_modified) != 0);
 
-    cv::cvtColor(gray, _modified, cv::COLOR_GRAY2BGR);
-
+    cv::threshold(skel, skel, 0.5, 255, CV_THRESH_BINARY);
+    cv::cvtColor(skel, _modified, cv::COLOR_GRAY2BGR); // 3-channel
 }
 
 void Image::sature(void)
