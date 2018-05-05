@@ -52,7 +52,7 @@ class Image
     void faces();
     void draw(int, int);
     void sature(void);
-    void points(void);
+    void thin(void);
 
     // Filters
     void blur_filter(void);

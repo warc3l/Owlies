@@ -40,7 +40,7 @@ Toolbox::Toolbox(QWidget* parent, MainWindow* w) : QWidget(parent), ui(new Ui::T
 
 	// Recognition
 	connect(ui->btn_faces, &QToolButton::clicked, this, &Toolbox::faces);
-	connect(ui->btn_points, &QToolButton::clicked, this, &Toolbox::points);
+	connect(ui->btn_thin, &QToolButton::clicked, this, &Toolbox::thin);
 	connect(ui->btn_recognize, &QToolButton::clicked, this, &Toolbox::recognize);
 
 	// Filters
@@ -105,7 +105,7 @@ void Toolbox::uncheck_all(QToolButton* btn_non_uncheck)
 	ui->btn_filter_2->setChecked(false);
 	ui->btn_filter_3->setChecked(false);
 	ui->btn_faces->setChecked(false);
-	ui->btn_points->setChecked(false);
+	ui->btn_thin->setChecked(false);
 	ui->btn_recognize->setChecked(false);
 
 	if (btn_non_uncheck != nullptr)
@@ -356,7 +356,7 @@ void Toolbox::faces(void)
 	}
 }
 
-void Toolbox::points(void)
+void Toolbox::thin(void)
 {
 	uncheck_all();
 	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
@@ -365,7 +365,7 @@ void Toolbox::points(void)
 	else
 	{
 		Image* img = Image::instance();
-		img->points();
+		img->thin();
 		main_window->refresh_image();
 	}
 

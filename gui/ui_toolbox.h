@@ -55,7 +55,7 @@ public:
     QFrame *line_4;
     QGroupBox *group_recognition;
     QGridLayout *gridLayout_5;
-    QToolButton *btn_points;
+    QToolButton *btn_thin;
     QToolButton *btn_recognize;
     QToolButton *btn_faces;
     QFrame *line_5;
@@ -252,14 +252,14 @@ public:
         group_recognition->setObjectName(QStringLiteral("group_recognition"));
         gridLayout_5 = new QGridLayout(group_recognition);
         gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
-        btn_points = new QToolButton(group_recognition);
-        btn_points->setObjectName(QStringLiteral("btn_points"));
-        btn_points->setFocusPolicy(Qt::NoFocus);
+        btn_thin = new QToolButton(group_recognition);
+        btn_thin->setObjectName(QStringLiteral("btn_thin"));
+        btn_thin->setFocusPolicy(Qt::NoFocus);
         QIcon icon13;
         icon13.addFile(QStringLiteral(":/icons/ic_fingerprint_black_24px.svg"), QSize(), QIcon::Normal, QIcon::Off);
-        btn_points->setIcon(icon13);
+        btn_thin->setIcon(icon13);
 
-        gridLayout_5->addWidget(btn_points, 0, 1, 1, 1);
+        gridLayout_5->addWidget(btn_thin, 0, 1, 1, 1);
 
         btn_recognize = new QToolButton(group_recognition);
         btn_recognize->setObjectName(QStringLiteral("btn_recognize"));
@@ -320,7 +320,7 @@ public:
         btn_filter_1->setText(QApplication::translate("Toolbox", "...", nullptr));
         btn_filter_menu->setText(QApplication::translate("Toolbox", "...", nullptr));
         group_recognition->setTitle(QApplication::translate("Toolbox", "Recognition", nullptr));
-        btn_points->setText(QApplication::translate("Toolbox", "...", nullptr));
+        btn_thin->setText(QApplication::translate("Toolbox", "...", nullptr));
         btn_recognize->setText(QApplication::translate("Toolbox", "...", nullptr));
         btn_faces->setText(QApplication::translate("Toolbox", "...", nullptr));
     } // retranslateUi

@@ -72,7 +72,7 @@ void Image::faces(void)
     }
 }
 
-void Image::points(void)
+void Image::thin(void)
 {
     save_state();
 
@@ -82,7 +82,7 @@ void Image::points(void)
 
     cv::threshold(_modified, _modified, 10, 1, cv::THRESH_BINARY); 
     cv::cvtColor(_modified, _modified, cv::COLOR_BGR2GRAY); // 1-channel
-    
+
     do
     {
         cv::erode(_modified, eroded, element);

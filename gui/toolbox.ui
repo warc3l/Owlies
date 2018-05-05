@@ -279,7 +279,7 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_5">
       <item row="0" column="1">
-       <widget class="QToolButton" name="btn_points">
+       <widget class="QToolButton" name="btn_thin">
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>

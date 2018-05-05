@@ -48,7 +48,7 @@ class Toolbox : public QWidget
 
 		// Recognition
 		void faces(void);
-		void points(void);
+		void thin(void);
 		void recognize(void);
 
 		void toolbox_settings();
