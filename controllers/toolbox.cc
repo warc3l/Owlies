@@ -67,11 +67,22 @@ Toolbox::Toolbox(QWidget* parent, MainWindow* w) : QWidget(parent), ui(new Ui::T
 	ui->btn_filter_1->setToolTip("Blur");
 	ui->btn_filter_2->setToolTip("Bilateral");
 	ui->btn_filter_3->setToolTip("Laplacian");
+
+	// Shortcuts
+	QShortcut* toolbox_shortcut = new QShortcut(this); 
+	toolbox_shortcut->setKey(Qt::CTRL + Qt::Key_A);
+	connect(toolbox_shortcut, &QShortcut::activated, this, &Toolbox::toolbox_settings);
 }
 
 Toolbox::~Toolbox()
 {
 	delete ui;
+}
+
+void Toolbox::toolbox_settings()
+{
+	std::cout << "Hello, boys!" << std::endl;
+
 }
 
 void Toolbox::uncheck_all(QToolButton* btn_non_uncheck)
@@ -92,6 +103,7 @@ void Toolbox::uncheck_all(QToolButton* btn_non_uncheck)
 	ui->btn_sature->setChecked(false);
 	ui->btn_filter_1->setChecked(false);
 	ui->btn_filter_2->setChecked(false);
+	ui->btn_filter_3->setChecked(false);
 	ui->btn_faces->setChecked(false);
 	ui->btn_points->setChecked(false);
 	ui->btn_recognize->setChecked(false);
@@ -114,99 +126,174 @@ void Toolbox::crop(void)
 void Toolbox::zoom_in(void)
 {
 	uncheck_all(ui->btn_zoom_in);
+	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
+	{
+		uncheck_all();
+		std::cout << "Control button is pressed" << std::endl;
+	}
+	else
+	{
 
+	}
 }
 
 void Toolbox::zoom_out(void)
 {
 	uncheck_all(ui->btn_zoom_out);
+	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
+	{
+		uncheck_all();
+		std::cout << "Control button is pressed" << std::endl;
+	}
+	else
+	{
 
+	}
 }
 
 void Toolbox::draw(void)
 {
 	uncheck_all(ui->btn_draw);
-	Image* img = Image::instance();
-
-	if ( ui->btn_draw->isChecked() )
-		img->set_actual_action(DRAW);
+	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
+	{
+		uncheck_all();
+		std::cout << "Control button is pressed" << std::endl;
+	}
 	else
-		img->set_actual_action(NONE);
+	{
+		Image* img = Image::instance();
+
+		if ( ui->btn_draw->isChecked() )
+			img->set_actual_action(DRAW);
+		else
+			img->set_actual_action(NONE);
+	}
 }
 
 void Toolbox::scale(void)
 {
 	uncheck_all(ui->btn_scale);
-	Image* img = Image::instance();
-
-	if ( ui->btn_scale->isChecked() )
-		img->set_actual_action(SCALE);
+	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
+	{
+		uncheck_all();
+		std::cout << "Control button is pressed" << std::endl;
+	}
 	else
-		img->set_actual_action(NONE);
+	{	
+		Image* img = Image::instance();
+
+		if ( ui->btn_scale->isChecked() )
+			img->set_actual_action(SCALE);
+		else
+			img->set_actual_action(NONE);
+	}
 }
 
 void Toolbox::invert_image(void)
 {
 	uncheck_all();
-	Image* img = Image::instance();
-	img->set_actual_action(NONE);
-	img->invert_image();
-	main_window->refresh_image();
+	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
+	{
+
+	}
+	else
+	{	
+		Image* img = Image::instance();
+		img->set_actual_action(NONE);
+		img->invert_image();
+		main_window->refresh_image();
+	}
 }
 
 void Toolbox::pick(void)
 {
 	uncheck_all(ui->btn_pick);
-
-	Image* img = Image::instance();
-
-	if ( ui->btn_pick->isChecked() )
-		img->set_actual_action(PICK);
+	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
+	{
+		uncheck_all();
+	}
 	else
-		img->set_actual_action(NONE);	
+	{
+		Image* img = Image::instance();
+		if ( ui->btn_pick->isChecked() )
+			img->set_actual_action(PICK);
+		else
+			img->set_actual_action(NONE);	
+	}
 }
 
 void Toolbox::invert_colors(void)
 {
 	uncheck_all();
+	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
+	{
 
-	Image* img = Image::instance();
-	img->set_actual_action(NONE);
-	img->invert_colors();
-	main_window->refresh_image();
+	}
+	else
+	{
+		Image* img = Image::instance();
+		img->set_actual_action(NONE);
+		img->invert_colors();
+		main_window->refresh_image();
+	}
 }
 
 void Toolbox::sature(void)
 {
 	uncheck_all();
-	Image* img = Image::instance();
-	img->set_actual_action(NONE);
-	img->sature();
-	main_window->refresh_image();
+	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
+	{
+
+	}
+	else
+	{
+		Image* img = Image::instance();
+		img->set_actual_action(NONE);
+		img->sature();
+		main_window->refresh_image();
+	}
 }
 
 void Toolbox::filter_1(void)
 {
 	uncheck_all();
+	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
+	{
 
-	filters[common_filters[0]].second();
-	main_window->refresh_image();
+	}
+	else
+	{
+		filters[common_filters[0]].second();
+		main_window->refresh_image();
+	}
 }
 
 void Toolbox::filter_2(void)
 {
 	uncheck_all();
+	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
+	{
 
-	filters[common_filters[1]].second();
-	main_window->refresh_image();
+	} 
+	else
+	{
+		filters[common_filters[1]].second();
+		main_window->refresh_image();
+	}
 }
 
 void Toolbox::filter_3(void)
 {
 	uncheck_all();
+	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
+	{
 
-	filters[common_filters[2]].second();
-	main_window->refresh_image();
+	}
+	else
+	{
+		filters[common_filters[2]].second();
+		main_window->refresh_image();
+	}
 }
 
 void Toolbox::filter_menu(void)
@@ -257,20 +344,42 @@ void Toolbox::filter_menu(void)
 void Toolbox::faces(void)
 {
 	uncheck_all();
+	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
+	{
 
-	Image* img = Image::instance();
-	img->faces();
-	main_window->refresh_image();
+	}
+	else
+	{
+		Image* img = Image::instance();
+		img->faces();
+		main_window->refresh_image();
+	}
 }
 
 void Toolbox::points(void)
 {
 	uncheck_all();
+	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
+	{
+	}
+	else
+	{
+		Image* img = Image::instance();
+		img->points();
+		main_window->refresh_image();
+	}
 
 }
 
 void Toolbox::recognize(void)
 {
 	uncheck_all();
+	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
+	{
 
+	}
+	else
+	{
+
+	}
 }

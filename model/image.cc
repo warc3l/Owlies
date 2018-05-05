@@ -16,20 +16,39 @@ Image* Image::instance(std::string path)
     return _instance;
 }
 
+void Image::save_state()
+{
+    _saved_states.push(_modified.clone());
+}
+
+void Image::load_saved_state(void)
+{
+    if (!_saved_states.empty())
+    {
+        _modified = _saved_states.top();
+        _saved_states.pop();
+    }
+}
+
 void Image::draw(int x, int y)
 {
-    cv::Point2i center(x, y);
+    save_state();
 
+    cv::Point2i center(x, y);
     cv::circle(_modified, center, 10, cv::Scalar(0, 0, 0), CV_FILLED);
 }
 
 void Image::scale(int width, int height)
 {
+    save_state();
+
     cv::resize(_modified, _modified, cv::Size(width, height));
 }
 
 void Image::faces(void)
 {
+    save_state();
+
     cv::CascadeClassifier cascade("resources/data/haarcascade_frontalface_alt.xml");
     std::vector<cv::Rect> faces;
     cv::Mat gray;
@@ -53,8 +72,15 @@ void Image::faces(void)
     }
 }
 
+void Image::points(void)
+{
+
+}
+
 void Image::sature(void)
 {
+    save_state();
+
     cv::Mat dst;
     cv::inRange(_modified, cv::Scalar(0, 80, 100), cv::Scalar(255, 255, 255), dst); // Return 1-channel
     
@@ -64,11 +90,15 @@ void Image::sature(void)
 
 void Image::blur_filter(void)
 {
+    save_state();
+
     cv::blur(_modified, _modified, cv::Size(5, 5));
 }
 
 void Image::bilateral_filter(void)
 {
+    save_state();
+
     cv::Mat dst;
     cv::bilateralFilter(_modified, dst, 15, 80, 80);
     _modified = dst;
@@ -76,48 +106,66 @@ void Image::bilateral_filter(void)
 
 void Image::laplacian_filter(void)
 {
+    save_state();
+
     cv::Laplacian(_modified, _modified, CV_8U);
 }
 
 void Image::box_filter(void)
 {
+    save_state();
+
     cv::boxFilter(_modified, _modified, CV_8U, cv::Size(3,3));
 }
 
 void Image::gaussian_filter(void)
 {
+    save_state();
+
     cv::GaussianBlur(_modified, _modified, cv::Size(3,3), 1.0);    
 }
 
 void Image::scharr_filter(void)
 {
+    save_state();
+
     cv::Scharr(_modified, _modified, CV_8U, 0, 1);
 }
 
 void Image::median_filter(void)
 {
+    save_state();
+
     cv::medianBlur(_modified, _modified, 5);
 }
 
 void Image::sobel_filter(void)
 {
+    save_state();
+
     cv::Sobel(_modified, _modified, CV_8U, 1, 0);
 }
 
 void Image::erode(void)
 {
+    save_state();
+    
     cv::Mat element = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3));
     cv::erode(_modified, _modified, element);
 }
 
 void Image::dilate(void)
 {
+    save_state();
+
     cv::Mat element = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3));
     cv::dilate(_modified, _modified, element);
 }
 
 void Image::opening(void)
 {
+    save_state();
+
     cv::Mat element = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3,3));
     cv::Mat dst;
     cv::erode(_modified, dst, element);
@@ -126,6 +174,8 @@ void Image::opening(void)
 
 void Image::closing(void)
 {
+    save_state();
+
     cv::Mat element = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3,3));
     cv::Mat dst;
     cv::dilate(_modified, dst, element);
@@ -134,6 +184,8 @@ void Image::closing(void)
 
 void Image::crop(int x, int y, int width, int height)
 {
+    save_state();
+
     if (x < 0)
     {
         width = width + x;
@@ -155,11 +207,15 @@ void Image::crop(int x, int y, int width, int height)
 
 void Image::invert_image(void)
 {
+    save_state();
+
     cv::flip(_modified, _modified, 1);
 }
 
 void Image::invert_colors(void)
 {
+    save_state();
+
     cv::bitwise_not(_modified, _modified);
 }
 

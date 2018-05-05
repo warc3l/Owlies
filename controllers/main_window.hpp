@@ -8,6 +8,7 @@
 #include <QFileDialog>
 #include <QPixmap>
 #include <QLayout>
+#include <QShortcut>
 #include <string>
 
 
@@ -22,6 +23,8 @@ class MainWindow : public QMainWindow
 		void open_image(int);
 		void save_image(void);
 		void refresh_image(void);
+
+		void undo_action(void);
 
  private:
  		Ui::MainWindow* ui;

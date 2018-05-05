@@ -8,6 +8,7 @@
 #include <QPixmap>
 #include <QImage>
 
+#include <stack>
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -30,11 +31,17 @@ class Image
 
     ACTION _actual_action; 
 
+    std::stack<cv::Mat> _saved_states;
+
  public:
     QImage Mat2QImage(cv::Mat const& src);
     cv::Mat QImage2Mat(QImage const& src);
     
     static Image* instance(std::string path = "");
+
+    // Undo functionality
+    void save_state(void);
+    void load_saved_state(void);
 
     // Basic manipulation of the image. OpenCV.
     void crop(int,int,int,int);
@@ -45,6 +52,7 @@ class Image
     void faces();
     void draw(int, int);
     void sature(void);
+    void points(void);
 
     // Filters
     void blur_filter(void);

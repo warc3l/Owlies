@@ -11,6 +11,8 @@
 #include <functional>
 #include <vector>
 #include <algorithm>
+#include <QShortcut>
+#include <QKeySequence>
 #include <QIcon>
 
 
@@ -48,6 +50,8 @@ class Toolbox : public QWidget
 		void faces(void);
 		void points(void);
 		void recognize(void);
+
+		void toolbox_settings();
 
 		// Implemented filters.
 		// @ key: identificator

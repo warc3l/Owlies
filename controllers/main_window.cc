@@ -11,6 +11,19 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 	QLabel* lbl_image_name = new QLabel("");	
 	ui->statusbar->addWidget(lbl_image_name, 1);
+
+	// Shortcuts
+	QShortcut* undo_shortcut = new QShortcut(this); 
+	undo_shortcut->setKey(Qt::CTRL + Qt::Key_Z);
+	connect(undo_shortcut, &QShortcut::activated, this, &MainWindow::undo_action);
+}
+
+void MainWindow::undo_action(void)
+{
+	std::cout << "Undo activated" << std::endl;
+	Image* img = Image::instance();
+	img->load_saved_state();
+	refresh_image();
 }
 
 void MainWindow::open_image(int a)
