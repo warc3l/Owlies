@@ -74,6 +74,31 @@ void Image::faces(void)
 
 void Image::points(void)
 {
+    save_state();
+
+    cv::threshold(_modified, _modified, 47, 255, cv::THRESH_BINARY); 
+    cv::Mat skel(_modified.size(), CV_8UC1, cv::Scalar(0));
+    cv::Mat temp;
+    cv::Mat eroded;
+    
+    cv::Mat element = cv::getStructuringElement(cv::MORPH_CROSS, cv::Size(3, 3));
+
+    cv::Mat gray;
+    cv::cvtColor(_modified, gray, cv::COLOR_BGR2GRAY);
+
+    bool done;		
+    do
+    {
+        cv::erode(gray, eroded, element);
+        cv::dilate(eroded, temp, element); // temp = open(img)
+        cv::subtract(gray, temp, temp);
+        cv::bitwise_or(skel, temp, skel);
+        eroded.copyTo(gray);
+        
+        done = (cv::countNonZero(gray) == 0);
+    } while (!done);
+
+    cv::cvtColor(gray, _modified, cv::COLOR_GRAY2BGR);
 
 }
 
@@ -149,7 +174,7 @@ void Image::sobel_filter(void)
 void Image::erode(void)
 {
     save_state();
-    
+
     cv::Mat element = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3));
     cv::erode(_modified, _modified, element);
 }
