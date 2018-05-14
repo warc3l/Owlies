@@ -7,7 +7,10 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-set(SOURCE_FILES    model/image.hpp model/image.cc
+set(SOURCE_FILES    dialogs/dialog_settings_creator.hpp dialogs/dialog_settings_creator.cc
+                    dialogs/controllers/draw_settings_ctrl.hpp dialogs/controllers/draw_settings_ctrl.cc
+                    dialogs/gui/ui_draw_settings.h
+                    model/image.hpp model/image.cc
                     main.cpp gui/ui_main_window.h gui/ui_toolbox.h
                     controllers/main_window.hpp controllers/main_window.cc
                     controllers/toolbox.hpp controllers/toolbox.cc

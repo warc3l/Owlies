@@ -158,6 +158,9 @@ void Toolbox::draw(void)
 	{
 		uncheck_all();
 		std::cout << "Control button is pressed" << std::endl;
+		DialogSettingsCreator dlg_settings_creator;
+		QDialog* dlg = dlg_settings_creator.create("draw");
+		dlg->show();
 	}
 	else
 	{

@@ -3,6 +3,7 @@
 #include "../gui/ui_toolbox.h"
 #include "../model/image.hpp"
 #include "../controllers/main_window.hpp"
+#include "../dialogs/dialog_settings_creator.hpp"
 
 #include <QWidget>
 #include <iostream>
