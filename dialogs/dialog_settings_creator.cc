@@ -5,22 +5,39 @@
 QDialog* DialogSettingsCreator::create(std::string type)
 {
     if (type == "draw")
-    {
-        std::cout << "Creating draw settings" << std::endl;
         return new DrawSettingsCtrl();
-    }
-    else if (type == "")
-    {
-
-    }
-    else if (type == "")
-    {
-
-    }
-    else
-    {
-
-    }
+    else if (type == "sature")
+        return new DrawSettingsCtrl();
+    else if (type == "faces")
+        return new DrawSettingsCtrl();
+    else if (type == "thin")
+        return new DrawSettingsCtrl();
+    else if (type == "recognize")
+        return new DrawSettingsCtrl();
+    else if (type == "blur")
+        return new DrawSettingsCtrl();
+    else if (type == "bilateral")
+        return new DrawSettingsCtrl();
+    else if (type == "laplacian")
+        return new DrawSettingsCtrl();
+    else if (type == "gaussian")
+        return new DrawSettingsCtrl();
+    else if (type == "scharr")
+        return new DrawSettingsCtrl();
+    else if (type == "box")
+        return new DrawSettingsCtrl();
+    else if (type == "median")
+        return new DrawSettingsCtrl();
+    else if (type == "sobel")
+        return new DrawSettingsCtrl();
+    else if (type == "erode")
+        return new DrawSettingsCtrl();
+    else if (type == "dilate")
+        return new DrawSettingsCtrl();
+    else if (type == "opening")
+        return new DrawSettingsCtrl();
+    else if (type == "closing")
+        return new DrawSettingsCtrl();
+    else    
+        return new DrawSettingsCtrl();
 }
-
-

@@ -157,7 +157,6 @@ void Toolbox::draw(void)
 	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
 	{
 		uncheck_all();
-		std::cout << "Control button is pressed" << std::endl;
 		DialogSettingsCreator dlg_settings_creator;
 		QDialog* dlg = dlg_settings_creator.create("draw");
 		dlg->show();
@@ -179,7 +178,7 @@ void Toolbox::scale(void)
 	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
 	{
 		uncheck_all();
-		std::cout << "Control button is pressed" << std::endl;
+
 	}
 	else
 	{	
@@ -246,7 +245,9 @@ void Toolbox::sature(void)
 	uncheck_all();
 	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
 	{
-
+		DialogSettingsCreator dlg_settings_creator;
+		QDialog* dlg = dlg_settings_creator.create("sature");
+		dlg->show();
 	}
 	else
 	{
@@ -262,7 +263,9 @@ void Toolbox::filter_1(void)
 	uncheck_all();
 	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
 	{
-
+		DialogSettingsCreator dlg_settings_creator;
+		QDialog* dlg = dlg_settings_creator.create(common_filters[0]);
+		dlg->show();
 	}
 	else
 	{
@@ -276,7 +279,9 @@ void Toolbox::filter_2(void)
 	uncheck_all();
 	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
 	{
-
+		DialogSettingsCreator dlg_settings_creator;
+		QDialog* dlg = dlg_settings_creator.create(common_filters[1]);
+		dlg->show();
 	} 
 	else
 	{
@@ -290,7 +295,9 @@ void Toolbox::filter_3(void)
 	uncheck_all();
 	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
 	{
-
+		DialogSettingsCreator dlg_settings_creator;
+		QDialog* dlg = dlg_settings_creator.create(common_filters[2]);
+		dlg->show();
 	}
 	else
 	{
@@ -349,7 +356,9 @@ void Toolbox::faces(void)
 	uncheck_all();
 	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
 	{
-
+		DialogSettingsCreator dlg_settings_creator;
+		QDialog* dlg = dlg_settings_creator.create("faces");
+		dlg->show();
 	}
 	else
 	{
@@ -364,6 +373,9 @@ void Toolbox::thin(void)
 	uncheck_all();
 	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
 	{
+		DialogSettingsCreator dlg_settings_creator;
+		QDialog* dlg = dlg_settings_creator.create("thin");
+		dlg->show();
 	}
 	else
 	{
@@ -379,7 +391,9 @@ void Toolbox::recognize(void)
 	uncheck_all();
 	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
 	{
-
+		DialogSettingsCreator dlg_settings_creator;
+		QDialog* dlg = dlg_settings_creator.create("recognize");
+		dlg->show();
 	}
 	else
 	{
