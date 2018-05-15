@@ -39,7 +39,7 @@ void Image::draw(int x, int y)
     int r_color = settings.value("draw_settings_r_color", 0).toInt();
     int g_color = settings.value("draw_settings_g_color", 0).toInt();
     int b_color = settings.value("draw_settings_b_color", 0).toInt();
-    FORM form = settings.value("draw_settings_form", 0).toInt();
+    FORM form = static_cast<FORM>(settings.value("draw_settings_form", 0).toInt());
     // How to draw the triangle, rectangle and circle? 
 
     cv::Point2i center(x, y);
