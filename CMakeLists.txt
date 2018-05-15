@@ -14,7 +14,8 @@ set(SOURCE_FILES    dialogs/dialog_settings_creator.hpp dialogs/dialog_settings_
                     main.cpp gui/ui_main_window.h gui/ui_toolbox.h
                     controllers/main_window.hpp controllers/main_window.cc
                     controllers/toolbox.hpp controllers/toolbox.cc
-                    gui/subclasses/image_label.hpp gui/subclasses/image_label.cc)
+                    gui/subclasses/image_label.hpp gui/subclasses/image_label.cc
+                    dialogs/gui/subclasses/color_label.hpp dialogs/gui/subclasses/color_label.cc)
 
 # Boost
 set(Boost_INCLUDE_DIR /home/marcel/devs/boost-build/include)

@@ -7,6 +7,7 @@
 
 #include <QPixmap>
 #include <QImage>
+#include <QSettings>
 
 #include <stack>
 #include <opencv2/core/core.hpp>
@@ -32,6 +33,7 @@ class Image
     ACTION _actual_action; 
 
     std::stack<cv::Mat> _saved_states;
+    const QString _file_settings = "settings.ini";
 
  public:
     QImage Mat2QImage(cv::Mat const& src);

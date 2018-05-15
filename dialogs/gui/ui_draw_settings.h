@@ -21,6 +21,7 @@
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QVBoxLayout>
+#include "subclasses/color_label.hpp"
 
 QT_BEGIN_NAMESPACE
 
@@ -30,7 +31,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QHBoxLayout *lyt_color;
     QLabel *lyt_color_label;
-    QLabel *lyt_color_value;
+    ColorLabel *lyt_color_value;
     QGroupBox *gpb_form;
     QVBoxLayout *verticalLayout;
     QRadioButton *rdp_triangle;
@@ -55,11 +56,11 @@ public:
 
         lyt_color->addWidget(lyt_color_label);
 
-        lyt_color_value = new QLabel(DrawDialog);
+        lyt_color_value = new ColorLabel(DrawDialog);
         lyt_color_value->setObjectName(QStringLiteral("lyt_color_value"));
         lyt_color_value->setMinimumSize(QSize(15, 15));
         lyt_color_value->setMaximumSize(QSize(15, 15));
-        lyt_color_value->setStyleSheet(QStringLiteral("background-color: black;"));
+        lyt_color_value->setStyleSheet(QStringLiteral(""));
 
         lyt_color->addWidget(lyt_color_value);
 

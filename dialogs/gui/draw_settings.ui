@@ -30,7 +30,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="lyt_color_value">
+      <widget class="ColorLabel" name="lyt_color_value">
        <property name="minimumSize">
         <size>
          <width>15</width>
@@ -44,7 +44,7 @@
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: black;</string>
+        <string notr="true"/>
        </property>
        <property name="text">
         <string/>
@@ -105,6 +105,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ColorLabel</class>
+   <extends>QLabel</extends>
+   <header>subclasses/color_label.hpp</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

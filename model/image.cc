@@ -33,9 +33,17 @@ void Image::load_saved_state(void)
 void Image::draw(int x, int y)
 {
     save_state();
+    QSettings settings(_file_settings, QSettings::NativeFormat);
+
+    int draw_size = settings.value("draw_settings_size", 10).toInt();
+    int r_color = settings.value("draw_settings_r_color", 0).toInt();
+    int g_color = settings.value("draw_settings_g_color", 0).toInt();
+    int b_color = settings.value("draw_settings_b_color", 0).toInt();
+
+    // How to draw the triangle, rectangle and circle? 
 
     cv::Point2i center(x, y);
-    cv::circle(_modified, center, 10, cv::Scalar(0, 0, 0), CV_FILLED);
+    cv::circle(_modified, center, draw_size, cv::Scalar(b_color, g_color, r_color), CV_FILLED);
 }
 
 void Image::scale(int width, int height)
