@@ -10,6 +10,8 @@ template<typename... Args> struct SELECT
     static constexpr auto OVERLOAD_OF( R (C::*type)(Args...) ) -> decltype(type) { return type; }
 };
 
+enum {CIRCLE, TRIANGLE};
+
 class DrawSettingsCtrl : public QDialog
 {
  public:
@@ -17,6 +19,7 @@ class DrawSettingsCtrl : public QDialog
     ~DrawSettingsCtrl();
 
     void change_size(int);
+    void change_form(bool);
 
  private:
     const QString _settings_file = "settings.ini";

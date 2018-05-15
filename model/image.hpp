@@ -16,6 +16,7 @@
 #include <opencv2/objdetect.hpp>
 
 enum ACTION { NONE, CROP, ZOOM_IN, ZOOM_OUT, DRAW, SCALE, PICK };
+enum FORM { CIRCLE, TRIANGLE };
 
 class Image
 {

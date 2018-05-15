@@ -58,18 +58,24 @@
      <property name="title">
       <string/>
      </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
      <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <widget class="QRadioButton" name="rdp_triangle">
-        <property name="text">
-         <string>Triangle</string>
-        </property>
-       </widget>
-      </item>
       <item>
        <widget class="QRadioButton" name="rdp_circle">
         <property name="text">
          <string>Circle</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="rdp_triangle">
+        <property name="text">
+         <string>Triangle</string>
         </property>
        </widget>
       </item>
