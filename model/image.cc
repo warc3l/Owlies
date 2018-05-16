@@ -48,10 +48,8 @@ void Image::draw(int x, int y)
         cv::circle(_modified, center, draw_size, cv::Scalar(b_color, g_color, r_color), CV_FILLED);
     else if (form == TRIANGLE)
     {
-        /*
-            std::vector<cv::Point> points;
-            cv::fillConvexPoly(_modified, );
-        */
+        std::vector<cv::Point> points {cv::Point(x - draw_size/2, y - draw_size*sqrt(3)/6), cv::Point(x + draw_size/2, y - draw_size*sqrt(3)/6), cv::Point(x, y + draw_size * sqrt(3)/3)};
+        cv::fillConvexPoly(_modified, points, cv::Scalar(b_color, g_color, r_color));
     }
 }
 
