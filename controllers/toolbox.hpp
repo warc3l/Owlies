@@ -1,4 +1,5 @@
-#ifndef TOOLBOX_HPP
+#ifndef _TOOLBOX_HPP
+#define _TOOLBOX_HPP
 
 #include "../gui/ui_toolbox.h"
 #include "../model/image.hpp"

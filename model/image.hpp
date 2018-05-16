@@ -1,5 +1,5 @@
-#ifndef IMAGE_HPP
-#define IMAGE_HPP
+#ifndef _IMAGE_HPP
+#define _IMAGE_HPP
 
 #include <string>
 #include <vector>
@@ -15,8 +15,8 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/objdetect.hpp>
 
-enum ACTION { NONE, CROP, ZOOM_IN, ZOOM_OUT, DRAW, SCALE, PICK };
 enum FORM { CIRCLE, TRIANGLE };
+enum ACTION { NONE, CROP, ZOOM_IN, ZOOM_OUT, DRAW, SCALE, PICK };
 
 class Image
 {

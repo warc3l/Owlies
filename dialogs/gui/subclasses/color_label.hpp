@@ -1,3 +1,6 @@
+#ifndef _COLOR_LABEL_HPP
+#define _COLOR_LABEL_HPP
+
 #include <QLabel>
 #include <QColorDialog>
 #include <QSettings>
@@ -22,4 +25,4 @@ class ColorLabel : public QLabel
     std::vector<int> rgb();
 };
 
-
+#endif

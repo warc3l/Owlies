@@ -1,5 +1,4 @@
 #include "dialog_settings_creator.hpp"
-#include "controllers/draw_settings_ctrl.hpp"
 
 
 QDialog* DialogSettingsCreator::create(std::string type)
@@ -9,7 +8,7 @@ QDialog* DialogSettingsCreator::create(std::string type)
     else if (type == "sature")
         return new DrawSettingsCtrl();
     else if (type == "faces")
-        return new DrawSettingsCtrl();
+        return new FacesSettingsCtrl();
     else if (type == "thin")
         return new DrawSettingsCtrl();
     else if (type == "recognize")

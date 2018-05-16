@@ -69,13 +69,9 @@ void Image::faces(void)
     cv::Mat gray;
 
     cv::cvtColor( _modified, gray, cv::COLOR_BGR2GRAY ); // Convert to Gray Scale
- 
-    // Resize the Grayscale Image  -> why you need to resize it?
- //   cv::resize( gray, smallImg, cv::Size(), fx, fx, cv::INTER_LINEAR ); 
- //   cv::equalizeHist( smallImg, smallImg );
- 
+  
     // Detect faces of different sizes using cascade classifier  -> it was changed from smallImg -> gray
-    cascade.detectMultiScale( gray, faces, 1.1, 2, 0|cv::CASCADE_SCALE_IMAGE, cv::Size(30, 30) );
+    cascade.detectMultiScale(gray, faces, 1.1, 2, 0|cv::CASCADE_SCALE_IMAGE);
     for (auto face: faces)
     {
         cv::rectangle(_modified, 
