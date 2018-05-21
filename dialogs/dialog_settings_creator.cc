@@ -16,7 +16,7 @@ QDialog* DialogSettingsCreator::create(std::string type)
     else if (type == "blur")
         return new DrawSettingsCtrl();
     else if (type == "bilateral")
-        return new DrawSettingsCtrl();
+        return new BilateralFilterSettingsCtrl();
     else if (type == "laplacian")
         return new DrawSettingsCtrl();
     else if (type == "gaussian")

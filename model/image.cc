@@ -135,8 +135,14 @@ void Image::bilateral_filter(void)
 {
     save_state();
 
+    QSettings settings(_file_settings, QSettings::NativeFormat);
+
+    int diameter = settings.value("bilateral_filter_settings_diameter", 15).toInt();
+    double sigma_color = settings.value("bilateral_filter_settings_sigma_color", 80).toDouble();
+    double sigma_space = settings.value("bilateral_filter_settings_sigma_space", 80).toDouble();
+
     cv::Mat dst;
-    cv::bilateralFilter(_modified, dst, 15, 80, 80);
+    cv::bilateralFilter(_modified, dst, diameter, sigma_color, sigma_space);
     _modified = dst;
 }
 
