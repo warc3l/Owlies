@@ -15,6 +15,8 @@ class ColorLabel : public QLabel
     int _g_color;
     int _b_color;
 
+    QString _settings_value;
+
     const QString _settings_file = "settings.ini";
 
  protected:
@@ -23,6 +25,7 @@ class ColorLabel : public QLabel
  public:
     ColorLabel(QWidget* parent);
     std::vector<int> rgb();
+    void set_settings_value_color(QString);
 };
 
 #endif

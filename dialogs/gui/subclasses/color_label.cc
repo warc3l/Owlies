@@ -5,11 +5,20 @@ ColorLabel::ColorLabel(QWidget* parent)
 {
     setAutoFillBackground(true);
 
-    QSettings settings(_settings_file, QSettings::NativeFormat);
-    QColor init_color(  settings.value("draw_settings_r_color",0).toInt(),
-                        settings.value("draw_settings_g_color",0).toInt(),
-                        settings.value("draw_settings_b_color",0).toInt());
+    QColor init_color(0, 0, 0);
+    QPalette palette;
+    palette.setBrush(QPalette::Window, init_color);
+    this->setPalette(palette);
+}
 
+void ColorLabel::set_settings_value_color(QString value)
+{
+    _settings_value = value;
+
+    QSettings settings (_settings_file, QSettings::NativeFormat);
+    QColor init_color(  settings.value(value + "_r_color",0).toInt(),
+                        settings.value(value + "_g_color",0).toInt(),
+                        settings.value(value + "_b_color",0).toInt());
     QPalette palette;
     palette.setBrush(QPalette::Window, init_color);
     this->setPalette(palette);
@@ -31,9 +40,12 @@ void ColorLabel::mouseDoubleClickEvent(QMouseEvent* event)
         _g_color = color.green();
         _b_color = color.blue();
 
-        settings.setValue("draw_settings_r_color", _r_color);
-        settings.setValue("draw_settings_g_color", _g_color);
-        settings.setValue("draw_settings_b_color", _b_color);
+        if (_settings_value != "")
+        {
+            settings.setValue(_settings_value + "_r_color", _r_color);
+            settings.setValue(_settings_value + "_g_color", _g_color);
+            settings.setValue(_settings_value + "_b_color", _b_color);
+        }
     }
 }
 

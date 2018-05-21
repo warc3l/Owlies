@@ -30,12 +30,12 @@ class Ui_DrawDialog
 public:
     QHBoxLayout *horizontalLayout;
     QHBoxLayout *lyt_color;
-    QLabel *lyt_color_label;
-    ColorLabel *lyt_color_value;
+    QLabel *lbl_color_label;
+    ColorLabel *lbl_color_value;
     QGroupBox *gpb_form;
     QVBoxLayout *verticalLayout;
-    QRadioButton *rdp_triangle;
     QRadioButton *rdp_circle;
+    QRadioButton *rdp_triangle;
     QHBoxLayout *lyt_size;
     QLabel *lbl_size_label;
     QSpinBox *spb_size_value;
@@ -51,35 +51,37 @@ public:
         lyt_color = new QHBoxLayout();
         lyt_color->setObjectName(QStringLiteral("lyt_color"));
         lyt_color->setContentsMargins(-1, -1, 10, -1);
-        lyt_color_label = new QLabel(DrawDialog);
-        lyt_color_label->setObjectName(QStringLiteral("lyt_color_label"));
+        lbl_color_label = new QLabel(DrawDialog);
+        lbl_color_label->setObjectName(QStringLiteral("lbl_color_label"));
 
-        lyt_color->addWidget(lyt_color_label);
+        lyt_color->addWidget(lbl_color_label);
 
-        lyt_color_value = new ColorLabel(DrawDialog);
-        lyt_color_value->setObjectName(QStringLiteral("lyt_color_value"));
-        lyt_color_value->setMinimumSize(QSize(15, 15));
-        lyt_color_value->setMaximumSize(QSize(15, 15));
-        lyt_color_value->setStyleSheet(QStringLiteral(""));
+        lbl_color_value = new ColorLabel(DrawDialog);
+        lbl_color_value->setObjectName(QStringLiteral("lbl_color_value"));
+        lbl_color_value->setMinimumSize(QSize(15, 15));
+        lbl_color_value->setMaximumSize(QSize(15, 15));
+        lbl_color_value->setStyleSheet(QStringLiteral(""));
 
-        lyt_color->addWidget(lyt_color_value);
+        lyt_color->addWidget(lbl_color_value);
 
 
         horizontalLayout->addLayout(lyt_color);
 
         gpb_form = new QGroupBox(DrawDialog);
         gpb_form->setObjectName(QStringLiteral("gpb_form"));
+        gpb_form->setFlat(false);
+        gpb_form->setCheckable(false);
         verticalLayout = new QVBoxLayout(gpb_form);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        rdp_triangle = new QRadioButton(gpb_form);
-        rdp_triangle->setObjectName(QStringLiteral("rdp_triangle"));
-
-        verticalLayout->addWidget(rdp_triangle);
-
         rdp_circle = new QRadioButton(gpb_form);
         rdp_circle->setObjectName(QStringLiteral("rdp_circle"));
 
         verticalLayout->addWidget(rdp_circle);
+
+        rdp_triangle = new QRadioButton(gpb_form);
+        rdp_triangle->setObjectName(QStringLiteral("rdp_triangle"));
+
+        verticalLayout->addWidget(rdp_triangle);
 
 
         horizontalLayout->addWidget(gpb_form);
@@ -111,11 +113,11 @@ public:
     void retranslateUi(QDialog *DrawDialog)
     {
         DrawDialog->setWindowTitle(QApplication::translate("DrawDialog", "Dialog", nullptr));
-        lyt_color_label->setText(QApplication::translate("DrawDialog", "Color:", nullptr));
-        lyt_color_value->setText(QString());
+        lbl_color_label->setText(QApplication::translate("DrawDialog", "Color:", nullptr));
+        lbl_color_value->setText(QString());
         gpb_form->setTitle(QString());
-        rdp_triangle->setText(QApplication::translate("DrawDialog", "Triangle", nullptr));
         rdp_circle->setText(QApplication::translate("DrawDialog", "Circle", nullptr));
+        rdp_triangle->setText(QApplication::translate("DrawDialog", "Triangle", nullptr));
         lbl_size_label->setText(QApplication::translate("DrawDialog", "Size:", nullptr));
     } // retranslateUi
 

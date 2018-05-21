@@ -28,8 +28,8 @@ class Ui_FacesDialog
 public:
     QHBoxLayout *horizontalLayout;
     QHBoxLayout *lyt_color;
-    QLabel *lyt_color_label;
-    ColorLabel *lyt_color_value;
+    QLabel *lbl_color_label;
+    ColorLabel *lbl_color_value;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *lyt_scale;
     QLabel *lbl_scale_label;
@@ -49,18 +49,18 @@ public:
         lyt_color = new QHBoxLayout();
         lyt_color->setObjectName(QStringLiteral("lyt_color"));
         lyt_color->setContentsMargins(-1, -1, 10, -1);
-        lyt_color_label = new QLabel(FacesDialog);
-        lyt_color_label->setObjectName(QStringLiteral("lyt_color_label"));
+        lbl_color_label = new QLabel(FacesDialog);
+        lbl_color_label->setObjectName(QStringLiteral("lbl_color_label"));
 
-        lyt_color->addWidget(lyt_color_label);
+        lyt_color->addWidget(lbl_color_label);
 
-        lyt_color_value = new ColorLabel(FacesDialog);
-        lyt_color_value->setObjectName(QStringLiteral("lyt_color_value"));
-        lyt_color_value->setMinimumSize(QSize(15, 15));
-        lyt_color_value->setMaximumSize(QSize(15, 15));
-        lyt_color_value->setStyleSheet(QStringLiteral(""));
+        lbl_color_value = new ColorLabel(FacesDialog);
+        lbl_color_value->setObjectName(QStringLiteral("lbl_color_value"));
+        lbl_color_value->setMinimumSize(QSize(15, 15));
+        lbl_color_value->setMaximumSize(QSize(15, 15));
+        lbl_color_value->setStyleSheet(QStringLiteral(""));
 
-        lyt_color->addWidget(lyt_color_value);
+        lyt_color->addWidget(lbl_color_value);
 
 
         horizontalLayout->addLayout(lyt_color);
@@ -117,8 +117,8 @@ public:
     void retranslateUi(QDialog *FacesDialog)
     {
         FacesDialog->setWindowTitle(QApplication::translate("FacesDialog", "Dialog", nullptr));
-        lyt_color_label->setText(QApplication::translate("FacesDialog", "Color:", nullptr));
-        lyt_color_value->setText(QString());
+        lbl_color_label->setText(QApplication::translate("FacesDialog", "Color:", nullptr));
+        lbl_color_value->setText(QString());
         lbl_scale_label->setText(QApplication::translate("FacesDialog", "Scale factor", nullptr));
         lbl_neighbours_label->setText(QApplication::translate("FacesDialog", "Min. Neighbours:", nullptr));
     } // retranslateUi

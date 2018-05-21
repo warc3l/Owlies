@@ -4,6 +4,7 @@
 DrawSettingsCtrl::DrawSettingsCtrl(QWidget * parent) : QDialog(parent), ui(new Ui::DrawDialog)
 {
     ui->setupUi(this);
+    ui->lbl_color_value->set_settings_value_color("draw_settings");
 
     QSettings settings(_settings_file, QSettings::NativeFormat);
 

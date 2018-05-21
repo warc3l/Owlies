@@ -23,14 +23,14 @@
       <number>10</number>
      </property>
      <item>
-      <widget class="QLabel" name="lyt_color_label">
+      <widget class="QLabel" name="lbl_color_label">
        <property name="text">
         <string>Color:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="ColorLabel" name="lyt_color_value">
+      <widget class="ColorLabel" name="lbl_color_value">
        <property name="minimumSize">
         <size>
          <width>15</width>
