@@ -127,8 +127,11 @@ void Image::sature(void)
 void Image::blur_filter(void)
 {
     save_state();
+    QSettings settings(_file_settings, QSettings::NativeFormat);
 
-    cv::blur(_modified, _modified, cv::Size(5, 5));
+    int k_size = settings.value("blur_filter_settings_k_size", 5).toInt();
+
+    cv::blur(_modified, _modified, cv::Size(k_size, k_size));
 }
 
 void Image::bilateral_filter(void)

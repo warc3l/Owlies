@@ -13,6 +13,8 @@ set(SOURCE_FILES    dialogs/dialog_settings_creator.hpp dialogs/dialog_settings_
                     dialogs/gui/ui_draw_settings.h
                     dialogs/controllers/filters/bilateral_filter_settings_ctrl.cc dialogs/controllers/filters/bilateral_filter_settings_ctrl.hpp
                     dialogs/gui/filters/ui_bilateral_filter_settings.h
+                    dialogs/controllers/filters/blur_filter_settings_ctrl.cc dialogs/controllers/filters/blur_filter_settings_ctrl.hpp
+                    dialogs/gui/filters/ui_blur_filter_settings.h
                     model/image.hpp model/image.cc
                     main.cpp gui/ui_main_window.h gui/ui_toolbox.h
                     controllers/main_window.hpp controllers/main_window.cc
