@@ -160,7 +160,13 @@ void Image::box_filter(void)
 {
     save_state();
 
-    cv::boxFilter(_modified, _modified, CV_8U, cv::Size(3,3));
+    QSettings settings(_file_settings, QSettings::NativeFormat);
+
+    int depth = settings.value("box_filter_settings_depth", 50).toInt();
+    int k_size = settings.value("box_filter_settings_k_size", 3).toInt();
+    bool normalized = settings.value("box_filter_settings_normalized", true).toBool();
+
+    cv::boxFilter(_modified, _modified, depth, cv::Size(k_size,k_size), cv::Point(-1,-1), normalized);
 }
 
 void Image::gaussian_filter(void)
