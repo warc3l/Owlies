@@ -56,7 +56,7 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
-      <layout class="QHBoxLayout" name="lyt_scale" stretch="0,1">
+      <layout class="QHBoxLayout" name="lyt_scale" stretch="0,0">
        <item>
         <widget class="QLabel" name="lbl_scale_label">
          <property name="text">
@@ -65,7 +65,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QSpinBox" name="spb_scale_value">
+        <widget class="QDoubleSpinBox" name="spb_scale_value">
          <property name="minimumSize">
           <size>
            <width>75</width>
@@ -78,8 +78,14 @@
            <height>16777215</height>
           </size>
          </property>
-         <property name="minimum">
+         <property name="decimals">
           <number>1</number>
+         </property>
+         <property name="minimum">
+          <double>1.000000000000000</double>
+         </property>
+         <property name="singleStep">
+          <double>0.100000000000000</double>
          </property>
         </widget>
        </item>

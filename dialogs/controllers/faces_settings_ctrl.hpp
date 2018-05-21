@@ -12,7 +12,7 @@ class FacesSettingsCtrl : public QDialog
  public:
     explicit FacesSettingsCtrl(QWidget* parent=0);
 
-    void change_scale(int);
+    void change_scale(double);
     void change_min_neighbours(int);
 
  private:

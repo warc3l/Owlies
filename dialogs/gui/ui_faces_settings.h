@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -33,7 +34,7 @@ public:
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *lyt_scale;
     QLabel *lbl_scale_label;
-    QSpinBox *spb_scale_value;
+    QDoubleSpinBox *spb_scale_value;
     QHBoxLayout *lyt_neighbours;
     QLabel *lbl_neighbours_label;
     QSpinBox *spb_neighbours_value;
@@ -74,15 +75,16 @@ public:
 
         lyt_scale->addWidget(lbl_scale_label);
 
-        spb_scale_value = new QSpinBox(FacesDialog);
+        spb_scale_value = new QDoubleSpinBox(FacesDialog);
         spb_scale_value->setObjectName(QStringLiteral("spb_scale_value"));
         spb_scale_value->setMinimumSize(QSize(75, 0));
         spb_scale_value->setMaximumSize(QSize(0, 16777215));
+        spb_scale_value->setDecimals(1);
         spb_scale_value->setMinimum(1);
+        spb_scale_value->setSingleStep(0.1);
 
         lyt_scale->addWidget(spb_scale_value);
 
-        lyt_scale->setStretch(1, 1);
 
         verticalLayout_2->addLayout(lyt_scale);
 
