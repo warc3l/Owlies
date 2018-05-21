@@ -227,7 +227,11 @@ void Image::closing(void)
 {
     save_state();
 
-    cv::Mat element = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3,3));
+    QSettings settings(_file_settings, QSettings::NativeFormat);
+    int k_size = settings.value("closing_filter_settings_k_size", 3).toInt();
+    int shape = settings.value("closing_filter_settings_shape", 0).toInt(); // cv::MORPH_RECT per default
+
+    cv::Mat element = cv::getStructuringElement(shape, cv::Size(k_size,k_size));
     cv::Mat dst;
     cv::dilate(_modified, dst, element);
     cv::erode(dst, _modified, element);
