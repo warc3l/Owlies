@@ -30,7 +30,7 @@ QDialog* DialogSettingsCreator::create(std::string type)
     else if (type == "sobel")
         return new DrawSettingsCtrl();
     else if (type == "erode")
-        return new DrawSettingsCtrl();
+        return new ErodeFilterSettingsCtrl();
     else if (type == "dilate")
         return new DilateFilterSettingsCtrl();
     else if (type == "opening")
