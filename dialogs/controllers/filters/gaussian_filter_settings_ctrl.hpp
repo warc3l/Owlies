@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QWidget>
+#include <QSettings>
 #include "../../gui/filters/ui_gaussian_filter_settings.h"
 
 class GaussianFilterSettingsCtrl : public QDialog
@@ -12,8 +13,8 @@ class GaussianFilterSettingsCtrl : public QDialog
     ~GaussianFilterSettingsCtrl();
 
     void change_k_size(int);
-    void change_sigma_x();
-    void change_sigma_y();
+    void change_sigma_x(double);
+    void change_sigma_y(double);
 
 
  private:

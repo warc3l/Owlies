@@ -173,7 +173,13 @@ void Image::gaussian_filter(void)
 {
     save_state();
 
-    cv::GaussianBlur(_modified, _modified, cv::Size(3,3), 1.0);    
+    QSettings settings(_file_settings, QSettings::NativeFormat);
+
+    int k_size = settings.value("gaussian_filter_settings_k_size", 3).toInt();
+    double sigma_x = settings.value("gaussian_filter_settings_sigma_x", 1.0).toDouble();
+    double sigma_y = settings.value("gaussian_filter_settings_sigma_y", 0.0).toDouble();
+
+    cv::GaussianBlur(_modified, _modified, cv::Size(k_size, k_size), sigma_x, sigma_y);    
 }
 
 void Image::scharr_filter(void)
