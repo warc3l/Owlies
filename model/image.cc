@@ -155,7 +155,6 @@ void Image::laplacian_filter(void)
 
     QSettings settings(_file_settings, QSettings::NativeFormat);
 
-    int ddepth = settings.value("laplacian_filter_settings_ddepth", 1).toInt();
     int k_size = settings.value("laplacian_filter_settings_k_size", 3).toInt();
     int scale = settings.value("laplacian_filter_settings_scale", 1).toInt();
     int delta = settings.value("laplacian_filter_settings_delta", 1).toInt();
