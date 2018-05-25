@@ -153,7 +153,14 @@ void Image::laplacian_filter(void)
 {
     save_state();
 
-    cv::Laplacian(_modified, _modified, CV_8U);
+    QSettings settings(_file_settings, QSettings::NativeFormat);
+
+    int ddepth = settings.value("laplacian_filter_settings_ddepth", 1).toInt();
+    int k_size = settings.value("laplacian_filter_settings_k_size", 3).toInt();
+    int scale = settings.value("laplacian_filter_settings_scale", 1).toInt();
+    int delta = settings.value("laplacian_filter_settings_delta", 1).toInt();
+
+    cv::Laplacian(_modified, _modified, CV_8U, k_size, scale, delta);
 }
 
 void Image::box_filter(void)
