@@ -192,7 +192,14 @@ void Image::scharr_filter(void)
 {
     save_state();
 
-    cv::Scharr(_modified, _modified, CV_8U, 0, 1);
+    QSettings settings(_file_settings, QSettings::NativeFormat);
+
+    int scale = settings.value("scharr_filter_settings_scale", 1).toInt();
+    int delta = settings.value("scharr_filter_settings_delta", 0).toInt();
+    int dx = settings.value("scharr_filter_settings_dx", 0).toInt();
+    int dy = settings.value("scharr_filter_settings_dy", 1).toInt();
+
+    cv::Scharr(_modified, _modified, CV_8U, dx, dy, scale, delta);
 }
 
 void Image::median_filter(void)

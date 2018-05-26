@@ -22,7 +22,7 @@ QDialog* DialogSettingsCreator::create(std::string type)
     else if (type == "gaussian")
         return new GaussianFilterSettingsCtrl();
     else if (type == "scharr")
-        return new DrawSettingsCtrl();
+        return new ScharrFilterSettingsCtrl();
     else if (type == "box")
         return new BoxFilterSettingsCtrl();
     else if (type == "median")
