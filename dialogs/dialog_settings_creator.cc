@@ -26,7 +26,7 @@ QDialog* DialogSettingsCreator::create(std::string type)
     else if (type == "box")
         return new BoxFilterSettingsCtrl();
     else if (type == "median")
-        return new DrawSettingsCtrl();
+        return new MedianFilterSettingsCtrl();
     else if (type == "sobel")
         return new DrawSettingsCtrl();
     else if (type == "erode")

@@ -199,7 +199,10 @@ void Image::median_filter(void)
 {
     save_state();
 
-    cv::medianBlur(_modified, _modified, 5);
+    QSettings settings(_file_settings,  QSettings::NativeFormat);
+    int k_size = settings.value("median_filter_settings_k_size", 3).toInt();
+
+    cv::medianBlur(_modified, _modified, k_size);
 }
 
 void Image::sobel_filter(void)
