@@ -24,6 +24,9 @@ class MainWindow : public QMainWindow
 		void save_image(void);
 		void refresh_image(void);
 
+		void add_statusbar_widget(QWidget* wdg=nullptr);
+		void delete_statusbar_widgets(void);
+
 		void undo_action(void);
 
  private:

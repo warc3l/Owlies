@@ -62,6 +62,7 @@ class Toolbox : public QWidget
 		std::vector<std::string> common_filters;
 
  private:
+		const QString _settings_file = "settings.ini";
  		Ui::Toolbox* ui;
 		MainWindow* main_window;
 };

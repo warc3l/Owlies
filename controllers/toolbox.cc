@@ -88,6 +88,8 @@ void Toolbox::toolbox_settings()
 void Toolbox::uncheck_all(QToolButton* btn_non_uncheck)
 {
 	bool actual_state = false;
+	main_window->delete_statusbar_widgets(); // Delete all additional childs, except base...
+
 
 	if (btn_non_uncheck != nullptr)
 		actual_state = btn_non_uncheck->isChecked();
@@ -166,7 +168,22 @@ void Toolbox::draw(void)
 		Image* img = Image::instance();
 
 		if ( ui->btn_draw->isChecked() )
+		{
 			img->set_actual_action(DRAW);
+			QSettings settings(_settings_file, QSettings::NativeFormat);
+
+			QLabel* color_label = new QLabel();
+			color_label->setMinimumSize(QSize(15,15));
+			color_label->setAutoFillBackground(true);
+			QColor init_color(  settings.value("draw_settings_r_color",0).toInt(),
+								settings.value("draw_settings_g_color",0).toInt(),
+								settings.value("draw_settings_b_color",0).toInt());
+			QPalette palette;
+			palette.setBrush(QPalette::Window, init_color);
+			color_label->setPalette(palette);
+
+			main_window->add_statusbar_widget(color_label);
+		}
 		else
 			img->set_actual_action(NONE);
 	}

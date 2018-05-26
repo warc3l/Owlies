@@ -26,6 +26,47 @@ void MainWindow::undo_action(void)
 	refresh_image();
 }
 
+void MainWindow::add_statusbar_widget(QWidget* wdg)
+{
+	Image* img = Image::instance();
+	QString img_pointer = "";
+	QString img_size = "";
+	while (QLabel* statusbar_wdg = ui->statusbar->findChild<QLabel*>())
+	{
+		if (statusbar_wdg->objectName() == "lbl_image_pointer")
+			img_pointer = statusbar_wdg->text();
+		else if (statusbar_wdg->objectName() == "lbl_image_size")
+			img_size = statusbar_wdg->text();
+
+		delete statusbar_wdg;
+	}
+
+	if (wdg != nullptr)
+		ui->statusbar->addWidget(wdg);
+
+	QLabel* lbl_image_name = new QLabel("");
+	ui->statusbar->addWidget(lbl_image_name, 1);
+
+	if (img_pointer != "")
+	{
+		QLabel* lbl_image_pointer = new QLabel(img_pointer);
+		lbl_image_pointer->setObjectName("lbl_image_pointer");
+		ui->statusbar->addWidget(lbl_image_pointer);
+	}
+	
+	if (img_size != "")
+	{
+		QLabel* lbl_image_size = new QLabel(img_size);
+		lbl_image_size->setObjectName("lbl_image_size");
+		ui->statusbar->addWidget(lbl_image_size);
+	}
+}
+
+void MainWindow::delete_statusbar_widgets(void)
+{
+	add_statusbar_widget(nullptr);
+}
+
 void MainWindow::open_image(int a)
 {
 	std::cout << "Hello, world" << std::endl;
