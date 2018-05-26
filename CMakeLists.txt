@@ -33,6 +33,8 @@ set(SOURCE_FILES    dialogs/dialog_settings_creator.hpp dialogs/dialog_settings_
                     dialogs/gui/filters/ui_opening_filter_settings.h
                     dialogs/controllers/filters/scharr_filter_settings_ctrl.cc dialogs/controllers/filters/scharr_filter_settings_ctrl.hpp
                     dialogs/gui/filters/ui_scharr_filter_settings.h
+                    dialogs/controllers/filters/sobel_filter_settings_ctrl.cc dialogs/controllers/filters/sobel_filter_settings_ctrl.hpp
+                    dialogs/gui/filters/ui_sobel_filter_settings.h
                     model/image.hpp model/image.cc
                     main.cpp gui/ui_main_window.h gui/ui_toolbox.h
                     controllers/main_window.hpp controllers/main_window.cc

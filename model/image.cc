@@ -216,7 +216,15 @@ void Image::sobel_filter(void)
 {
     save_state();
 
-    cv::Sobel(_modified, _modified, CV_8U, 1, 0);
+    QSettings settings(_file_settings, QSettings::NativeFormat);
+
+    int k_size = settings.value("scharr_filter_settings_k_size", 3).toInt();
+    int scale = settings.value("scharr_filter_settings_scale", 1).toInt();
+    int delta = settings.value("scharr_filter_settings_delta", 0).toInt();
+    int dx = settings.value("scharr_filter_settings_dx", 0).toInt();
+    int dy = settings.value("scharr_filter_settings_dy", 1).toInt();
+
+    cv::Sobel(_modified, _modified, CV_8U, dx, dy, k_size, scale, delta);
 }
 
 void Image::erode(void)
