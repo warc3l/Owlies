@@ -34,7 +34,7 @@ QDialog* DialogSettingsCreator::create(std::string type)
     else if (type == "dilate")
         return new DilateFilterSettingsCtrl();
     else if (type == "opening")
-        return new DrawSettingsCtrl();
+        return new OpeningFilterSettingsCtrl();
     else if (type == "closing")
         return new ClosingFilterSettingsCtrl();
     else    
