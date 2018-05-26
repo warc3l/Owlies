@@ -5,6 +5,7 @@
 
 #include "controllers/draw_settings_ctrl.hpp"
 #include "controllers/faces_settings_ctrl.hpp"
+#include "controllers/thin_settings_ctrl.hpp"
 
 #include "controllers/filters/bilateral_filter_settings_ctrl.hpp"
 #include "controllers/filters/blur_filter_settings_ctrl.hpp"

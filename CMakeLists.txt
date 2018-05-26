@@ -11,6 +11,8 @@ set(SOURCE_FILES    dialogs/dialog_settings_creator.hpp dialogs/dialog_settings_
                     dialogs/controllers/draw_settings_ctrl.hpp dialogs/controllers/draw_settings_ctrl.cc
                     dialogs/controllers/faces_settings_ctrl.hpp dialogs/controllers/faces_settings_ctrl.cc
                     dialogs/gui/ui_draw_settings.h
+                    dialogs/controllers/thin_settings_ctrl.cc dialogs/controllers/thin_settings_ctrl.hpp
+                    dialogs/gui/ui_thin_settings.h
                     dialogs/controllers/filters/bilateral_filter_settings_ctrl.cc dialogs/controllers/filters/bilateral_filter_settings_ctrl.hpp
                     dialogs/gui/filters/ui_bilateral_filter_settings.h
                     dialogs/controllers/filters/blur_filter_settings_ctrl.cc dialogs/controllers/filters/blur_filter_settings_ctrl.hpp

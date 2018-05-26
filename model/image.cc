@@ -93,13 +93,28 @@ void Image::thin(void)
 {
     save_state();
 
+    QSettings settings(_file_settings, QSettings::NativeFormat);
+    
+    int shape = settings.value("thin_settings_shape", 1).toInt();
+    int k_size = settings.value("thin_settings_k_size", 5).toInt();
+
+    double pre_thresh = settings.value("thin_settings_pre_threshold_thresh", 0.5).toDouble();
+    double pre_max_value = settings.value("thin_settings_pre_threshold_max_value", 10).toDouble();
+
+    int max_intents = settings.value("thin_settings_max_intents").toInt();
+    bool detect_branch_points = settings.value("thin_settings_detect_branch_points", false).toBool();
+
+    double post_thresh = settings.value("thin_settings_post_threshold_thresh", 0.5).toDouble();
+    double post_max_value = settings.value("thin_settings_post_threshold_max_value", 255).toDouble();
+    
     cv::Mat skel(_modified.size(), CV_8UC1, cv::Scalar(0));
-    cv::Mat element = cv::getStructuringElement(cv::MORPH_CROSS, cv::Size(5, 5));
+    cv::Mat element = cv::getStructuringElement(shape, cv::Size(k_size, k_size));
     cv::Mat dilated, eroded, substracted;
 
-    cv::threshold(_modified, _modified, 10, 1, cv::THRESH_BINARY); 
+    cv::threshold(_modified, _modified, pre_thresh, pre_max_value, cv::THRESH_BINARY); 
     cv::cvtColor(_modified, _modified, cv::COLOR_BGR2GRAY); // 1-channel
 
+    int i = 0;
     do
     {
         cv::erode(_modified, eroded, element);
@@ -107,9 +122,13 @@ void Image::thin(void)
         cv::subtract(_modified, dilated, substracted);
         cv::bitwise_or(skel, substracted, skel);
         _modified = eroded.clone();
-    } while (cv::countNonZero(_modified) != 0);
+        i++;
+    } while (cv::countNonZero(_modified) != 0 && i <= max_intents);
 
-    cv::threshold(skel, skel, 0.5, 255, CV_THRESH_BINARY);
+    if (detect_branch_points)
+        std::cout << "NOT IMPLEMENTED. DETECTING BRANCH POINTS..." << std::endl;
+
+    cv::threshold(skel, skel, post_thresh, post_max_value, CV_THRESH_BINARY);
     cv::cvtColor(skel, _modified, cv::COLOR_GRAY2BGR); // 3-channel
 }
 

@@ -27,7 +27,6 @@ class DrawSettingsCtrl : public QDialog
 
     const QString _settings_file = "settings.ini";
     Ui::DrawDialog* ui;
-
 };
 
 #endif

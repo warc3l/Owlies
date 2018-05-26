@@ -4,12 +4,10 @@
 DrawSettingsCtrl::DrawSettingsCtrl(QWidget * parent) : QDialog(parent), ui(new Ui::DrawDialog)
 {
     ui->setupUi(this);
-    ui->lbl_color_value->set_settings_value_color("draw_settings");
-
     QSettings settings(_settings_file, QSettings::NativeFormat);
 
     ui->spb_size_value->setValue(settings.value("draw_settings_size", 10).toInt());
-
+    ui->lbl_color_value->set_settings_value_color("draw_settings");
     ui->rdp_circle->setChecked(true);
 
     connect(ui->spb_size_value, SELECT<int>::OVERLOAD_OF(&QSpinBox::valueChanged), this, &DrawSettingsCtrl::change_size);
