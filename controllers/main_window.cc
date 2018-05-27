@@ -136,7 +136,7 @@ void MainWindow::refresh_image(void)
 {
 	Image* img = Image::instance();
 	ui->main_window_image->setPixmap(img->get_modified_pixmap());
-	adjustSize();
+//	adjustSize();
 }
 
 MainWindow::~MainWindow()

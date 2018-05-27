@@ -16,7 +16,7 @@
 #include <opencv2/objdetect.hpp>
 
 enum FORM { CIRCLE, TRIANGLE };
-enum ACTION { NONE, CROP, ZOOM_IN, ZOOM_OUT, DRAW, SCALE, PICK };
+enum ACTION { NONE, CROP, DRAW, SCALE, PICK };
 
 class Image
 {
@@ -53,8 +53,8 @@ class Image
     void pick(int,int);
     void scale(int, int);
     void faces();
-    void zoom_in(int, int);
-    void zoom_out(int, int);
+    void zoom_in(void);
+    void zoom_out(void);
     void draw(int, int);
     void sature(void);
     void thin(void);

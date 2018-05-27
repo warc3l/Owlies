@@ -30,15 +30,16 @@ void Image::load_saved_state(void)
     }
 }
 
-void Image::zoom_in(int x, int y)
+void Image::zoom_in()
 {
-    cv::Rect range = cv::Rect(0, 0, 200, 200);
-    _modified = _modified(range); 
+    save_state();
+    cv::pyrUp(_modified, _modified, cv::Size( _modified.cols*2, _modified.rows*2 ));
 }
 
-void Image::zoom_out(int x, int y)
+void Image::zoom_out()
 {
-    
+    save_state();
+    cv::pyrDown(_modified, _modified, cv::Size( _modified.cols/2, _modified.rows/2 ));
 }
 
 void Image::draw(int x, int y)

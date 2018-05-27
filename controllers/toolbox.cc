@@ -10,8 +10,6 @@ Toolbox::Toolbox(QWidget* parent, MainWindow* w) : QWidget(parent), ui(new Ui::T
 
 	// Basic
 	ui->btn_crop->setCheckable(true);
-	ui->btn_zoom_in->setCheckable(true);
-	ui->btn_zoom_out->setCheckable(true);
 
 	connect(ui->btn_crop, &QToolButton::clicked, this, &Toolbox::crop);
 	connect(ui->btn_zoom_in, &QToolButton::clicked, this, &Toolbox::zoom_in);
@@ -136,17 +134,8 @@ void Toolbox::zoom_in(void)
 	else
 	{
 		Image* img = Image::instance();
-
-		/*
-			main_window->setMinimumSize(main_window->size());
-			main_window->setMaximumSize(main_window->size());
-			main_window->layout()->setSizeConstraint(QLayout::SetDefaultConstraint);
-		*/
-			
-		if ( ui->btn_zoom_in->isChecked() )
-			img->set_actual_action(ZOOM_IN);
-		else
-			img->set_actual_action(NONE);
+		img->zoom_in();
+		main_window->refresh_image();		
 	}
 }
 
@@ -161,10 +150,8 @@ void Toolbox::zoom_out(void)
 	else
 	{
 		Image* img = Image::instance();
-		if ( ui->btn_zoom_out->isChecked() )
-			img->set_actual_action(ZOOM_OUT);
-		else	
-			img->set_actual_action(NONE);
+		img->zoom_out();
+		main_window->refresh_image();		
 	}
 }
 
