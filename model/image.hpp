@@ -53,6 +53,7 @@ class Image
     void pick(int,int);
     void scale(int, int);
     void faces();
+    void recognize();
     void zoom_in(void);
     void zoom_out(void);
     void draw(int, int);
