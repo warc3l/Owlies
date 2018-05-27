@@ -16,24 +16,6 @@ void ImageLabel::setPixmap(const QPixmap& pixmap)
     QLabel::setPixmap(pixmap);
 }
 
-
-void ImageLabel::paintEvent(QPaintEvent* paint)
-{
-    Image* img = Image::instance();
-    if (img->get_actual_action() == ZOOM_IN)
-    {
-
-    }
-    else if (img->get_actual_action() == ZOOM_OUT)
-    {
-
-    }
-    else
-    {
-        QLabel::paintEvent(paint);
-    }
-}
-
 void ImageLabel::mousePressEvent(QMouseEvent* event)
 {
     if (event->buttons() == Qt::LeftButton)
@@ -67,6 +49,12 @@ void ImageLabel::mousePressEvent(QMouseEvent* event)
                 _rubberBandScale->setGeometry(QRect(_origin, mapToGlobal(event->pos())).normalized());
                 _rubberBandScale->show();
                 break;
+            case ZOOM_IN:
+                std::cout << "ZOOM IN AT: " << _origin.x() << " and " << _origin.y() << std::endl;
+
+                img->zoom_in(_origin.x(), _origin.y());
+                setPixmap(img->get_modified_pixmap());
+                break;
         }
     }
 }
@@ -78,7 +66,7 @@ void ImageLabel::mouseMoveEvent(QMouseEvent* event)
     if (_rubberBandCrop && img->get_actual_action() == CROP )
         _rubberBandCrop->setGeometry(QRect(_origin, event->pos()).normalized());
 
-    QStatusBar* statusbar = _parent->parentWidget()->findChild<QStatusBar*>("statusbar");
+    QStatusBar* statusbar = _parent->parentWidget()->parentWidget()->parentWidget()->findChild<QStatusBar*>("statusbar");
 
     if ( _rubberBandScale && _rubberBandScale->isVisible() && img->get_actual_action() == SCALE)
     {
@@ -133,7 +121,7 @@ void ImageLabel::mouseReleaseEvent(QMouseEvent* event)
                 img->crop(pos_x, pos_y, width, height);
                 setPixmap(img->get_modified_pixmap());
 
-                QStatusBar* statusbar = _parent->parentWidget()->findChild<QStatusBar*>("statusbar");
+                QStatusBar* statusbar = _parent->parentWidget()->parentWidget()->parentWidget()->findChild<QStatusBar*>("statusbar");
                 std::string new_size = "(" + std::to_string(width) + ", " + std::to_string(height) + ")";
                 statusbar->findChild<QLabel*>("lbl_image_size")->setText(QString::fromStdString(new_size));        
                 break;

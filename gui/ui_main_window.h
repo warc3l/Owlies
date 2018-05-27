@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'main_window.ui'
 **
-** Created by: Qt User Interface Compiler version 5.5.1
+** Created by: Qt User Interface Compiler version 5.10.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -98,14 +98,14 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Owlies", 0));
-        actionOpen_image->setText(QApplication::translate("MainWindow", "Open image...", 0));
-        actionSave_image->setText(QApplication::translate("MainWindow", "Save image...", 0));
-        actionQuit->setText(QApplication::translate("MainWindow", "Quit", 0));
-        actionUndo_action->setText(QApplication::translate("MainWindow", "Undo action", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Owlies", nullptr));
+        actionOpen_image->setText(QApplication::translate("MainWindow", "Open image...", nullptr));
+        actionSave_image->setText(QApplication::translate("MainWindow", "Save image...", nullptr));
+        actionQuit->setText(QApplication::translate("MainWindow", "Quit", nullptr));
+        actionUndo_action->setText(QApplication::translate("MainWindow", "Undo action", nullptr));
         main_window_image->setText(QString());
-        menuFile->setTitle(QApplication::translate("MainWindow", "File", 0));
-        menuEdit->setTitle(QApplication::translate("MainWindow", "Edit", 0));
+        menuFile->setTitle(QApplication::translate("MainWindow", "File", nullptr));
+        menuEdit->setTitle(QApplication::translate("MainWindow", "Edit", nullptr));
     } // retranslateUi
 
 };

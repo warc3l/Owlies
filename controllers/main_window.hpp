@@ -30,6 +30,7 @@ class MainWindow : public QMainWindow
 		void undo_action(void);
 
  private:
+		QScrollArea* scroll_area;
  		Ui::MainWindow* ui;
 };
 

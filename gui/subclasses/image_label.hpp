@@ -19,7 +19,6 @@ class ImageLabel : public QLabel
     virtual void mousePressEvent(QMouseEvent* event);
     virtual void mouseReleaseEvent(QMouseEvent* event);
     virtual void mouseMoveEvent(QMouseEvent* event);
-    virtual void paintEvent(QPaintEvent* event);
 
  private:
     bool _mouseMoving;

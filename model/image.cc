@@ -30,6 +30,12 @@ void Image::load_saved_state(void)
     }
 }
 
+void Image::zoom_in(int x, int y)
+{
+    cv::Rect range = cv::Rect(0, 0, 200, 200);
+    _modified = _modified(range); 
+}
+
 void Image::draw(int x, int y)
 {
     save_state();

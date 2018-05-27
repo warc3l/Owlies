@@ -135,7 +135,18 @@ void Toolbox::zoom_in(void)
 	}
 	else
 	{
+		Image* img = Image::instance();
 
+		/*
+			main_window->setMinimumSize(main_window->size());
+			main_window->setMaximumSize(main_window->size());
+			main_window->layout()->setSizeConstraint(QLayout::SetDefaultConstraint);
+		*/
+			
+		if ( ui->btn_zoom_in->isChecked() )
+			img->set_actual_action(ZOOM_IN);
+		else
+			img->set_actual_action(NONE);
 	}
 }
 

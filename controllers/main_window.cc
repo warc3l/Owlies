@@ -12,6 +12,12 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
 	QLabel* lbl_image_name = new QLabel("");	
 	ui->statusbar->addWidget(lbl_image_name, 1);
 
+	// Scroll area
+	scroll_area = new QScrollArea(this);
+	scroll_area->setWidget(ui->centralwidget);
+	scroll_area->setWidgetResizable(true);
+	setCentralWidget(scroll_area);
+
 	// Shortcuts
 	QShortcut* undo_shortcut = new QShortcut(this); 
 	undo_shortcut->setKey(Qt::CTRL + Qt::Key_Z);
@@ -81,11 +87,10 @@ void MainWindow::open_image(int a)
 		Image* img = Image::instance(file_name);
 		ui->main_window_image->setPixmap(img->get_modified_pixmap());
 		adjustSize();
-		this->layout()->setSizeConstraint(QLayout::SetFixedSize); // Freeze QMainWindow to resize. TODO: It would be a problem for high resolution images.
-		
+//		this->layout()->setSizeConstraint(QLayout::SetFixedSize); // Freeze QMainWindow to resize. TODO: It would be a problem for high resolution images.
+
 		QString width = QString::fromStdString(std::to_string(img->get_modified_pixmap().width()));
 		QString height = QString::fromStdString(std::to_string(img->get_modified_pixmap().height()));
-
 
 	    QLabel* lbl_image_pointer = ui->statusbar->findChild<QLabel*>("lbl_image_pointer");
 		if (lbl_image_pointer == nullptr)
