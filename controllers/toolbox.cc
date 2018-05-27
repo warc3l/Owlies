@@ -160,7 +160,11 @@ void Toolbox::zoom_out(void)
 	}
 	else
 	{
-
+		Image* img = Image::instance();
+		if ( ui->btn_zoom_out->isChecked() )
+			img->set_actual_action(ZOOM_OUT);
+		else	
+			img->set_actual_action(NONE);
 	}
 }
 

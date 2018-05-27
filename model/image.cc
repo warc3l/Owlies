@@ -36,6 +36,11 @@ void Image::zoom_in(int x, int y)
     _modified = _modified(range); 
 }
 
+void Image::zoom_out(int x, int y)
+{
+    
+}
+
 void Image::draw(int x, int y)
 {
     save_state();

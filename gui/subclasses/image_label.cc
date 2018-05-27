@@ -55,6 +55,11 @@ void ImageLabel::mousePressEvent(QMouseEvent* event)
                 img->zoom_in(_origin.x(), _origin.y());
                 setPixmap(img->get_modified_pixmap());
                 break;
+            case ZOOM_OUT:
+                std::cout << "ZOOM OUT AT..." << std::endl;
+                img->zoom_out(_origin.x(), _origin.y());
+                setPixmap(img->get_modified_pixmap());
+                break;
         }
     }
 }
