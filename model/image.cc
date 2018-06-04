@@ -104,6 +104,8 @@ void Image::faces(void)
 void Image::recognize(void)
 {
     // https://hackaday.com/2018/05/23/using-tensorflow-to-recognize-your-own-objects/
+    
+    // Python Binding??
 }
 
 void Image::thin(void)
