@@ -10,6 +10,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(SOURCE_FILES    dialogs/dialog_settings_creator.hpp dialogs/dialog_settings_creator.cc
                     dialogs/controllers/draw_settings_ctrl.hpp dialogs/controllers/draw_settings_ctrl.cc
                     dialogs/controllers/faces_settings_ctrl.hpp dialogs/controllers/faces_settings_ctrl.cc
+                    dialogs/controllers/recognize_dialog_ctrl.hpp dialogs/controllers/recognize_dialog_ctrl.cc
                     dialogs/gui/ui_draw_settings.h
                     dialogs/controllers/thin_settings_ctrl.cc dialogs/controllers/thin_settings_ctrl.hpp
                     dialogs/gui/ui_thin_settings.h

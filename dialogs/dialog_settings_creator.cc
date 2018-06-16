@@ -22,7 +22,7 @@ QDialog* DialogSettingsCreator::create(std::string type)
     else if (type == "gaussian")
         return new GaussianFilterSettingsCtrl();
     else if (type == "recognize")
-        return new DrawSettingsCtrl();
+        return new RecognizeDialogCtrl();
     else if (type == "laplacian")
         return new LaplacianFilterSettingsCtrl();
     else if (type == "median")

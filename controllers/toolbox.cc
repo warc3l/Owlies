@@ -410,12 +410,11 @@ void Toolbox::recognize(void)
 	uncheck_all();
 	if ( QGuiApplication::keyboardModifiers() & Qt::ControlModifier )
 	{
-		DialogSettingsCreator dlg_settings_creator;
-		QDialog* dlg = dlg_settings_creator.create("recognize");
-		dlg->show();
 	}
 	else
 	{
-
+		DialogSettingsCreator dlg_settings_creator;
+		QDialog* dlg = dlg_settings_creator.create("recognize");
+		dlg->show();
 	}
 }
