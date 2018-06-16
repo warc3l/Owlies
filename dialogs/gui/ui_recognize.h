@@ -20,6 +20,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QVBoxLayout>
@@ -57,12 +58,14 @@ public:
     QHBoxLayout *lyt_h_cloud_token;
     QLabel *lbl_cloud_token_label;
     QLineEdit *lie_cloud_token_value;
+    QPushButton *btn_go_train;
     QWidget *page_recognize;
     QVBoxLayout *verticalLayout_3;
     QGroupBox *gpb_recognize;
     QHBoxLayout *horizontalLayout_3;
     QLabel *lbl_trained_file_label;
     QLineEdit *lie_trained_file_value;
+    QPushButton *btn_go_recognize;
 
     void setupUi(QDialog *RecognizeDialog)
     {
@@ -173,6 +176,11 @@ public:
 
         horizontalLayout->addWidget(stk_local_cloud);
 
+        btn_go_train = new QPushButton(gpb_train);
+        btn_go_train->setObjectName(QStringLiteral("btn_go_train"));
+
+        horizontalLayout->addWidget(btn_go_train);
+
 
         verticalLayout_2->addWidget(gpb_train);
 
@@ -195,6 +203,11 @@ public:
 
         horizontalLayout_3->addWidget(lie_trained_file_value);
 
+        btn_go_recognize = new QPushButton(gpb_recognize);
+        btn_go_recognize->setObjectName(QStringLiteral("btn_go_recognize"));
+
+        horizontalLayout_3->addWidget(btn_go_recognize);
+
 
         verticalLayout_3->addWidget(gpb_recognize);
 
@@ -206,7 +219,7 @@ public:
         retranslateUi(RecognizeDialog);
 
         stk_train_recognize->setCurrentIndex(1);
-        stk_local_cloud->setCurrentIndex(1);
+        stk_local_cloud->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(RecognizeDialog);
@@ -227,8 +240,10 @@ public:
         lbl_cloud_user_label->setText(QApplication::translate("RecognizeDialog", "User:", 0));
         lbl_cloud_password_label->setText(QApplication::translate("RecognizeDialog", "Password:", 0));
         lbl_cloud_token_label->setText(QApplication::translate("RecognizeDialog", "Token:", 0));
+        btn_go_train->setText(QApplication::translate("RecognizeDialog", "GO!", 0));
         gpb_recognize->setTitle(QApplication::translate("RecognizeDialog", "Recognize", 0));
         lbl_trained_file_label->setText(QApplication::translate("RecognizeDialog", "Trained file:", 0));
+        btn_go_recognize->setText(QApplication::translate("RecognizeDialog", "GO!", 0));
     } // retranslateUi
 
 };

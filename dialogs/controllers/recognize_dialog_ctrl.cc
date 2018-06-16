@@ -18,12 +18,13 @@ RecognizeDialogCtrl::RecognizeDialogCtrl(QWidget* parent) : QDialog(parent), ui(
 
 void RecognizeDialogCtrl::recognize()
 {
-
+    Image* img = Image::instance();
+    img->recognize();
 }
 
 void RecognizeDialogCtrl::train()
 {
-    
+
 }
 
 void RecognizeDialogCtrl::changeModeFunctionality(int index)

@@ -103,9 +103,17 @@ void Image::faces(void)
 
 void Image::recognize(void)
 {
-    // https://hackaday.com/2018/05/23/using-tensorflow-to-recognize-your-own-objects/
-    
+    // https://hackaday.com/2018/05/23/using-tensorflow-to-recognize-your-own-objects/    
     // Python Binding??
+    auto cvNet = cv::dnn::readNetFromTensorflow("../models/ssd_mobilenet_v1_coco_2017_11_17/frozen_inference_graph.pb", false);
+    cv::Mat blob, frame;
+    cv::dnn::blobFromImage(_modified, blob);
+    cvNet.setInput(blob);
+
+
+    std::vector<cv::Mat> outs;
+    cvNet.forward(outs);
+    //std::cout << cvOut << std::endl;
 }
 
 void Image::thin(void)

@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <iostream>
+#include "../../model/image.hpp"
 #include "../gui/ui_recognize.h"
 
 class RecognizeDialogCtrl : public QDialog
@@ -14,7 +15,7 @@ class RecognizeDialogCtrl : public QDialog
 
     void train(void);
     void recognize(void);
-    
+
  private:
     enum { TRAIN_MODE = 0, RECOGNIZE_MODE };
     enum { LOCAL = 0, CLOUD };
