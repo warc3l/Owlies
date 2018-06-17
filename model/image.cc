@@ -105,14 +105,22 @@ void Image::recognize(void)
 {
     // https://hackaday.com/2018/05/23/using-tensorflow-to-recognize-your-own-objects/    
     // Python Binding??
-    auto cvNet = cv::dnn::readNetFromTensorflow("../models/ssd_mobilenet_v1_coco_2017_11_17/frozen_inference_graph.pb", false);
-    cv::Mat blob, frame;
-    cv::dnn::blobFromImage(_modified, blob);
+    auto cvNet = cv::dnn::readNetFromTensorflow("../models/tensorflow_inception_graph.pb", false); //, "../models/ssd_mobilenet_v1_coco_2017_11_17/ssd_mobilenet_v1_coco_2017_11_17.pbtxt", "rb");
+    cv::Mat frame;
+
+    cvNet.setPreferableBackend(3); // DNN_BACKEND_OPENCV
+    cvNet.setPreferableTarget(0); // CPU
+
+    cv::resize(_modified, _modified, cv::Size(244,244));
+    _modified -= 128;
+
+    cv::Mat blob = cv::dnn::blobFromImage(_modified);
     cvNet.setInput(blob);
 
+    cv::Mat out = cvNet.forward();
 
-    std::vector<cv::Mat> outs;
-    cvNet.forward(outs);
+//    std::vector<cv::Mat> outs;
+//    cvNet.forward(outs);
     //std::cout << cvOut << std::endl;
 }
 
