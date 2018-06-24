@@ -29,8 +29,6 @@ QDialog* DialogSettingsCreator::create(std::string type)
         return new MedianFilterSettingsCtrl();
     else if (type == "opening")
         return new OpeningFilterSettingsCtrl();
-    else if (type == "sature")
-        return new DrawSettingsCtrl();
     else if (type == "scharr")
         return new ScharrFilterSettingsCtrl();
     else if (type == "sobel")

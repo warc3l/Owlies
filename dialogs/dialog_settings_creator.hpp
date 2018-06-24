@@ -1,3 +1,6 @@
+#ifndef _DIALOG_SETTINGS_CREATOR_HPP
+#define _DIALOG_SETTINGS_CREATOR_HPP
+
 #include <QDialog>
 #include <string>
 #include <iostream>
@@ -29,3 +32,4 @@ class DialogSettingsCreator
     QDialog* create(std::string type);
 };
 
+#endif

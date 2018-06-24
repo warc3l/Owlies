@@ -1,3 +1,6 @@
+#ifndef _IMAGE_LABEL_HPP
+#define _IMAGE_LABEL_HPP
+
 #include <iostream>
 #include <QLabel>
 #include <QMouseEvent>
@@ -31,3 +34,4 @@ class ImageLabel : public QLabel
     QWidget* _parent;
 };
 
+#endif

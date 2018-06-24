@@ -130,6 +130,7 @@ void Toolbox::zoom_in(void)
 	else
 	{
 		Image* img = Image::instance();
+		img->set_actual_action(NONE);
 		img->zoom_in();
 		main_window->refresh_image();		
 	}
@@ -146,6 +147,7 @@ void Toolbox::zoom_out(void)
 	else
 	{
 		Image* img = Image::instance();
+		img->set_actual_action(NONE);
 		img->zoom_out();
 		main_window->refresh_image();		
 	}
@@ -284,6 +286,8 @@ void Toolbox::filter_1(void)
 	}
 	else
 	{
+		Image* img = Image::instance();
+		img->set_actual_action(NONE);
 		filters[common_filters[0]].second();
 		main_window->refresh_image();
 	}
@@ -300,6 +304,8 @@ void Toolbox::filter_2(void)
 	} 
 	else
 	{
+		Image* img = Image::instance();
+		img->set_actual_action(NONE);
 		filters[common_filters[1]].second();
 		main_window->refresh_image();
 	}
@@ -316,6 +322,8 @@ void Toolbox::filter_3(void)
 	}
 	else
 	{
+		Image* img = Image::instance();
+		img->set_actual_action(NONE);
 		filters[common_filters[2]].second();
 		main_window->refresh_image();
 	}
@@ -324,6 +332,9 @@ void Toolbox::filter_3(void)
 void Toolbox::filter_menu(void)
 {
 	QMenu menu(this);
+	Image* img = Image::instance();
+	img->set_actual_action(NONE);
+
 
 	// Fill menu with filters
 	for (const auto imap: filters)
@@ -378,6 +389,7 @@ void Toolbox::faces(void)
 	else
 	{
 		Image* img = Image::instance();
+		img->set_actual_action(NONE);
 		img->faces();
 		main_window->refresh_image();
 	}
@@ -395,6 +407,7 @@ void Toolbox::thin(void)
 	else
 	{
 		Image* img = Image::instance();
+		img->set_actual_action(NONE);
 		img->thin();
 		main_window->refresh_image();
 	}
@@ -409,6 +422,9 @@ void Toolbox::recognize(void)
 	}
 	else
 	{
+		Image* img = Image::instance();
+		img->set_actual_action(NONE);
+
 		DialogSettingsCreator dlg_settings_creator;
 		QDialog* dlg = dlg_settings_creator.create("recognize");
 		int ret = dlg->exec();
