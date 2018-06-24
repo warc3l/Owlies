@@ -101,60 +101,20 @@ void Image::faces(void)
     }
 }
 
-std::vector<std::string> createClaseNames() {
-    std::vector<std::string> classNames;
-    classNames.push_back("background");
-    classNames.push_back("aeroplane");
-    classNames.push_back("bicycle");
-    classNames.push_back("bird");
-    classNames.push_back("boat");
-    classNames.push_back("bottle");
-    classNames.push_back("bus");
-    classNames.push_back("car");
-    classNames.push_back("cat");
-    classNames.push_back("chair");
-    classNames.push_back("cow");
-    classNames.push_back("diningtable");
-    classNames.push_back("dog");
-    classNames.push_back("horse");
-    classNames.push_back("motorbike");
-    classNames.push_back("person");
-    classNames.push_back("pottedplant");
-    classNames.push_back("sheep");
-    classNames.push_back("sofa");
-    classNames.push_back("train");
-    classNames.push_back("tvmonitor");
-    return classNames;
-}   
-
 void Image::recognize(void)
 {
-    // https://hackaday.com/2018/05/23/using-tensorflow-to-recognize-your-own-objects/    
-    // Python Binding??
-    std::cout << "Lets recognize!!!" << std::endl;
-    auto cvNet = cv::dnn::readNetFromCaffe("input/MobileNetSSD_deploy.prototxt", "input/MobileNetSSD_deploy.caffemodel"); //, "../models/ssd_mobilenet_v1_coco_2017_11_17/ssd_mobilenet_v1_coco_2017_11_17.pbtxt", "rb");
-    cv::Mat frame;
+    std::string modelConfiguration = "input/MobileNetSSD_deploy.prototxt";
+    std::string modelBinary = "input/MobileNetSSD_deploy.caffemodel";
+    cv::Mat frame, blob, out;
+    cv::Size size = cv::Size(300, 300);
+    double mean = 127.5;
+    std::vector<std::string> classNames = {"background", "aoeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "chair", "cow", "dinningtable", "dog", "horse", "motorbike", "person", "pottledplant", "sheep", "sofa", "sofa", "train", "tvmonitor" };
 
-    std::cout << "cvNet created" << std::endl;
-/*
-    cvNet.setPreferableBackend(3); // DNN_BACKEND_OPENCV
-    cvNet.setPreferableTarget(0); // CPU
-*/
-
-//    cv::resize(_modified, _modified, cv::Size(300, 300));
-    auto size = cv::Size(300, 300);
-    auto mean = 127.5;
-    std::cout << "After resize. Before blob from image " << std::endl;
-    cv::Mat blob = cv::dnn::blobFromImage(_modified, 0.007843, size, mean);
-    std::cout << "Lets input a blob" << std::endl;
+    cv::dnn::Net cvNet = cv::dnn::readNetFromCaffe(modelConfiguration, modelBinary);
+    blob = cv::dnn::blobFromImage(_modified, 0.007843, size, mean);
     cvNet.setInput(blob);
-    std::cout << "lets forward!" << std::endl;
-    cv::Mat out = cvNet.forward();
-    std::cout << "Dims:  " << out.dims << std::endl;
-    std::cout << "Size: " << out.size() << std::endl;
-    
-    std::cout << out.at<cv::Vec3f>(0,0,0)[0] << std::endl;
-    std::vector<std::string> classNames = createClaseNames();
+
+    out = cvNet.forward();
 
     for (int i=0; i < out.size[2]; i++) {
 
@@ -188,53 +148,6 @@ void Image::recognize(void)
         rectangle(_modified, bbox, cv::Scalar(255,0,255),1,8,0);
 
     }
-/*
-    for(int i=0; i<out.at<cv::Vec3f>(0,0,0).rows; i++){
-        std::cout << "HELLO: " << out.at<cv::Vec3f>(0,0,0)[i] << std::endl;
-        int idx = out.at<cv::Vec3f>(0, 0, i)[1];
-        std::cout << "IDX is " << idx << std::endl;
-
-        int box = out.at<cv::Vec3f>(0, 0, i)
-    }
-*/
-
-/*
-	# loop over the detections
-	for i in np.arange(0, detections.shape[2]):
-		# extract the confidence (i.e., probability) associated with
-		# the prediction
-		confidence = detections[0, 0, i, 2]
-
-		# filter out weak detections by ensuring the `confidence` is
-		# greater than the minimum confidence
-		if confidence > args["confidence"]:
-			# extract the index of the class label from the
-			# `detections`, then compute the (x, y)-coordinates of
-			# the bounding box for the object
-			idx = int(detections[0, 0, i, 1])
-			box = detections[0, 0, i, 3:7] * np.array([w, h, w, h])
-			(startX, startY, endX, endY) = box.astype("int")
-
-			# draw the prediction on the frame
-			label = "{}: {:.2f}%".format(CLASSES[idx],
-				confidence * 100)
-			detected_objects.append(label)
-			cv2.rectangle(frame, (startX, startY), (endX, endY),
-				COLORS[idx], 2)
-			y = startY - 15 if startY - 15 > 15 else startY + 15
-			cv2.putText(frame, label, (startX, y),
-cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLORS[idx], 2)  
-*/  
-    /*
-    for (int i = 0; i< out.at<cv::Vec3d>(0, 0).size(); i++)
-    {   
-        std::cout << "lol" << std::endl;
-        auto confidence = out[0][0][i][2];
-        int idx = out[0,0,i,1];
-        out.at
-
-    }
-    */
 }
 
 void Image::thin(void)
