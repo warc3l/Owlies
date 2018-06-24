@@ -11,10 +11,13 @@
 
 #include <stack>
 #include <opencv2/dnn.hpp>
+#include <opencv2/dnn/shape_utils.hpp>
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/objdetect.hpp>
+
+#include <boost/lexical_cast.hpp>
 
 enum FORM { CIRCLE, TRIANGLE };
 enum ACTION { NONE, CROP, DRAW, SCALE, PICK };

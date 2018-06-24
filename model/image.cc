@@ -108,46 +108,39 @@ void Image::recognize(void)
     cv::Mat frame, blob, out;
     cv::Size size = cv::Size(300, 300);
     double mean = 127.5;
-    std::vector<std::string> classNames = {"background", "aoeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "chair", "cow", "dinningtable", "dog", "horse", "motorbike", "person", "pottledplant", "sheep", "sofa", "sofa", "train", "tvmonitor" };
+    std::vector<std::string> classNames = {"background", "aoeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "dinningtable", "dog", "horse", "motorbike", "person", "pottledplant", "sheep", "sofa", "sofa", "train", "tvmonitor" };
 
     cv::dnn::Net cvNet = cv::dnn::readNetFromCaffe(modelConfiguration, modelBinary);
-    blob = cv::dnn::blobFromImage(_modified, 0.007843, size, mean);
+    blob = cv::dnn::blobFromImage(_modified, 0.007843, size, mean, false);
     cvNet.setInput(blob);
 
     out = cvNet.forward();
 
-    for (int i=0; i < out.size[2]; i++) {
+    cv::Mat outMat(out.size[2], out.size[3], CV_32F, out.ptr<float>());
+    for (int i = 0; i < outMat.rows; i++)
+    {
+        size_t objectClass = (size_t) (outMat.at<float>(i, 1));
 
-        // print information into console
-        std::cout << "-----------------" << std::endl;
-        std::cout << "Object nr. " << i + 1 << std::endl;
+        int xLeftBottom = static_cast<int>(outMat.at<float>(i, 3) * _modified.cols);
+        int yLeftBottom = static_cast<int>(outMat.at<float>(i, 4) * _modified.rows);
+        int xRightTop = static_cast<int>(outMat.at<float>(i, 5) * _modified.cols);
+        int yRightTop = static_cast<int>(outMat.at<float>(i, 6) * _modified.rows);
+        int baseLine = 0;
 
-        // detected class
-        int indxCls[4] = { 0, 0, i, 1 };
-        int cls = out.at<float>(indxCls);
-        std::cout << "class: " << classNames[cls] << std::endl;
+        cv::Rect object ((int) xLeftBottom, (int) yLeftBottom,
+                        (int) (xRightTop - xLeftBottom),
+                        (int) (yRightTop - yLeftBottom));
 
-        // confidence
-        int indxCnf[4] = { 0, 0, i, 2 };
-        float cnf = out.at<float>(indxCnf);
-        std::cout << "confidence: " << cnf * 100 << "%" << std::endl;
-
-        // bounding box
-        int indxBx[4] = { 0, 0, i, 3 };
-        int indxBy[4] = { 0, 0, i, 4 };
-        int indxBw[4] = { 0, 0, i, 5 };
-        int indxBh[4] = { 0, 0, i, 6 };
-        int Bx = out.at<float>(indxBx) * _modified.size().width;
-        int By = out.at<float>(indxBy) * _modified.size().height;
-        int Bw = out.at<float>(indxBw) * _modified.size().width - Bx;
-        int Bh = out.at<float>(indxBh) * _modified.size().height - By;
-        std::cout << "bounding box [x, y, w, h]: " << Bx << ", " << By << ", " << Bw << ", " << Bh << std::endl;
-
-        // draw bounding box to image
-        cv::Rect bbox(Bx, By, Bw, Bh);
-        rectangle(_modified, bbox, cv::Scalar(255,0,255),1,8,0);
-
+        cv::rectangle(_modified, object, cv::Scalar(0, 255, 0));
+        
+        std::string lbl = classNames[objectClass] + ": " + boost::lexical_cast<std::string>(outMat.at<float>(i, 2));
+        cv::Size lblSize = cv::getTextSize(lbl, cv::HersheyFonts::FONT_HERSHEY_SIMPLEX, 0.5, 1, &baseLine);
+                                                    
+        cv::rectangle(_modified, cv::Rect(cv::Point(xLeftBottom, yLeftBottom - lblSize.height), cv::Size(lblSize.width, lblSize.height + baseLine)), cv::Scalar(255, 255, 255), CV_FILLED);
+        cv::putText(_modified, lbl, cv::Point(xRightTop - lblSize.width, yRightTop - lblSize.height), cv::HersheyFonts::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(0,0,0));
     }
+
+
 }
 
 void Image::thin(void)
