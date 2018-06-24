@@ -16,7 +16,7 @@ RecognizeDialogCtrl::RecognizeDialogCtrl(QWidget* parent) : QDialog(parent), ui(
     connect(ui->btn_go_train, &QPushButton::clicked, this, &RecognizeDialogCtrl::train);
 
     ui->lie_trained_file_value->setEnabled(false);
-    ui->lie_trained_file_value->setText("input/MobileNetSSD_deploy.txt");
+    ui->lie_trained_file_value->setText("resources/input/MobileNetSSD_deploy.txt");
 }
 
 void RecognizeDialogCtrl::recognize()

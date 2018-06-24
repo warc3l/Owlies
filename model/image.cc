@@ -103,8 +103,8 @@ void Image::faces(void)
 
 void Image::recognize(void)
 {
-    std::string modelConfiguration = "input/MobileNetSSD_deploy.prototxt";
-    std::string modelBinary = "input/MobileNetSSD_deploy.caffemodel";
+    std::string modelConfiguration = "resources/input/MobileNetSSD_deploy.prototxt";
+    std::string modelBinary = "resources/input/MobileNetSSD_deploy.caffemodel";
     cv::Mat frame, blob, out;
     cv::Size size = cv::Size(300, 300);
     double mean = 127.5;
