@@ -53,7 +53,8 @@ class Toolbox : public QWidget
 		void thin(void);
 		void recognize(void);
 
-		void toolbox_settings();
+		// Slots
+		void loaded_image(void);
 
 		// Implemented filters.
 		// @ key: identificator

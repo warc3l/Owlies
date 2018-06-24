@@ -5,8 +5,11 @@ Toolbox::Toolbox(QWidget* parent, MainWindow* w) : QWidget(parent), ui(new Ui::T
 {
 	ui->setupUi(this);
 	setWindowFlags(Qt::Tool);
+	setEnabled(false); // No image loaded
 
 	main_window = w;
+
+	connect(main_window, &MainWindow::newImageLoaded, this, &Toolbox::loaded_image);
 
 	// Basic
 	ui->btn_crop->setCheckable(true);
@@ -65,11 +68,6 @@ Toolbox::Toolbox(QWidget* parent, MainWindow* w) : QWidget(parent), ui(new Ui::T
 	ui->btn_filter_1->setToolTip("Blur");
 	ui->btn_filter_2->setToolTip("Bilateral");
 	ui->btn_filter_3->setToolTip("Laplacian");
-
-	// Shortcuts
-	QShortcut* toolbox_shortcut = new QShortcut(this); 
-	toolbox_shortcut->setKey(Qt::CTRL + Qt::Key_A);
-	connect(toolbox_shortcut, &QShortcut::activated, this, &Toolbox::toolbox_settings);
 }
 
 Toolbox::~Toolbox()
@@ -77,17 +75,15 @@ Toolbox::~Toolbox()
 	delete ui;
 }
 
-void Toolbox::toolbox_settings()
+void Toolbox::loaded_image(void)
 {
-	std::cout << "Hello, boys!" << std::endl;
-
+	setEnabled(true);
 }
 
 void Toolbox::uncheck_all(QToolButton* btn_non_uncheck)
 {
 	bool actual_state = false;
 	main_window->delete_statusbar_widgets(); // Delete all additional childs, except base...
-
 
 	if (btn_non_uncheck != nullptr)
 		actual_state = btn_non_uncheck->isChecked();

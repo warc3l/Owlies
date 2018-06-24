@@ -18,11 +18,6 @@
     <widget class="QComboBox" name="cmb_select_option">
      <item>
       <property name="text">
-       <string>Train</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
        <string>Recognize</string>
       </property>
      </item>
@@ -31,8 +26,38 @@
    <item>
     <widget class="QStackedWidget" name="stk_train_recognize">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
+     <widget class="QWidget" name="page_recognize">
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QGroupBox" name="gpb_recognize">
+         <property name="title">
+          <string>Recognize</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLabel" name="lbl_trained_file_label">
+            <property name="text">
+             <string>Trained file:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lie_trained_file_value"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_go_recognize">
+            <property name="text">
+             <string>GO!</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
      <widget class="QWidget" name="page_train">
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
@@ -140,37 +165,10 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="page_recognize">
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
-        <widget class="QGroupBox" name="gpb_recognize">
-         <property name="title">
-          <string>Recognize</string>
-         </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
-          <item>
-           <widget class="QLabel" name="lbl_trained_file_label">
-            <property name="text">
-             <string>Trained file:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lie_trained_file_value"/>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btn_go_recognize">
-            <property name="text">
-             <string>GO!</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-      </layout>
-     </widget>
     </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="widget" native="true"/>
    </item>
   </layout>
  </widget>

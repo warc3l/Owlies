@@ -15,6 +15,9 @@
 class MainWindow : public QMainWindow
 {
  Q_OBJECT
+ 
+ signals:
+	void newImageLoaded();
 
  public:
  		explicit MainWindow(QWidget * parent = 0);

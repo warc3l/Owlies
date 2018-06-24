@@ -34,6 +34,13 @@ public:
     QVBoxLayout *verticalLayout;
     QComboBox *cmb_select_option;
     QStackedWidget *stk_train_recognize;
+    QWidget *page_recognize;
+    QVBoxLayout *verticalLayout_3;
+    QGroupBox *gpb_recognize;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *lbl_trained_file_label;
+    QLineEdit *lie_trained_file_value;
+    QPushButton *btn_go_recognize;
     QWidget *page_train;
     QVBoxLayout *verticalLayout_2;
     QGroupBox *gpb_train;
@@ -59,13 +66,7 @@ public:
     QLabel *lbl_cloud_token_label;
     QLineEdit *lie_cloud_token_value;
     QPushButton *btn_go_train;
-    QWidget *page_recognize;
-    QVBoxLayout *verticalLayout_3;
-    QGroupBox *gpb_recognize;
-    QHBoxLayout *horizontalLayout_3;
-    QLabel *lbl_trained_file_label;
-    QLineEdit *lie_trained_file_value;
-    QPushButton *btn_go_recognize;
+    QWidget *widget;
 
     void setupUi(QDialog *RecognizeDialog)
     {
@@ -81,6 +82,33 @@ public:
 
         stk_train_recognize = new QStackedWidget(RecognizeDialog);
         stk_train_recognize->setObjectName(QStringLiteral("stk_train_recognize"));
+        page_recognize = new QWidget();
+        page_recognize->setObjectName(QStringLiteral("page_recognize"));
+        verticalLayout_3 = new QVBoxLayout(page_recognize);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        gpb_recognize = new QGroupBox(page_recognize);
+        gpb_recognize->setObjectName(QStringLiteral("gpb_recognize"));
+        horizontalLayout_3 = new QHBoxLayout(gpb_recognize);
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        lbl_trained_file_label = new QLabel(gpb_recognize);
+        lbl_trained_file_label->setObjectName(QStringLiteral("lbl_trained_file_label"));
+
+        horizontalLayout_3->addWidget(lbl_trained_file_label);
+
+        lie_trained_file_value = new QLineEdit(gpb_recognize);
+        lie_trained_file_value->setObjectName(QStringLiteral("lie_trained_file_value"));
+
+        horizontalLayout_3->addWidget(lie_trained_file_value);
+
+        btn_go_recognize = new QPushButton(gpb_recognize);
+        btn_go_recognize->setObjectName(QStringLiteral("btn_go_recognize"));
+
+        horizontalLayout_3->addWidget(btn_go_recognize);
+
+
+        verticalLayout_3->addWidget(gpb_recognize);
+
+        stk_train_recognize->addWidget(page_recognize);
         page_train = new QWidget();
         page_train->setObjectName(QStringLiteral("page_train"));
         verticalLayout_2 = new QVBoxLayout(page_train);
@@ -185,40 +213,18 @@ public:
         verticalLayout_2->addWidget(gpb_train);
 
         stk_train_recognize->addWidget(page_train);
-        page_recognize = new QWidget();
-        page_recognize->setObjectName(QStringLiteral("page_recognize"));
-        verticalLayout_3 = new QVBoxLayout(page_recognize);
-        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
-        gpb_recognize = new QGroupBox(page_recognize);
-        gpb_recognize->setObjectName(QStringLiteral("gpb_recognize"));
-        horizontalLayout_3 = new QHBoxLayout(gpb_recognize);
-        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        lbl_trained_file_label = new QLabel(gpb_recognize);
-        lbl_trained_file_label->setObjectName(QStringLiteral("lbl_trained_file_label"));
-
-        horizontalLayout_3->addWidget(lbl_trained_file_label);
-
-        lie_trained_file_value = new QLineEdit(gpb_recognize);
-        lie_trained_file_value->setObjectName(QStringLiteral("lie_trained_file_value"));
-
-        horizontalLayout_3->addWidget(lie_trained_file_value);
-
-        btn_go_recognize = new QPushButton(gpb_recognize);
-        btn_go_recognize->setObjectName(QStringLiteral("btn_go_recognize"));
-
-        horizontalLayout_3->addWidget(btn_go_recognize);
-
-
-        verticalLayout_3->addWidget(gpb_recognize);
-
-        stk_train_recognize->addWidget(page_recognize);
 
         verticalLayout->addWidget(stk_train_recognize);
+
+        widget = new QWidget(RecognizeDialog);
+        widget->setObjectName(QStringLiteral("widget"));
+
+        verticalLayout->addWidget(widget);
 
 
         retranslateUi(RecognizeDialog);
 
-        stk_train_recognize->setCurrentIndex(1);
+        stk_train_recognize->setCurrentIndex(0);
         stk_local_cloud->setCurrentIndex(0);
 
 
@@ -230,9 +236,11 @@ public:
         RecognizeDialog->setWindowTitle(QApplication::translate("RecognizeDialog", "Dialog", 0));
         cmb_select_option->clear();
         cmb_select_option->insertItems(0, QStringList()
-         << QApplication::translate("RecognizeDialog", "Train", 0)
          << QApplication::translate("RecognizeDialog", "Recognize", 0)
         );
+        gpb_recognize->setTitle(QApplication::translate("RecognizeDialog", "Recognize", 0));
+        lbl_trained_file_label->setText(QApplication::translate("RecognizeDialog", "Trained file:", 0));
+        btn_go_recognize->setText(QApplication::translate("RecognizeDialog", "GO!", 0));
         gpb_train->setTitle(QApplication::translate("RecognizeDialog", "Train", 0));
         rdb_train_local->setText(QApplication::translate("RecognizeDialog", "Local", 0));
         rdb_train_cloud->setText(QApplication::translate("RecognizeDialog", "Cloud", 0));
@@ -241,9 +249,6 @@ public:
         lbl_cloud_password_label->setText(QApplication::translate("RecognizeDialog", "Password:", 0));
         lbl_cloud_token_label->setText(QApplication::translate("RecognizeDialog", "Token:", 0));
         btn_go_train->setText(QApplication::translate("RecognizeDialog", "GO!", 0));
-        gpb_recognize->setTitle(QApplication::translate("RecognizeDialog", "Recognize", 0));
-        lbl_trained_file_label->setText(QApplication::translate("RecognizeDialog", "Trained file:", 0));
-        btn_go_recognize->setText(QApplication::translate("RecognizeDialog", "GO!", 0));
     } // retranslateUi
 
 };

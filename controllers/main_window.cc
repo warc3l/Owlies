@@ -75,7 +75,6 @@ void MainWindow::delete_statusbar_widgets(void)
 
 void MainWindow::open_image(int a)
 {
-	std::cout << "Hello, world" << std::endl;
 	
 	// Open a file
 	std::string file_name = QFileDialog::getOpenFileName(this, "Open image", "/home/marcel").toUtf8().constData();
@@ -92,7 +91,7 @@ void MainWindow::open_image(int a)
 		QString width = QString::fromStdString(std::to_string(img->get_modified_pixmap().width()));
 		QString height = QString::fromStdString(std::to_string(img->get_modified_pixmap().height()));
 
-	    QLabel* lbl_image_pointer = ui->statusbar->findChild<QLabel*>("lbl_image_pointer");
+		QLabel* lbl_image_pointer = ui->statusbar->findChild<QLabel*>("lbl_image_pointer");
 		if (lbl_image_pointer == nullptr)
 		{
 			lbl_image_pointer = new QLabel("(0,0)");
@@ -111,6 +110,8 @@ void MainWindow::open_image(int a)
 		{
 			lbl_image_size->setText("(" + width + ", " + height + ")");
 		}
+
+		emit newImageLoaded();
 	}
 	catch(...)
 	{

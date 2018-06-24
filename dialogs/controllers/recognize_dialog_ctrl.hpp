@@ -17,7 +17,7 @@ class RecognizeDialogCtrl : public QDialog
     void recognize(void);
 
  private:
-    enum { TRAIN_MODE = 0, RECOGNIZE_MODE };
+    enum { RECOGNIZE_MODE = 0, TRAIN_MODE };
     enum { LOCAL = 0, CLOUD };
     template<typename... Args> struct SELECT 
     { 

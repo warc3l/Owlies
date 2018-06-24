@@ -103,6 +103,8 @@ void Image::faces(void)
 
 void Image::recognize(void)
 {
+    save_state();
+
     std::string modelConfiguration = "resources/input/MobileNetSSD_deploy.prototxt";
     std::string modelBinary = "resources/input/MobileNetSSD_deploy.caffemodel";
     cv::Mat frame, blob, out;
