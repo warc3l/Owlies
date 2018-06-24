@@ -20,6 +20,7 @@ void RecognizeDialogCtrl::recognize()
 {
     Image* img = Image::instance();
     img->recognize();
+    accept();
 }
 
 void RecognizeDialogCtrl::train()

@@ -415,6 +415,8 @@ void Toolbox::recognize(void)
 	{
 		DialogSettingsCreator dlg_settings_creator;
 		QDialog* dlg = dlg_settings_creator.create("recognize");
-		dlg->show();
+		int ret = dlg->exec();
+		
+		main_window->refresh_image();
 	}
 }
