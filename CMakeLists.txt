@@ -49,8 +49,8 @@ set(SOURCE_FILES    dialogs/dialog_settings_creator.hpp dialogs/dialog_settings_
 set(Boost_INCLUDE_DIR /home/marcel/devs/boost-build/include)
 set(Boost_USE_STATIC_LIBS ON)
 find_package(Boost 1.61 COMPONENTS system regex)
-include_directories(/home/marcel/devs/boost-build/include)
-link_directories(/home/marcel/devs/boost-build/lib)
+# include_directories(/home/marcel/devs/boost-build/include)
+# link_directories(/home/marcel/devs/boost-build/lib)
 
 # OpenCV
 find_package(OpenCV REQUIRED)
