@@ -111,36 +111,40 @@ void Image::recognize(void)
     std::vector<std::string> classNames = {"background", "aoeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "dinningtable", "dog", "horse", "motorbike", "person", "pottledplant", "sheep", "sofa", "sofa", "train", "tvmonitor" };
 
     cv::dnn::Net cvNet = cv::dnn::readNetFromCaffe(modelConfiguration, modelBinary);
-    blob = cv::dnn::blobFromImage(_modified, 0.007843, size, mean, false);
-    cvNet.setInput(blob);
 
-    out = cvNet.forward();
-
-    cv::Mat outMat(out.size[2], out.size[3], CV_32F, out.ptr<float>());
-    for (int i = 0; i < outMat.rows; i++)
+    if (!cvNet.empty())
     {
-        size_t objectClass = (size_t) (outMat.at<float>(i, 1));
+        blob = cv::dnn::blobFromImage(_modified, 0.007843, size, mean, false);
+        cvNet.setInput(blob);
 
-        int xLeftBottom = static_cast<int>(outMat.at<float>(i, 3) * _modified.cols);
-        int yLeftBottom = static_cast<int>(outMat.at<float>(i, 4) * _modified.rows);
-        int xRightTop = static_cast<int>(outMat.at<float>(i, 5) * _modified.cols);
-        int yRightTop = static_cast<int>(outMat.at<float>(i, 6) * _modified.rows);
-        int baseLine = 0;
+        out = cvNet.forward();
 
-        cv::Rect object ((int) xLeftBottom, (int) yLeftBottom,
-                        (int) (xRightTop - xLeftBottom),
-                        (int) (yRightTop - yLeftBottom));
+        cv::Mat outMat(out.size[2], out.size[3], CV_32F, out.ptr<float>());
+        for (int i = 0; i < outMat.rows; i++)
+        {
+            size_t objectClass = (size_t) (outMat.at<float>(i, 1));
 
-        cv::rectangle(_modified, object, cv::Scalar(0, 255, 0));
-        
-        std::string lbl = classNames[objectClass] + ": " + boost::lexical_cast<std::string>(outMat.at<float>(i, 2));
-        cv::Size lblSize = cv::getTextSize(lbl, cv::HersheyFonts::FONT_HERSHEY_SIMPLEX, 0.5, 1, &baseLine);
-                                                    
-        cv::rectangle(_modified, cv::Rect(cv::Point(xLeftBottom, yLeftBottom - lblSize.height), cv::Size(lblSize.width, lblSize.height + baseLine)), cv::Scalar(255, 255, 255), CV_FILLED);
-        cv::putText(_modified, lbl, cv::Point(xRightTop - lblSize.width, yRightTop - lblSize.height), cv::HersheyFonts::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(0,0,0));
+            int xLeftBottom = static_cast<int>(outMat.at<float>(i, 3) * _modified.cols);
+            int yLeftBottom = static_cast<int>(outMat.at<float>(i, 4) * _modified.rows);
+            int xRightTop = static_cast<int>(outMat.at<float>(i, 5) * _modified.cols);
+            int yRightTop = static_cast<int>(outMat.at<float>(i, 6) * _modified.rows);
+            int baseLine = 0;
+
+            cv::Rect object ((int) xLeftBottom, (int) yLeftBottom,
+                            (int) (xRightTop - xLeftBottom),
+                            (int) (yRightTop - yLeftBottom));
+
+            cv::rectangle(_modified, object, cv::Scalar(0, 255, 0));
+            
+            std::string lbl = classNames[objectClass] + ": " + boost::lexical_cast<std::string>(outMat.at<float>(i, 2));
+            cv::Size lblSize = cv::getTextSize(lbl, cv::HersheyFonts::FONT_HERSHEY_SIMPLEX, 0.5, 1, &baseLine);
+                                                        
+            cv::rectangle(_modified, cv::Rect(cv::Point(xLeftBottom, yLeftBottom - lblSize.height), cv::Size(lblSize.width, lblSize.height + baseLine)), cv::Scalar(255, 255, 255), CV_FILLED);
+            cv::putText(_modified, lbl, cv::Point(xRightTop - lblSize.width, yRightTop - lblSize.height), cv::HersheyFonts::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(0,0,0));
+        }
     }
-
-
+    else
+        std::cout << "Error. Can't load network" << std::endl;
 }
 
 void Image::thin(void)
