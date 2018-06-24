@@ -54,7 +54,7 @@ class Image
     void crop(int,int,int,int);
     void invert_colors(void);
     void invert_image(void);
-    void pick(int,int);
+    cv::Point3_<uchar>* pick(int,int);
     void scale(int, int);
     void faces();
     void recognize();

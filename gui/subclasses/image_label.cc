@@ -24,6 +24,7 @@ void ImageLabel::mousePressEvent(QMouseEvent* event)
         _origin = event->pos();
 
         _mouseMoving = true;
+        cv::Point3_<uchar>* point = nullptr;
 
         switch(img->get_actual_action())
         {
@@ -36,7 +37,8 @@ void ImageLabel::mousePressEvent(QMouseEvent* event)
                 _rubberBandCrop->show();
                 break;
             case PICK:
-                img->pick(_origin.x(), _origin.y());
+                point = img->pick(_origin.x(), _origin.y());
+                std::cout << "(" << int(point->z) << "," << int(point->y) << "," << int(point->x) << ")" << std::endl;
                 break;
             case DRAW:
                 img->draw(_origin.x(), _origin.y());
