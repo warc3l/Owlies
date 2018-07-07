@@ -20,7 +20,7 @@ QDialog* DialogSettingsCreator::create(std::string type)
     else if (type == "faces")
         return new FacesSettingsCtrl();
     else if (type == "gaussian")
-        return new GaussianFilterSettingsCtrl();
+        return new GaussianFilterSettingCtrl();
     else if (type == "recognize")
         return new RecognizeDialogCtrl();
     else if (type == "laplacian")
