@@ -8,7 +8,7 @@ services:
 before_install:
   - docker pull warc3l/owlies:latest
   - docker run -itd --name owlies warc3l/owlies
-  # - docker exec owlies git clone https://www.github.com/warc3l/owlies.git /Ow
+  - docker exec owlies git clone https://www.github.com/warc3l/owlies.git /Owlies
 
 script:
   - docker exec owlies cd Owlies
