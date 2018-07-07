@@ -14,7 +14,7 @@ It can be used to learn about these two frameworks, and basic Deep Neuron Networ
 ## Installation
 
 All the dependencies to compile it are listed on the Dockerfile. You can copy the container warc3l/owlies from Docker Hub to get all necessary dependencies, 
-and then generate the executable with make. Execute the following commands to create Owlies:
+and then generate the executable with make. Notice that Dockerfile is only written for Linux distributions. Execute the following commands to create Owlies:
 
 ``` shell
 $ docker pull warc3l/owlies
