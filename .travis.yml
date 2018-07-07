@@ -1,53 +1,18 @@
-dist: trusty
-language: cpp
-compiler: gcc
-addons: 
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - gcc-6
-      - g++-6
-      - cmake
-      
-install:
-  # Update CMake
-  - sudo apt remove cmake
-  - sudo apt purge --auto-remove cmake
-  - wget https://cmake.org/files/v3.10/cmake-3.10.3.tar.gz
-  - tar -xzvf cmake-3.10.3.tar.gz
-  - cd cmake-3.10.3/
-  - ./bootstrap
-  - make -j4
-  - sudo make install
-  - cd ../..
-  # Qt libraries
-  - sudo apt-get install qt5-default qttools5-dev-tools
-  # OpenCV libraries
-  - curl -sL https://github.com/opencv/opencv/archive/3.4.1.zip > opencv.zip
-  - unzip opencv.zip
-  - cd opencv-3.4.1
-  - mkdir release
-  - cd release
-  - cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
-  - make -j4 
-  - sudo make install
-  - sudo sh -c 'echo "/usr/local/lib" > /etc/ld.so.conf.d/opencv.conf'
-  - sudo ldconfig
-  - cd ../..
-  # Boost libraries
-  - sudo wget -O boost_1_61_0.tar.gz http://sourceforge.net/projects/boost/files/boost/1.61.0/boost_1_61_0.tar.gz/download
-  - tar -xf boost_1_61_0.tar.gz
-  - cd boost_1_61_0
-  - mkdir boost-build
-  - ./bootstrap.sh --prefix=./boost-build
-  - ./b2 install
-  - cd ..
+sudo: required
+
+language: c++
+
+services:
+  - docker
+
+before_install:
+  - docker pull warc3l/owlies
   
 script:
-  - cd Owlies
-  - cmake .
-  - make all
+  - docker run -v /Owlies:/Owlies -it warc3l/owlies
+  - cmake ..
+  - make 
+  - docker ps -a
 
 notifications:
   email: false
