@@ -12,7 +12,7 @@ before_install:
 
 script:
   - docker exec owlies cmake -H./Owlies -B./build
-  - docker exec owlies cmake --build ./Owlies
+  - docker exec owlies cmake --build ./build
   # - docker exec owlies make ./Owlies
 
 notifications:
