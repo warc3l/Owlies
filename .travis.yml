@@ -6,13 +6,14 @@ services:
   - docker
 
 before_install:
-  - docker pull warc3l/owlies
-  
+  - docker pull warc3l/owlies:latest
+  - docker run -itd --name owlies warc3l/owlies
+  # - docker exec owlies git clone https://www.github.com/warc3l/owlies.git /Ow
+
 script:
-  - docker run -v /Owlies:/Owlies -it warc3l/owlies
-  - cmake ..
-  - make 
-  - docker ps -a
+  - docker exec owlies cd Owlies
+  - docker exec owlies cmake .
+  - docker exec owlies make 
 
 notifications:
   email: false
