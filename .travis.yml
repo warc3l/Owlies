@@ -11,8 +11,9 @@ before_install:
   - docker exec owlies git clone https://www.github.com/warc3l/owlies.git ./Owlies
 
 script:
-  - docker exec owlies cmake -H./Owlies 
-  - docker exec owlies make ./Owlies
+  - docker exec owlies cmake -H./Owlies -B./build
+  - docker exec owlies cmake --build ./Owlies
+  # - docker exec owlies make ./Owlies
 
 notifications:
   email: false
