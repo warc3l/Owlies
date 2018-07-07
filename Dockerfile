@@ -7,9 +7,10 @@ RUN cd /home && wget -O boost_1_61_0.tar.gz http://sourceforge.net/projects/boos
     tar -xf boost_1_61_0.tar.gz && \
     cd boost_1_61_0 && \
     mkdir boost-build && \
-    ./bootstrap.sh --prefix=/usr/local --with-libraries=program_options && \
+    ./bootstrap.sh --prefix=./boost-build --with-libraries=regex -with-libraries=system && \    
+    # ./bootstrap.sh --prefix=/usr/local && \    
     ./b2 install && \
-    cd /home && rm -rf boost_1_61_0
+    cd /home
 
 
 RUN apt-get install -y qt5-default qttools5-dev-tools
