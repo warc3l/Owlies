@@ -3,6 +3,7 @@ project(Owlies)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC OFF)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -60,7 +61,7 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 find_package(Qt5 COMPONENTS Core Widgets)
 include_directories(${Qt_includes})
 
-add_executable(Owlies ${SOURCE_FILES})
+add_executable(Owlies ${SOURCE_FILES} resources/resources.qrc)
 
 # Target Link Boost
 target_link_libraries(Owlies ${Boost_LIBRARIES})

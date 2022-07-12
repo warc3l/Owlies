@@ -1,7 +1,29 @@
-FROM ubuntu
+FROM ubuntu:20.04
 MAINTAINER Marcel Vilalta <marcel.vilalta@gmail.com>
 
-RUN apt-get update && apt-get install -y git g++ make wget python-dev curl cmake unzip build-essential
+RUN DEBIAN_FRONTEND="noninteractive" apt-get update && apt-get -y install tzdata
+
+RUN apt-get update \
+  && apt-get install -y build-essential \
+      gcc \
+      g++ \
+      gdb \
+      clang \
+      make \
+      ninja-build \
+      cmake \
+      autoconf \
+      automake \
+      locales-all \
+      dos2unix \
+      rsync \
+      tar \
+      git  \
+      wget \
+      python2-dev  \
+      curl \
+      unzip \
+  && apt-get clean
 
 RUN cd /home && wget -O boost_1_61_0.tar.gz http://sourceforge.net/projects/boost/files/boost/1.61.0/boost_1_61_0.tar.gz/download && \
     tar -xf boost_1_61_0.tar.gz && \
@@ -13,7 +35,9 @@ RUN cd /home && wget -O boost_1_61_0.tar.gz http://sourceforge.net/projects/boos
     cd /home
 
 
-RUN apt-get install -y qt5-default qttools5-dev-tools
+# RUN apt-get install -y qt5-default qttools5-dev-tools
+
+RUN apt-get install -y qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools
 
 RUN apt remove -y cmake && \
   apt purge --auto-remove -y cmake && \
@@ -25,9 +49,9 @@ RUN apt remove -y cmake && \
   make install && \
   cd ../..
 
-RUN curl -sL https://github.com/opencv/opencv/archive/3.4.1.zip > opencv.zip && \
-  unzip opencv.zip && \
-  cd opencv-3.4.1 && \
+RUN curl -sL https://github.com/opencv/opencv/archive/refs/tags/3.4.14.zip > opencv.zip && \
+unzip opencv.zip && \
+  cd opencv-3.4.14 && \
   mkdir release && \
   cd release && \
   cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local .. && \
@@ -36,4 +60,25 @@ RUN curl -sL https://github.com/opencv/opencv/archive/3.4.1.zip > opencv.zip && 
   sh -c 'echo "/usr/local/lib" > /etc/ld.so.conf.d/opencv.conf' && \
   ldconfig && \
   cd ../..
-  
+
+RUN apt-get install -y '^libxcb.*-dev' \
+    libx11-xcb-dev \
+    libglu1-mesa-dev libxrender-dev  \
+    libxi-dev  \
+    libxkbcommon-dev  \
+    libxkbcommon-x11-dev \
+    libxkbcommon-x11-0 \
+    libxcb-xinerama0
+
+ENV QT_DEBUG_PLUGINS 1
+
+ENV QT_DEBUG_PLUGINS=1
+ENV QT_QPA_PLATFORM=xcb
+ENV QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib/aarch64-linux-gnu/qt5/plugins/platforms
+ENV QT_PLUGIN_PATH=/usr/lib/aarch64-linux-gnu/qt5/plugins
+#ENV DISPLAY=:0
+ENV QT_X11_NO_MITSHM=1
+ENV QT_GRAPHICSSYSTEM="native"
+
+
+
