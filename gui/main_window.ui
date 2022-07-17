@@ -6,16 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>514</height>
+    <width>1044</width>
+    <height>698</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Owlies</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="sizePolicy">
-    <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
      <horstretch>0</horstretch>
      <verstretch>0</verstretch>
     </sizepolicy>
@@ -25,16 +28,92 @@
      <enum>QLayout::SetFixedSize</enum>
     </property>
     <item>
-     <widget class="ImageLabel" name="main_window_image">
+     <widget class="QTabWidget" name="tabWidget">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
-      <property name="text">
-       <string/>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
       </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="tab_5">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>512</width>
+         <height>512</height>
+        </size>
+       </property>
+       <attribute name="title">
+        <string>Image</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="ImageLabel" name="main_window_image">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>512</width>
+            <height>512</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_6">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>512</width>
+         <height>512</height>
+        </size>
+       </property>
+       <attribute name="title">
+        <string>3D Graphics</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="OwlyRendered" name="openGLWidget">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>512</width>
+            <height>512</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -44,8 +123,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
-     <height>25</height>
+     <width>1044</width>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -94,6 +173,11 @@
    <class>ImageLabel</class>
    <extends>QLabel</extends>
    <header>subclasses/image_label.hpp</header>
+  </customwidget>
+  <customwidget>
+   <class>OwlyRendered</class>
+   <extends>QOpenGLWidget</extends>
+   <header>OwlyRendered.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

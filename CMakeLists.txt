@@ -5,8 +5,10 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTOUIC OFF)
+set(CMAKE_AUTOUIC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+set(CMAKE_PREFIX_PATH "/usr/include")
 
 set(SOURCE_FILES    dialogs/dialog_settings_creator.hpp dialogs/dialog_settings_creator.cc
                     dialogs/controllers/draw_settings_ctrl.hpp dialogs/controllers/draw_settings_ctrl.cc
@@ -40,11 +42,13 @@ set(SOURCE_FILES    dialogs/dialog_settings_creator.hpp dialogs/dialog_settings_
                     dialogs/controllers/filters/sobel_filter_settings_ctrl.cc dialogs/controllers/filters/sobel_filter_settings_ctrl.hpp
                     dialogs/gui/filters/ui_sobel_filter_settings.h
                     model/image.hpp model/image.cc
-                    main.cpp gui/ui_main_window.h gui/ui_toolbox.h
+                    main.cpp
                     controllers/main_window.hpp controllers/main_window.cc
                     controllers/toolbox.hpp controllers/toolbox.cc
                     gui/subclasses/image_label.hpp gui/subclasses/image_label.cc
-                    dialogs/gui/subclasses/color_label.hpp dialogs/gui/subclasses/color_label.cc)
+                    dialogs/gui/subclasses/color_label.hpp dialogs/gui/subclasses/color_label.cc
+                    gui/subclasses/OwlyRendered.h
+                    gui/subclasses/OwlyRendered.cpp)
 
 # Boost
 set(Boost_INCLUDE_DIR /home/boost_1_61_0/boost-build/include)
@@ -71,3 +75,8 @@ target_link_libraries(Owlies ${OpenCV_LIBS})
 
 # Target Link Qt5
 target_link_libraries(Owlies Qt5::Core Qt5::Gui Qt5::Widgets)
+
+# GLEW
+
+# find_package(GLEW REQUIRED)
+# include_directories(${GLEW_INCLUDE_DIRS})

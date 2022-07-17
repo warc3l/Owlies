@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'toolbox.ui'
 **
-** Created by: Qt User Interface Compiler version 5.10.1
+** Created by: Qt User Interface Compiler version 5.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -301,28 +301,28 @@ public:
 
     void retranslateUi(QWidget *Toolbox)
     {
-        Toolbox->setWindowTitle(QApplication::translate("Toolbox", "Toolbox", nullptr));
-        group_basic->setTitle(QApplication::translate("Toolbox", " Basic", nullptr));
-        btn_zoom_in->setText(QApplication::translate("Toolbox", "...", nullptr));
-        btn_zoom_out->setText(QApplication::translate("Toolbox", "...", nullptr));
+        Toolbox->setWindowTitle(QApplication::translate("Toolbox", "Toolbox", 0));
+        group_basic->setTitle(QApplication::translate("Toolbox", " Basic", 0));
+        btn_zoom_in->setText(QApplication::translate("Toolbox", "...", 0));
+        btn_zoom_out->setText(QApplication::translate("Toolbox", "...", 0));
         btn_crop->setText(QString());
-        group_manipulation->setTitle(QApplication::translate("Toolbox", "Manipulation", nullptr));
-        btn_scale->setText(QApplication::translate("Toolbox", "...", nullptr));
-        btn_invert_image->setText(QApplication::translate("Toolbox", "...", nullptr));
-        btn_draw->setText(QApplication::translate("Toolbox", "...", nullptr));
-        group_colors->setTitle(QApplication::translate("Toolbox", "Colors", nullptr));
-        btn_sature->setText(QApplication::translate("Toolbox", "...", nullptr));
-        btn_invert_colors->setText(QApplication::translate("Toolbox", "...", nullptr));
-        btn_pick->setText(QApplication::translate("Toolbox", "...", nullptr));
-        group_filters->setTitle(QApplication::translate("Toolbox", "FIlters", nullptr));
-        btn_filter_2->setText(QApplication::translate("Toolbox", "...", nullptr));
-        btn_filter_3->setText(QApplication::translate("Toolbox", "...", nullptr));
-        btn_filter_1->setText(QApplication::translate("Toolbox", "...", nullptr));
-        btn_filter_menu->setText(QApplication::translate("Toolbox", "...", nullptr));
-        group_recognition->setTitle(QApplication::translate("Toolbox", "Recognition", nullptr));
-        btn_thin->setText(QApplication::translate("Toolbox", "...", nullptr));
-        btn_recognize->setText(QApplication::translate("Toolbox", "...", nullptr));
-        btn_faces->setText(QApplication::translate("Toolbox", "...", nullptr));
+        group_manipulation->setTitle(QApplication::translate("Toolbox", "Manipulation", 0));
+        btn_scale->setText(QApplication::translate("Toolbox", "...", 0));
+        btn_invert_image->setText(QApplication::translate("Toolbox", "...", 0));
+        btn_draw->setText(QApplication::translate("Toolbox", "...", 0));
+        group_colors->setTitle(QApplication::translate("Toolbox", "Colors", 0));
+        btn_sature->setText(QApplication::translate("Toolbox", "...", 0));
+        btn_invert_colors->setText(QApplication::translate("Toolbox", "...", 0));
+        btn_pick->setText(QApplication::translate("Toolbox", "...", 0));
+        group_filters->setTitle(QApplication::translate("Toolbox", "FIlters", 0));
+        btn_filter_2->setText(QApplication::translate("Toolbox", "...", 0));
+        btn_filter_3->setText(QApplication::translate("Toolbox", "...", 0));
+        btn_filter_1->setText(QApplication::translate("Toolbox", "...", 0));
+        btn_filter_menu->setText(QApplication::translate("Toolbox", "...", 0));
+        group_recognition->setTitle(QApplication::translate("Toolbox", "Recognition", 0));
+        btn_thin->setText(QApplication::translate("Toolbox", "...", 0));
+        btn_recognize->setText(QApplication::translate("Toolbox", "...", 0));
+        btn_faces->setText(QApplication::translate("Toolbox", "...", 0));
     } // retranslateUi
 
 };

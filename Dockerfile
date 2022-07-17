@@ -23,7 +23,20 @@ RUN apt-get update \
       python2-dev  \
       curl \
       unzip \
-  && apt-get clean
+      mesa-utils \
+      libegl1-mesa  \
+      libegl1-mesa-dev  \
+      libgbm-dev \
+      libgbm1  \
+      libgl1-mesa-dev \
+      libgl1-mesa-dri  \
+      libgl1-mesa-glx  \
+      libglu1-mesa  \
+      libglu1-mesa-dev \
+      glew-utils \
+      libglew-dev  \
+      libglew2.1 \
+    && apt-get clean
 
 RUN cd /home && wget -O boost_1_61_0.tar.gz http://sourceforge.net/projects/boost/files/boost/1.61.0/boost_1_61_0.tar.gz/download && \
     tar -xf boost_1_61_0.tar.gz && \
@@ -80,5 +93,12 @@ ENV QT_PLUGIN_PATH=/usr/lib/aarch64-linux-gnu/qt5/plugins
 ENV QT_X11_NO_MITSHM=1
 ENV QT_GRAPHICSSYSTEM="native"
 
+# https://github.com/openalea/docker-stacks/issues/6
+# https://mfix.netl.doe.gov/forum/t/mfix-21-4-rhel-7-5-with-x11-starts-and-fails-to-open-glew-could-not-be-initialized-missing-gl-version/3629/18
+
+ENV LIBGL_ALWAYS_INDIRECT=1
+ENV QT_MAC_WANTS_LAYER=1
+
+RUN apt-get install -y
 
 
